@@ -7,14 +7,15 @@ import com.hcl.ohbs.entities.Customer;
 public class CustomerDAO {
 
 	//register new customer
-		public boolean registerCustomer(Customer c) throws ClassNotFoundException, SQLException
+		public boolean registerCustomer(Customer c) 
 		{
+			try {
 			//make the connection
 			Connection con=DBConnection.getConnection();
 			PreparedStatement pmt=null;
 			String query=null;
 			
-			try {
+			
 				//query to add customer details to the database
 				query="insert into customer(first_name,last_name,phone_number,address,email,username,password) values(?,?,?,?,?,?,?)";
 				pmt=con.prepareStatement(query);
@@ -31,7 +32,7 @@ public class CustomerDAO {
 			    return n>0?true:false;
 			}
 			catch(SQLException se) {se.printStackTrace();}
-			
+			catch(ClassNotFoundException cls) {cls.printStackTrace();}
 			return false;
 		}
 }
