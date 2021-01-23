@@ -7,9 +7,9 @@
 
   <!-- Dropdown Structure -->
   <ul id='dropdown1' class='dropdown-content'>
-    <li><a href="#!">User</a></li>
+    <li><a href="./Customer-Login.jsp">User</a></li>
     <li class="divider" tabindex="-1"></li>
-    <li><a href="#!">Hotel Owner</a></li>
+    <li><a href="./Owner-Login.jsp">Hotel Owner</a></li>
   </ul>
         </li>
       </ul>
