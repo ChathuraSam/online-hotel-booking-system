@@ -1,0 +1,174 @@
+1. create customer table ->
+
+	CREATE TABLE customer(
+    		id NUMBER(5) PRIMARY KEY,
+    		first_name VARCHAR2(15),
+    		last_name VARCHAR2(15),
+    		phone_number VARCHAR2(10),
+    		address VARCHAR2(30),
+    		email VARCHAR2(20),
+    		username VARCHAR2(15),
+    		password VARCHAR2(15)
+   	);
+
+2. create sequence to auto increment the id column ->
+
+	CREATE SEQUENCE customer_sequence START WITH 1;
+
+3. create trigger to auto increment the id column using sequence ->
+
+	CREATE or replace trigger customer_trigger
+   	before insert on customer
+    	for each row
+    	begin
+    		select customer_sequence.nextval
+    		into:new.id
+    		from dual;
+    	end;
+    	/
+
+4. create hotel_owner table ->
+
+	CREATE TABLE hotel_owner(
+   		id NUMBER(5) PRIMARY KEY,
+   		first_name VARCHAR2(15),
+   		last_name VARCHAR2(15),
+		nic VARCHAR2(10),
+  		phone_number VARCHAR2(10),
+    		email VARCHAR2(20),
+   		username VARCHAR2(15),
+  		password VARCHAR2(15)
+  	);
+
+5. create sequence to auto increment the id column ->
+
+	CREATE SEQUENCE hotel_owner_sequence START WITH 1;
+
+6. create trigger to auto increment the id column using sequence ->
+
+	CREATE or replace trigger hotel_owner_trigger
+    	before insert on hotel_owner
+    	for each row
+    	begin
+   		select hotel_owner_sequence.nextval
+    		into:new.id
+    		from dual;
+    	end;
+    	/
+
+7. create hotel_type table ->
+
+	CREATE TABLE hotel_type(
+   		id NUMBER(5) PRIMARY KEY,
+   		name VARCHAR2(15),
+   		features VARCHAR2(50),
+		price NUMBER(8,2)
+  	);
+
+8. create sequence to auto increment the id column ->
+
+	CREATE SEQUENCE hotel_type_sequence START WITH 1;
+
+9. create trigger to auto increment the id column using sequence ->
+
+	CREATE or replace trigger hotel_type_trigger
+    	before insert on hotel_type
+    	for each row
+    	begin
+   		select hotel_type_sequence.nextval
+    		into:new.id
+    		from dual;
+    	end;
+    	/
+
+10. create hotel table ->
+
+	CREATE TABLE hotel(
+   		id NUMBER(5) PRIMARY KEY,
+   		name VARCHAR2(15),
+		city VARCHAR2(15),
+		phone_number VARCHAR2(10),
+    		address VARCHAR2(30),
+   		status VARCHAR2(15),
+		maximum_capacity NUMBER(5),
+		available_capacity NUMBER(5),
+		hotel_owner_id NUMBER(5) REFERENCES hotel_owner(id),
+		hotel_type_id NUMBER(5) REFERENCES hotel_type(id)
+  	);
+
+11. create sequence to auto increment the id column ->
+	
+	CREATE SEQUENCE hotel_sequence START WITH 1;
+
+12. create trigger to auto increment the id column using sequence ->
+
+	CREATE OR REPLACE TRIGGER hotel_trigger
+    	BEFORE INSERT ON hotel
+    	FOR EACH ROW
+    	BEGIN
+   		SELECT hotel_sequence.NEXTVAL
+    		INTO:NEW.id
+    		FROM dual;
+    	END;
+    	/
+
+13. create hotel_image table ->
+
+	CREATE TABLE hotel_image(
+   		hotel_id NUMBER(5) REFERENCES hotel(id),
+		images VARCHAR2(50),
+		PRIMARY KEY (hotel_id,images)
+  	);
+
+14. create reservation table ->
+
+	CREATE TABLE reservation(
+   		id NUMBER(5) PRIMARY KEY,
+		check_in DATE,
+		check_out DATE,
+		no_of_persons NUMBER(5),
+		customer_id NUMBER(5) REFERENCES customer(id),
+		hotel_id NUMBER(5) REFERENCES hotel(id)
+  	);
+
+15. create sequence to auto increment the id column ->
+	
+	CREATE SEQUENCE reservation_sequence START WITH 1;
+
+16. create trigger to auto increment the id column using sequence ->
+
+	CREATE OR REPLACE TRIGGER reservation_trigger
+    	BEFORE INSERT ON reservation
+    	FOR EACH ROW
+    	BEGIN
+   		SELECT reservation_sequence.NEXTVAL
+    		INTO:NEW.id
+    		FROM dual;
+    	END;
+    	/
+
+17. create invoice table ->
+
+	CREATE TABLE invoice(
+   		id NUMBER(5) PRIMARY KEY,
+		date_generated DATE,
+		total_amount NUMBER(9,2),
+		customer_id NUMBER(5) REFERENCES customer(id),
+		reservation_id NUMBER(5) REFERENCES reservation(id)
+  	);
+
+18. create sequence to auto increment the id column ->
+	
+	CREATE SEQUENCE invoice_sequence START WITH 1;
+
+19. create trigger to auto increment the id column using sequence ->
+
+	CREATE OR REPLACE TRIGGER invoice_trigger
+    	BEFORE INSERT ON invoice
+    	FOR EACH ROW
+    	BEGIN
+   		SELECT invoice_sequence.NEXTVAL
+    		INTO:NEW.id
+    		FROM dual;
+    	END;
+    	/
