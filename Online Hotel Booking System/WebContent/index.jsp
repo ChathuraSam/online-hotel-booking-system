@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<%@include file="comp/Navbar.jsp" %>
+<%@include file="./comp/Navbar.jsp" %>
 
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
@@ -70,7 +70,7 @@
   </div>
 
   
-<%@include file="comp/Footer.jsp" %>
+<%@include file="./comp/Footer.jsp" %>
 
   <!--  Scripts-->
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
