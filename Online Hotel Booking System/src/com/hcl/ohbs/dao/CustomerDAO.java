@@ -35,4 +35,28 @@ public class CustomerDAO {
 			catch(ClassNotFoundException cls) {cls.printStackTrace();}
 			return false;
 		}
+		
+		public boolean LoginCustomer(Customer c) {
+			boolean status=false;
+			try {
+				
+				Connection con=DBConnection.getConnection();
+				PreparedStatement pmt=null;
+				ResultSet rs=null;
+				String query=null;
+				
+				query = "select * from customer where username=? and password=?";
+				pmt=con.prepareStatement(query);
+				pmt.setString(1,c.getUsername());
+				pmt.setString(2, c.getPassword());
+				
+				rs=pmt.executeQuery();
+			    status=rs.next();
+				
+			}
+			catch(SQLException e) {e.printStackTrace();}
+			catch(ClassNotFoundException cls) {cls.printStackTrace();}
+			return status;
+		}
+		
 }
