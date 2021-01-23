@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+input[type=submit] {
+  background-color: #ff9900;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  padding-left: 25%;
+  padding-right: 25%;
+  
+}
+h1{
+    color:#ff9900;
+}
+h2{
+    color:#ffcc66;
+}
+</style>
+</head>
+<body>
+<center>
+<h1>Contact Us</h1>
+<h2>We love to hear from you!</h2>
+</center>
+<div class="container">
+  <form action="">
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <input type="text" id="email" name="email" placeholder="Your Email..">
+
+    <input type="text" id="contact" name="contact" placeholder="Your Contact No..">
+
+    <input type="text" id="subject" name="subject" placeholder="Subject..">
+
+    <textarea id="details" name="subject" placeholder="How can we help?.." style="height:200px"></textarea>
+
+    <input type="submit" value="Submit">
+  </form>
+</div>
+
+</body>
+</html>
