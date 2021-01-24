@@ -12,7 +12,6 @@
 	
 </head>
 
-
 <body >
 
 <%@include file="./comp/Navbar.jsp" %>

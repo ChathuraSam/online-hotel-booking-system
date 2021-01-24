@@ -7,9 +7,10 @@ import com.hcl.ohbs.entities.Customer;
 
 public class RegisterCustomerService {
 
-    public boolean registerCustomer() {
+    public boolean registerCustomer(String firstName, String lastname, String phone, String address, String email, String username, String password, String confirmPassword) {
         CustomerDAO c = new CustomerDAO();
-        boolean a = c.registerCustomer(new Customer("sithara", "ishanthi", "0703965620", "305,dipptigoda,kelaniya", "sithara@gmail.com", "sithara", "sithara123"));
+        boolean a = c.registerCustomer(new Customer(firstName, lastname, phone, address, email, username, password));
+        
         return a;
     }
 }
