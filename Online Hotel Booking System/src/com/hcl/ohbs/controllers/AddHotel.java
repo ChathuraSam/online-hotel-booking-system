@@ -1,29 +1,30 @@
 package com.hcl.ohbs.controllers;
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.hcl.ohbs.entities.HotelOwner;
 import com.hcl.ohbs.services.HotelOwnerService;
-@WebServlet("/RegisterHotelOwner")
-public class RegisterHotelOwner extends HttpServlet {
-	
+import com.hcl.ohbs.services.HotelService;
+@WebServlet("/AddHotel")
+public class AddHotel extends HttpServlet {
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		out.println("<html><boby>");
-		HotelOwnerService hotelOwnerService = new HotelOwnerService();
-		if(hotelOwnerService.registerHotelOwner("Shanuka", "Hettiarachchi", "946786934V", "0715678974", "abc@gmail.com", "username", "password")) {		
-			int id = hotelOwnerService.getIdByUsernameAndPassword("username", "password");
-			//if(id>0) {
-				out.println("<font>hotel owner registration success!!<font>");
-			//}else{
-				//out.println("<font color='red'>internal error! try again!<font>");
-			//}
-			//call ownerHome.jsp and pass the id in session
+		HotelService hotelService = new HotelService();
+		String[] images = {"path of image 1","path of image 2"};
+		//recieve the id from coming from the session and assign into id variable
+		int id = 5;
+		if(hotelService.addHotelAndImages("HotelA", "Nugegoda", "0756789364", "abc", "status", 1000, 450, id, "World class", "feature1,feature2", 5000.00, images)) {
+			out.println("<font>hotel added success!!<font>");
 		}else {
-			out.println("<font color='red'>Error in registering the hotel owner<font>");
+			out.println("<font color='red'>Error in adding the hotel<font>");
 		}
 		out.println("</boby><html>");
 	}

@@ -23,6 +23,9 @@ public class HotelOwner {
 		this.username = username;
 		this.password = password;
 	}
+	public HotelOwner(int id) {
+		this.id = id;
+	}
 	public HotelOwner(int id, String fistName, String lastName, String nic, String phoneNumber, String email,
 			String username, String password) {
 		this.id = id;
