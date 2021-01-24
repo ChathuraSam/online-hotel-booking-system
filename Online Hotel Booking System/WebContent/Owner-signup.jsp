@@ -5,7 +5,7 @@
 
 <head>
 	
-	<title>Customer Signup</title>
+	<title>Owner - Sign Up</title>
 	 
 <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -19,7 +19,7 @@
 
 <form>
 <div class="container center_div">
-<h1>Customer Signup form</h1><hr>
+<h2>Hotel Owner Signup form</h2><hr>
   <div class="form-row">
     <div class="form-group col-md-4">
       <label for="firstName">First Name</label>
