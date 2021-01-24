@@ -172,3 +172,23 @@
     		FROM dual;
     	END;
     	/
+
+
+
+======================================================================================================
+new Changes(24/01/2021)
+
+1. Alter hotel table ->
+
+	alter table hotel add category varchar2(15);
+	alter table hotel add features varchar2(60);
+	alter table hotel add price number(8,2);
+	alter table hotel drop column hotel_type_id;
+
+2. Drop hotel_type table
+	
+	drop table hotel_type;
+	
+	
+
+
