@@ -10,4 +10,8 @@
 
 /bin
 
+<<<<<<< HEAD
+*.properties
+=======
 *.bin
+>>>>>>> development

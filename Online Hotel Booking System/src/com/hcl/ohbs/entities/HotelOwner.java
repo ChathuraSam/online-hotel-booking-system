@@ -10,8 +10,9 @@ public class HotelOwner {
 	private String username;
 	private String password;
 	public HotelOwner() {
-
+		
 	}
+	
 	public HotelOwner(String fistName, String lastName, String nic, String phoneNumber, String email, String username,
 			String password) {
 		this.fistName = fistName;
