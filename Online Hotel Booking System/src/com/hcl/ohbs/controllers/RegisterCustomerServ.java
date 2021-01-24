@@ -28,7 +28,7 @@ public class RegisterCustomerServ extends HttpServlet {
 		String password = request.getParameter("password");
 		String confirmPassword = request.getParameter("confirmPassword");
 		
-	
+//		asd
 		
 		PrintWriter out = response.getWriter();
 		out.println("<html><boby>");
