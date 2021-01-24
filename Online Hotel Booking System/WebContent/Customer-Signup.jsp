@@ -17,44 +17,44 @@ pageEncoding="ISO-8859-1"%>
 
 	<%@include file="./comp/Navbar.jsp" %>
 
-	<form action="" method="post">
+	<form action="RegisterCustomerServ" method="post">
 		<div class="container center_div">
 			<h1>Customer Signup form</h1><hr>
 			<div class="form-row">
 				<div class="form-group col-md-4">
 					<label for="firstName">First Name</label>
-					<input type="text" class="form-control" id="firstName" placeholder="First Name">
+					<input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName">
 				</div>
 				<div class="form-group col-md-4">
 					<label for="lastName">Last Name</label>
-					<input type="text" class="form-control" id="lastName" placeholder="Last Name">
+					<input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lastName">
 				</div>
 				<div class="form-group col-md-4">
 					<label for="phone">Phone Number</label>
-					<input type="text" class="form-control" id="phone" placeholder="Ex: 07xxxxxxxx">
+					<input type="text" class="form-control" id="phone" placeholder="Ex: 07xxxxxxxx" name="phone">
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="inputAddress">Address</label>
-				<input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+				<input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" name="inputAddress">
 			</div>
 			<div class="form-group">
 				<label for="email">Email</label>
-				<input type="email" class="form-control" id="email" placeholder="example@abc.com">
+				<input type="email" class="form-control" id="email" placeholder="example@abc.com" name="email">
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="username">Username</label>
-					<input type="text" class="form-control" id=""username"">
+					<input type="text" class="form-control" id="username" name="username">
 				</div>
 				<div class="form-group col-md-3">
 					<label for="password">Password</label>
-					<input type="password" class="form-control" id=""password"">
+					<input type="password" class="form-control" id="password" name="password">
 				</div>
 				
 				<div class="form-group col-md-3">
 					<label for="confirmPassword">Confirm Password</label>
-					<input type="password" class="form-control" id=""confirmPassword"">
+					<input type="password" class="form-control" id="confirmPassword" name="confirmPassword">
 				</div>
 				
 			</div>
