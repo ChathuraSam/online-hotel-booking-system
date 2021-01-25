@@ -16,7 +16,7 @@ pageEncoding="ISO-8859-1"%>
 
 	<%@include file="./comp/Navbar.jsp" %>
 
-	<form action="" method="post">
+	<form action="RegisterHotelOwner">
 		<div class="container center_div">
 			<h2>Hotel Owner Sign-Up</h2><hr>
 			<div class="form-row">

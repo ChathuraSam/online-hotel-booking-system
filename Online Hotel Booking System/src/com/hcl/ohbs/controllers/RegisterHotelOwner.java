@@ -15,16 +15,23 @@ public class RegisterHotelOwner extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		String firstName = request.getParameter("firstName");
-		String lastname = request.getParameter("lastname");
+		System.out.println(firstName);
+		String lastname = request.getParameter("lastName");
+		System.out.println(lastname);
 		String phone = request.getParameter("phone");
-		//String address = request.getParameter("inputAddress");
+		System.out.println(phone);
+		String nic = request.getParameter("nic");
+		System.out.println(nic);
 		String email = request.getParameter("email");
+		System.out.println(email);
 		String username = request.getParameter("username");
+		System.out.println(username);
 		String password = request.getParameter("password");
+		System.out.println(password);
 		//String confirmPassword = request.getParameter("confirmPassword");
 		out.println("<html><boby>");
 		HotelOwnerService hotelOwnerService = new HotelOwnerService();
-		if(hotelOwnerService.registerHotelOwner(firstName, lastname, "946786934V", phone, email, username, password)) {		
+		if(hotelOwnerService.registerHotelOwner(firstName, lastname, nic, phone, email, username, password)) {		
 			HttpSession session = request.getSession();
 	    	//int sessionId = (int) session.getAttribute("id");
 	    	int sessionId = hotelOwnerService.getIdByUsernameAndPassword("username", "password");
