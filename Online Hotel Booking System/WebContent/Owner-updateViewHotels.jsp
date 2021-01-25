@@ -38,7 +38,7 @@
 			</div>
 
 			<div class="right-div">
-				<a href="#" class="btn btn-danger pull-right">LOG ME OUT</a>
+				<a href="index.jsp" class="btn btn-danger pull-right">LOG ME OUT</a>
 			</div>
 		</div>
 	</div>
