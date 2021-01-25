@@ -90,7 +90,7 @@
 				<div class="panel panel-danger">
 					<div class="panel-heading">ADD HOTEL DETAILS</div>
 					<div class="panel-body">
-						<form role="form">
+						<form role="form" action="AddHotel" method="post" enctype="multipart/form-data">
 
 							<div class="form-group">
 								<label>Enter Hotel Name</label> <input name="hotelname"
