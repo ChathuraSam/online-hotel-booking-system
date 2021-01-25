@@ -18,6 +18,7 @@
     <link href="css/ownerhotelsdashtable.css" rel="stylesheet" />
     <!-- GOOGLE FONT -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     
     
     <script>
@@ -46,7 +47,7 @@ $(document).ready(function(){
             </div>
 
             <div class="right-div">
-                <a href="#" class="btn btn-danger pull-right">LOG ME OUT</a>
+                <a href="index.jsp" class="btn btn-danger pull-right">LOG ME OUT</a>
             </div>
         </div>
     </div>
@@ -111,56 +112,56 @@ $(document).ready(function(){
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td><a href="#"><img src="/examples/images/avatar/1.jpg" class="avatar" alt="Avatar">Kingsbury Hotel</a></td>
+                        <td><a href="#"><img src="images/hoicon1.jpg" class="avatar" alt="Avatar">Kingsbury Hotel</a></td>
                         <td>Colombo</td>                        
                         <td>Super Luxary</td>
                         <td><span class="status text-success">&bull;</span> Available</td>
                         <td>
-                            <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                            <a href="#" class="settings" title="Update" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
                             <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
                         </td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td><a href="#"><img src="/examples/images/avatar/2.jpg" class="avatar" alt="Avatar"> Cinnamon Grand Hotel</a></td>
+                        <td><a href="#"><img src="images/hoicon1.jpg" class="avatar" alt="Avatar"> Cinnamon Grand Hotel</a></td>
                         <td>Colombo</td>                       
                         <td>Luxary</td>
                         <td><span class="status text-success">&bull;</span> Available</td>
                         <td>
-                            <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                            <a href="#" class="settings" title="Update" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
                             <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
                         </td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td><a href="#"><img src="/examples/images/avatar/3.jpg" class="avatar" alt="Avatar"> Hotel Topaz</a></td>
+                        <td><a href="#"><img src="images/hoicon1.jpg" class="avatar" alt="Avatar"> Hotel Topaz</a></td>
                         <td>Kandy</td>
                         <td>Semi Luxary</td>
                         <td><span class="status text-danger">&bull;</span> Not-Available</td>                        
                         <td>
-                            <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                            <a href="#" class="settings" title="Update" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
                             <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
                         </td>                        
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td><a href="#"><img src="/examples/images/avatar/4.jpg" class="avatar" alt="Avatar"> Mary Saveley</a></td>
+                        <td><a href="#"><img src="images/hoicon1.jpg" class="avatar" alt="Avatar"> Mary Saveley</a></td>
                         <td>Negambo</td>
                         <td>Luxary</td>
                         <td><span class="status text-success">&bull;</span> Available</td>
                         <td>
-                            <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                            <a href="#" class="settings" title="Update" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
                             <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
                         </td>
                     </tr>
                     <tr>
                         <td>5</td>
-                        <td><a href="#"><img src="/examples/images/avatar/5.jpg" class="avatar" alt="Avatar"> Martin Sommer</a></td>
+                        <td><a href="#"><img src="images/hoicon1.jpg" class="avatar" alt="Avatar"> Martin Sommer</a></td>
                         <td>Galle</td>                        
                         <td>Super Luxary</td>
                         <td><span class="status text-warning">&bull;</span> Reserved</td>
                         <td>
-                            <a href="#" class="settings" title="Settings" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                            <a href="#" class="settings" title="Update" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
                             <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
                         </td>
                     </tr>
