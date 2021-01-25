@@ -2,9 +2,11 @@ package com.hcl.ohbs.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.*;
 import java.sql.SQLException;
-
+import java.util.*;
 import com.hcl.ohbs.entities.Hotel;
+import com.hcl.ohbs.entities.HotelOwner;
 
 public class HotelDAO {
 	
@@ -43,5 +45,55 @@ public class HotelDAO {
             }
         }
         return false;
+	}
+	
+	public Hotel findHotelByName(String name){
+		try{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+			con = DBConnection.getConnection();
+			String query = "select name,city,phone_number,address,status,maximum_capacity,available_capacity,hotel_owner_id,category,features,price from hotel where NAME=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, name);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				Hotel h = new Hotel(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getInt(7),new HotelOwner(rs.getInt(8)),rs.getString(9),rs.getString(10),rs.getDouble(11));
+				return h;
+				
+			}
+	    }catch(ClassNotFoundException e1){
+	            e1.printStackTrace();
+	    }catch(SQLException e2){
+	            e2.printStackTrace();
+	    }
+	    return null;
+	}
+	
+	public List<Hotel> findHotelByCity(String city){
+		List<Hotel> list =new ArrayList<>();
+		try{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		
+			con = DBConnection.getConnection();
+			String query = "select name,city,phone_number,address,status,maximum_capacity,available_capacity,hotel_owner_id,category,features,price from hotel where CITY=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, city);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				Hotel h = new Hotel(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getInt(7),new HotelOwner(rs.getInt(8)),rs.getString(9),rs.getString(10),rs.getDouble(11));
+				list.add(h);
+				
+			}
+	    }catch(ClassNotFoundException e1){
+	            e1.printStackTrace();
+	    }catch(SQLException e2){
+	            e2.printStackTrace();
+	    }
+	    return list;
 	}
 }
