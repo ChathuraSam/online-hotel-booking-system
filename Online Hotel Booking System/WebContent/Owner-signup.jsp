@@ -22,38 +22,38 @@ pageEncoding="ISO-8859-1"%>
 			<div class="form-row">
 				<div class="form-group col-md-4">
 					<label for="firstName">First Name</label>
-					<input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+					<input type="text" class="form-control" id="firstName" placeholder="First Name" name="firstName" required>
 				</div>
 				<div class="form-group col-md-4">
 					<label for="lastName">Last Name</label>
-					<input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+					<input type="text" class="form-control" id="lastName" placeholder="Last Name" name="lastName" required>
 				</div>
 				<div class="form-group col-md-4">
 					<label for="phone">Phone Number</label>
-					<input type="text" class="form-control" id="phone" placeholder="Ex: 07xxxxxxxx" required>
+					<input type="text" class="form-control" id="phone" placeholder="Ex: 07xxxxxxxx" name="phone" required>
 				</div>
 			</div>
 			<div class="form-group">
 				<label for="nic">NIC</label>
-				<input type="text" class="form-control" id="nic" placeholder="NIC no." required>
+				<input type="text" class="form-control" id="nic" placeholder="NIC no." name="nic" required>
 			</div>
 			<div class="form-group">
 				<label for="email">Email</label>
-				<input type="email" class="form-control" id="email" placeholder="example@abc.com" required>
+				<input type="email" class="form-control" id="email" placeholder="example@abc.com" name="email" required>
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
 					<label for="username">Username</label>
-					<input type="text" class="form-control" id="username" required>
+					<input type="text" class="form-control" id="username" name="username" required>
 				</div>
 				<div class="form-group col-md-3">
 					<label for="password">Password</label>
-					<input type="password" class="form-control" id="password" required>
+					<input type="password" class="form-control" id="password" name="password" required>
 				</div>
 				
 				<div class="form-group col-md-3">
 					<label for="confirmPassword">Confirm Password</label>
-					<input type="password" class="form-control" id="cpassword" required>
+					<input type="password" class="form-control" id="cpassword" name="cpassword" required>
 				</div>
 				
 			</div>
