@@ -31,8 +31,8 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="Owner-homepage.jsp"> 
-				<img src="images/largelogo.png" height="150px" width="180px" alt="logo" />
+				<a class="navbar-brand" href="Owner-homepage.jsp"> <img
+					src="images/largelogo.png" height="150px" width="180px" alt="logo" />
 				</a>
 
 			</div>
@@ -49,9 +49,11 @@
 				<div class="col-md-12">
 					<div class="navbar-collapse collapse ">
 						<ul id="menu-top" class="nav navbar-nav navbar-right">
-							<li><a href="Owner-homepage.jsp" class="">OWNER DASHBOARD</a></li>
+							<li><a href="Owner-homepage.jsp" class="">OWNER
+									DASHBOARD</a></li>
 
-							<li><a href="Owner-updateViewHotels.jsp">VIEW HOTEL RESERVATIONS</a></li>
+							<li><a href="Owner-updateViewHotels.jsp">VIEW HOTEL
+									RESERVATIONS</a></li>
 							<!--  <li>
                                 <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">UI ELEMENTS <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">
@@ -59,9 +61,10 @@
                                      <li role="presentation"><a role="menuitem" tabindex="-1" href="#">EXAMPLE LINK</a></li>
                                 </ul>
                             </li> -->
-							<li><a href="Owner-addHotel.jsp" class="menu-top-active">ADD HOTEL</a></li>
+							<li><a href="Owner-addHotel.jsp" class="menu-top-active">ADD
+									HOTEL</a></li>
 							<li><a href="Owner-hotelsReport.jsp">HOTELS REPORT</a></li>
-							
+
 
 						</ul>
 					</div>
@@ -83,72 +86,74 @@
 
 			<div class="col-md-2 col-sm-2"></div>
 			<div class="col-md-8 col-sm-8 col-xs-12">
-			
+
 				<div class="panel panel-danger">
 					<div class="panel-heading">ADD HOTEL DETAILS</div>
 					<div class="panel-body">
-						<form role="form">
-						
+						<form role="form" action="AddHotel" method="post" enctype="multipart/form-data">
+
 							<div class="form-group">
-								<label>Enter Hotel Name</label> <input name="hotelname" class="form-control"
-									type="text" required/>
+								<label>Enter Hotel Name</label> <input name="hotelname"
+									class="form-control" type="text" required />
 								<p class="help-block">Ex: Kingsbury Hotel</p>
 							</div>
 							<div class="form-group">
-								<label>City</label> <input name="hotelcity"  class="form-control"
-									type="text" required/>
+								<label>City</label> <input name="hotelcity" class="form-control"
+									type="text" required />
 								<p class="help-block">Hotel Destination city</p>
 							</div>
 							<div class="form-group">
-								<label>Contact Number</label> <input name="hotelcontact"  class="form-control"
-									type="tel" required/>
+								<label>Contact Number</label> <input name="hotelcontact"
+									class="form-control" type="tel" required />
 								<p class="help-block">Hotel Contact number</p>
 							</div>
 							<div class="form-group">
-								<label>Hotel Address</label> <input name="hoteladdress" class="form-control"
-									type="text" required/>
+								<label>Hotel Address</label> <input name="hoteladdress"
+									class="form-control" type="text" required />
 								<p class="help-block"></p>
 							</div>
 							<div class="form-group">
-								<label>Hotel Status</label> <input name="hotelstatus" class="form-control"
-									type="text" required/>
+								<label>Hotel Status</label> <input name="hotelstatus"
+									class="form-control" type="text" required />
 								<p class="help-block">Available/Reserved</p>
 							</div>
 							<div class="form-group">
-								<label>Maximum Guests</label> <input name="hotelguestcapacity" class="form-control"
-									type="number" required/>
+								<label>Maximum Guests</label> <input name="hotelguestcapacity"
+									class="form-control" type="number" required />
 								<p class="help-block"></p>
 							</div>
 							<div class="form-group">
-								<label>Available slots</label> <input name="hotelslots" class="form-control"
-									type="number" required/>
+								<label>Available slots</label> <input name="hotelslots"
+									class="form-control" type="number" required />
 								<p class="help-block"></p>
 							</div>
 							<div class="form-group">
-								<label>Hotel URL</label> <input name="hotelurl" class="form-control" type="url" required/>
+								<label>Hotel URL</label> <input name="hotelurl"
+									class="form-control" type="url" required />
 								<p class="help-block">Hotel Website URL</p>
 							</div>
 							<div class="row">
 								<div class="col-sm-4">
 									<div class="custom-file">
-										<input multiple name="hotelimg1" type="file" class="custom-file-input" id="customFile" required>
-										<label class="custom-file-label" for="customFile">Add
-											image</label>
+										<input multiple name="hotelimg1" type="file"
+											class="custom-file-input" id="customFile" required> <label
+											class="custom-file-label" for="customFile">Add image</label>
 									</div>
 								</div>
 
 								<div class="col-sm-4">
 									<div class="custom-file">
-										<input multiple name="hotelimg2" type="file" class="custom-file-input" id="customFile">
-										<label class="custom-file-label" for="customFile">Add
-											image</label>
+										<input multiple name="hotelimg2" type="file"
+											class="custom-file-input" id="customFile"> <label
+											class="custom-file-label" for="customFile">Add image</label>
 									</div>
 								</div>
 							</div>
 
 							<div class="form-group">
 								<label>Hotel Description</label>
-								<textarea name="hoteldesc" class="form-control" rows="3" required></textarea>
+								<textarea name="hoteldesc" class="form-control" rows="3"
+									required></textarea>
 							</div>
 
 							<button type="reset" class="btn btn-danger">Reset</button>

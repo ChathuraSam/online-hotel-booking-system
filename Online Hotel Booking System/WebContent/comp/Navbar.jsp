@@ -22,9 +22,14 @@
           Signup as
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Hotel Owner</a>
+          <a class="dropdown-item" href="./Owner-signup.jsp">Hotel Owner</a>
           <a class="dropdown-item" href="./Customer-Signup.jsp">Customer</a>
         </div>
+      </li>
+      
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="./Owner-addHotel.jsp">Add a Hotel</a>
       </li>
     </ul>
    
