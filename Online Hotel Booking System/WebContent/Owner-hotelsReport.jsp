@@ -31,8 +31,8 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html"> <img
-					src="/images/largelogo.png" alt="logo" />
+				<a class="navbar-brand" href="Owner-homepage.jsp"> 
+				<img src="images/largelogo.png" height="150px" width="180px" alt="logo" />
 				</a>
 
 			</div>
