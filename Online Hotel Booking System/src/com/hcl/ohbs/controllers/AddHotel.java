@@ -22,9 +22,9 @@ public class AddHotel extends HttpServlet {
 		String[] images = {"path of image 1","path of image 2"};
 		//recieve the id from coming from the session and assign into id variable
 		//HttpSession session = request.getSession();
-    	//int sessionId = (int) session.getAttribute("id");
-		int id = 1;
-		if(hotelService.addHotelAndImages("HotelA", "Nugegoda", "0756789364", "abc", "status", 1000, 450, id, "World class", "feature1,feature2", 5000.00, images)) {
+    	//int ownerId = (int) session.getAttribute("id");
+		int ownerId = 1;
+		if(hotelService.addHotelAndImages("HotelA", "Nugegoda", "0756789364", "abc", "status", 1000, 450, ownerId, "World class", "feature1,feature2", 5000.00, images)) {
 			out.println("<font>hotel added success!!<font>");
 		}else {
 			out.println("<font color='red'>Error in adding the hotel<font>");
