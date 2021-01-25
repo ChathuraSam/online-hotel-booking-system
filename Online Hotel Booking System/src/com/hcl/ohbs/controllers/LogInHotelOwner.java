@@ -16,7 +16,7 @@ public class LogInHotelOwner extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.println("<html><boby>");
 		HotelOwnerService hotelOwnerService = new HotelOwnerService();		
-		if(hotelOwnerService.logInHotelOwner("username", "pass")) {
+		if(hotelOwnerService.logInHotelOwner("username", "password")) {
 			int id = hotelOwnerService.getIdByUsernameAndPassword("username", "password");
 			if(id>0) {
 				out.println("<font>hotel owner login success!!<font>");

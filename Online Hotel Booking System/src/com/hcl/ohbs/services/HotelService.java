@@ -13,7 +13,7 @@ public class HotelService {
 		boolean isAddHotelImageSuccess = false;
 		HotelDAO h = new HotelDAO();
 		HotelImageDAO hImage = new HotelImageDAO();
-		boolean isAddHotelSuccess = h.addHotel(new Hotel(name, city, phoneNumber, address, status, maximum_capacity, available_capacity, new HotelOwner(id), category, features, price));		
+		boolean isAddHotelSuccess = h.addHotel(new Hotel(name, city, phoneNumber, address, status, maximum_capacity, available_capacity, new HotelOwner(id), category, features, price));
 		for(String imagePath: images) {
 			isAddHotelImageSuccess = hImage.addHotelImage(new HotelImage(new Hotel(name, city, phoneNumber, address, status, maximum_capacity, available_capacity, new HotelOwner(id), category, features, price),imagePath));
 			if(!isAddHotelImageSuccess) {
