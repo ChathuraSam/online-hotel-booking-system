@@ -88,49 +88,50 @@
 					<div class="panel-heading">ADD HOTEL DETAILS</div>
 					<div class="panel-body">
 						<form role="form">
-						<div class="form-group">
-								<label>Enter Hotel RegNo.</label> <input class="form-control"
-									type="text" required/>
-								<p class="help-block">Hotel Registration Number</p>
-							</div>
+						
 							<div class="form-group">
-								<label>Enter Hotel Name</label> <input class="form-control"
+								<label>Enter Hotel Name</label> <input name="hotelname" class="form-control"
 									type="text" required/>
 								<p class="help-block">Ex: Kingsbury Hotel</p>
 							</div>
 							<div class="form-group">
-								<label>City</label> <input class="form-control"
+								<label>City</label> <input name="hotelcity"  class="form-control"
 									type="text" required/>
 								<p class="help-block">Hotel Destination city</p>
 							</div>
 							<div class="form-group">
-								<label>Contact Number</label> <input class="form-control"
+								<label>Contact Number</label> <input name="hotelcontact"  class="form-control"
 									type="tel" required/>
 								<p class="help-block">Hotel Contact number</p>
 							</div>
 							<div class="form-group">
-								<label>Hotel Address</label> <input class="form-control"
+								<label>Hotel Address</label> <input name="hoteladdress" class="form-control"
 									type="text" required/>
 								<p class="help-block"></p>
 							</div>
 							<div class="form-group">
-								<label>Maximum Guests</label> <input class="form-control"
+								<label>Hotel Status</label> <input name="hotelstatus" class="form-control"
+									type="text" required/>
+								<p class="help-block">Available/Reserved</p>
+							</div>
+							<div class="form-group">
+								<label>Maximum Guests</label> <input name="hotelguestcapacity" class="form-control"
 									type="number" required/>
 								<p class="help-block"></p>
 							</div>
 							<div class="form-group">
-								<label>Rooms available</label> <input class="form-control"
+								<label>Available slots</label> <input name="hotelslots" class="form-control"
 									type="number" required/>
 								<p class="help-block"></p>
 							</div>
 							<div class="form-group">
-								<label>Hotel URL</label> <input class="form-control" type="url" required/>
+								<label>Hotel URL</label> <input name="hotelurl" class="form-control" type="url" required/>
 								<p class="help-block">Hotel Website URL</p>
 							</div>
 							<div class="row">
 								<div class="col-sm-4">
 									<div class="custom-file">
-										<input type="file" class="custom-file-input" id="customFile" required>
+										<input multiple name="hotelimg1" type="file" class="custom-file-input" id="customFile" required>
 										<label class="custom-file-label" for="customFile">Add
 											image</label>
 									</div>
@@ -138,7 +139,7 @@
 
 								<div class="col-sm-4">
 									<div class="custom-file">
-										<input type="file" class="custom-file-input" id="customFile">
+										<input multiple name="hotelimg2" type="file" class="custom-file-input" id="customFile">
 										<label class="custom-file-label" for="customFile">Add
 											image</label>
 									</div>
@@ -147,7 +148,7 @@
 
 							<div class="form-group">
 								<label>Hotel Description</label>
-								<textarea class="form-control" rows="3" required></textarea>
+								<textarea name="hoteldesc" class="form-control" rows="3" required></textarea>
 							</div>
 
 							<button type="reset" class="btn btn-danger">Reset</button>
