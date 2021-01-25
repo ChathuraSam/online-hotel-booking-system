@@ -31,14 +31,14 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html"> <img
-					src="/images/largelogo.png" alt="logo" />
+				<a class="navbar-brand" href="Owner-homepage.jsp"> 
+				<img src="images/largelogo.png" height="150px" width="180px" alt="logo" />
 				</a>
 
 			</div>
 
 			<div class="right-div">
-				<a href="#" class="btn btn-danger pull-right">LOG ME OUT</a>
+				<a href="index.jsp" class="btn btn-danger pull-right">LOG ME OUT</a>
 			</div>
 		</div>
 	</div>
@@ -49,7 +49,7 @@
 				<div class="col-md-12">
 					<div class="navbar-collapse collapse ">
 						<ul id="menu-top" class="nav navbar-nav navbar-right">
-							<li><a href="Owner-homepage.jsp" class="">DASHBOARD</a></li>
+							<li><a href="Owner-homepage.jsp" class="">OWNER DASHBOARD</a></li>
 
 							<li><a href="Owner-updateViewHotels.jsp" class="menu-top-active">VIEW HOTEL RESERVATIONS</a></li>
 							<!--  <li>

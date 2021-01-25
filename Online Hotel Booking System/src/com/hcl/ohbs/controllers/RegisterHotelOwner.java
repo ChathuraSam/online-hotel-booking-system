@@ -15,12 +15,25 @@ public class RegisterHotelOwner extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		String firstName = request.getParameter("firstName");
+
 		String lastname = request.getParameter("lastName");
 		String phone = request.getParameter("phone");
 		String nic = request.getParameter("nic");
+
+		System.out.println(firstName);
+
+		System.out.println(lastname);
+
+		System.out.println(phone);
+
+		System.out.println(nic);
+
 		String email = request.getParameter("email");
+		System.out.println(email);
 		String username = request.getParameter("username");
+		System.out.println(username);
 		String password = request.getParameter("password");
+		System.out.println(password);
 		//String confirmPassword = request.getParameter("confirmPassword");
 		out.println("<html><boby>");
 		HotelOwnerService hotelOwnerService = new HotelOwnerService();

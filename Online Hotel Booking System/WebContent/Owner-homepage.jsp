@@ -15,11 +15,22 @@
     <link href="assets/css/font-awesome.css" rel="stylesheet" />
     <!-- CUSTOM STYLE  -->
     <link href="assets/css/style.css" rel="stylesheet" />
+    <link href="css/ownerhotelsdashtable.css" rel="stylesheet" />
     <!-- GOOGLE FONT -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    
+    <script>
+$(document).ready(function(){
+	$('[data-toggle="tooltip"]').tooltip();
+});
+</script>
 
 </head>
 <body>
+
+
     <div class="navbar navbar-inverse set-radius-zero" >
         <div class="container">
             <div class="navbar-header">
@@ -28,15 +39,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="Owner-homepage.jsp">
 
-                    <img src="/images/largelogo.png" alt="logo" />
+                    <img src="images/largelogo.png" height="150px" width="180px" alt="logo" />
                 </a>
 
             </div>
 
             <div class="right-div">
-                <a href="#" class="btn btn-danger pull-right">LOG ME OUT</a>
+                <a href="index.jsp" class="btn btn-danger pull-right">LOG ME OUT</a>
             </div>
         </div>
     </div>
@@ -47,7 +58,7 @@
                 <div class="col-md-12">
                     <div class="navbar-collapse collapse ">
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
-                            <li><a href="Owner-homepage.jsp" class="menu-top-active">DASHBOARD</a></li>
+                            <li><a href="Owner-homepage.jsp" class="menu-top-active">OWNER DASHBOARD</a></li>
                            
                             <li><a href="Owner-updateViewHotels.jsp">VIEW HOTEL RESERVATIONS</a></li>
                            <!--  <li>
@@ -68,6 +79,121 @@
             </div>
         </div>
     </section>
+    
+    
+    
+    <!-- +++++++++ Hotel Owner - Your Hotels ++++++++++++ -->
+
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <h2>Your <b>Hotels</b></h2>
+                    </div>
+                    <div class="col-sm-7">
+                        <a href="Owner-addHotel.jsp" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Add New Hotel</span></a>
+                        <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE24D;</i> <span>Export Report PDF</span></a>						
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Hotel Name</th>						
+                        <th>City</th>
+                        <th>Hotel Type</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><a href="#"><img src="images/hoicon1.jpg" class="avatar" alt="Avatar">Kingsbury Hotel</a></td>
+                        <td>Colombo</td>                        
+                        <td>Super Luxary</td>
+                        <td><span class="status text-success">&bull;</span> Available</td>
+                        <td>
+                            <a href="#" class="settings" title="Update" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><a href="#"><img src="images/hoicon1.jpg" class="avatar" alt="Avatar"> Cinnamon Grand Hotel</a></td>
+                        <td>Colombo</td>                       
+                        <td>Luxary</td>
+                        <td><span class="status text-success">&bull;</span> Available</td>
+                        <td>
+                            <a href="#" class="settings" title="Update" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><a href="#"><img src="images/hoicon1.jpg" class="avatar" alt="Avatar"> Hotel Topaz</a></td>
+                        <td>Kandy</td>
+                        <td>Semi Luxary</td>
+                        <td><span class="status text-danger">&bull;</span> Not-Available</td>                        
+                        <td>
+                            <a href="#" class="settings" title="Update" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                        </td>                        
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><a href="#"><img src="images/hoicon1.jpg" class="avatar" alt="Avatar"> Mary Saveley</a></td>
+                        <td>Negambo</td>
+                        <td>Luxary</td>
+                        <td><span class="status text-success">&bull;</span> Available</td>
+                        <td>
+                            <a href="#" class="settings" title="Update" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><a href="#"><img src="images/hoicon1.jpg" class="avatar" alt="Avatar"> Martin Sommer</a></td>
+                        <td>Galle</td>                        
+                        <td>Super Luxary</td>
+                        <td><span class="status text-warning">&bull;</span> Reserved</td>
+                        <td>
+                            <a href="#" class="settings" title="Update" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
+                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="clearfix">
+                <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+                <ul class="pagination">
+                    <li class="page-item disabled"><a href="#">Previous</a></li>
+                    <li class="page-item"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item active"><a href="#" class="page-link">3</a></li>
+                    <li class="page-item"><a href="#" class="page-link">4</a></li>
+                    <li class="page-item"><a href="#" class="page-link">5</a></li>
+                    <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>   
+
+
+
+
+<!-- ++++++++++++++ End Your hotels table ++++++++++++++++++= -->
+    
+    
+    
+    
+    
+    
+    
      <!-- MENU SECTION END-->
     <div class="content-wrapper">
          <div class="container">

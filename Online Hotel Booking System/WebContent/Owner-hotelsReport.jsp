@@ -31,14 +31,14 @@
 					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html"> <img
-					src="/images/largelogo.png" alt="logo" />
+				<a class="navbar-brand" href="Owner-homepage.jsp"> 
+				<img src="images/largelogo.png" height="150px" width="180px" alt="logo" />
 				</a>
 
 			</div>
 
 			<div class="right-div">
-				<a href="#" class="btn btn-danger pull-right">LOG ME OUT</a>
+				<a href="index.jsp" class="btn btn-danger pull-right">LOG ME OUT</a>
 			</div>
 		</div>
 	</div>
@@ -162,6 +162,100 @@
 					</div>
 				</div>
 			</div>
+			
+			
+			
+			
+			<!-- ++++++ Report Table ++++++ -->
+			
+			
+			<!-- Advanced Tables -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                             Hotels Revenue Report
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                    <thead>
+                                        <tr>
+                                            <th>Hotel Name</th>
+                                            <th>City</th>
+                                            <th>Status</th>
+                                            <th>Guests Checked-In</th>
+                                            <th>Income</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="odd gradeX">
+                                            <td>Hotel Hilton</td>
+                                            <td>Colombo</td>
+                                            <td>Not Available</td>
+                                            <td class="center">4</td>
+                                            <td class="center">Rs.100000.00</td>
+                                        </tr>
+                                        <tr class="even gradeC">
+                                            <td>Mt.Lavinia Hotel</td>
+                                            <td>Mt.Lavinia</td>
+                                            <td>Available</td>
+                                            <td class="center">5</td>
+                                            <td class="center">Rs.80000.00</td>
+                                        </tr>
+                                        <tr class="odd gradeX">
+                                            <td>Hotel Hilton</td>
+                                            <td>Colombo</td>
+                                            <td>Not Available</td>
+                                            <td class="center">4</td>
+                                            <td class="center">Rs.100000.00</td>
+                                        </tr>
+                                        <tr class="even gradeC">
+                                            <td>Mt.Lavinia Hotel</td>
+                                            <td>Mt.Lavinia</td>
+                                            <td>Available</td>
+                                            <td class="center">5</td>
+                                            <td class="center">Rs.80000.00</td>
+                                        </tr>
+                                        <tr class="odd gradeX">
+                                            <td>Hotel Hilton</td>
+                                            <td>Colombo</td>
+                                            <td>Not Available</td>
+                                            <td class="center">4</td>
+                                            <td class="center">Rs.100000.00</td>
+                                        </tr>
+                                        <tr class="even gradeC">
+                                            <td>Mt.Lavinia Hotel</td>
+                                            <td>Mt.Lavinia</td>
+                                            <td>Available</td>
+                                            <td class="center">5</td>
+                                            <td class="center">Rs.80000.00</td>
+                                        </tr>
+                                        <tr class="odd gradeX">
+                                            <td>Regency Hotel</td>
+                                            <td>Kandy</td>
+                                            <td>Reserved</td>
+                                            <td class="center">4</td>
+                                            <td class="center">Rs.500000.00</td>
+                                        </tr>
+                                        <tr class="even gradeC">
+                                            <td>Hotel Galadhari</td>
+                                            <td>Colombo</td>
+                                            <td>Available</td>
+                                            <td class="center">6</td>
+                                            <td class="center">Rs.200000.00</td>
+                                        </tr>
+                                        
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <!--End Advanced Tables -->
+			
+			
+			
+			<!-- +++ Report Table End ++++ -->
 			
 			</div>
 			</div>
