@@ -96,10 +96,17 @@ table.table td a.delete {
 table.table td i {
     font-size: 19px;
 }
+
+.avatar{
+	
+}
+
 table.table .avatar {
     border-radius: 50%;
     vertical-align: middle;
     margin-right: 10px;
+    height:40px !important;
+	width:40px !important;
 }
 .status {
     font-size: 30px;
