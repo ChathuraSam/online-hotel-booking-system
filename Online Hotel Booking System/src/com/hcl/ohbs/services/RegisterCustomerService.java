@@ -1,7 +1,5 @@
 package com.hcl.ohbs.services;
 
-import java.sql.SQLException;
-
 import com.hcl.ohbs.dao.CustomerDAO;
 import com.hcl.ohbs.entities.Customer;
 
@@ -13,4 +11,9 @@ public class RegisterCustomerService {
         
         return a;
     }
+    
+    public int getIdByUsernameAndPassword(String username, String password) {
+		CustomerDAO c = new CustomerDAO();
+		return c.findIdByUsernamePassword(username, password);
+	}
 }

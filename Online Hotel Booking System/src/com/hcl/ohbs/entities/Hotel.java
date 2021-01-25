@@ -47,6 +47,9 @@ public class Hotel {
 		this.features = features;
 		this.price = price;
 	}
+	public Hotel(int id) {
+		this.id = id;
+	}
 	public int getId() {
 		return id;
 	}

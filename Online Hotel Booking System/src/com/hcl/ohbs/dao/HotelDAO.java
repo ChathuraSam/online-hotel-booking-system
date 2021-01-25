@@ -96,4 +96,34 @@ public class HotelDAO {
 	    }
 	    return list;
 	}
+	
+	public int getIdByName(String hotelName) {
+		Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try{
+            con = DBConnection.getConnection();
+            String query = "SELECT id FROM hotel WHERE name=?";
+            pstmt = con.prepareStatement(query);
+            pstmt.setString(1, hotelName);
+            rs = pstmt.executeQuery();
+            if(rs.next()){
+                return rs.getInt(1);
+            }
+        }catch(ClassNotFoundException e1){
+            e1.printStackTrace();
+        }catch(SQLException e2){
+            e2.printStackTrace();
+        }finally{
+            try{
+                if(pstmt!=null)
+                    pstmt.close();
+                if(con!=null)
+                    con.close();
+            }catch(SQLException e3){
+                e3.printStackTrace();
+            }
+        } 
+        return 0;
+	}
 }
