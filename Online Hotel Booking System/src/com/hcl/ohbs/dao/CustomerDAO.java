@@ -91,5 +91,36 @@ public class CustomerDAO {
 		     } 
 		    return 0;
 		}
-		
+		public String findNameByUsernamePassword(String username, String password){       
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try{
+				con = DBConnection.getConnection();
+				String query = "SELECT first_name FROM customer WHERE username=? AND password=?";
+				pstmt = con.prepareStatement(query);
+				pstmt.setString(1, username);
+				pstmt.setString(2, password);
+				rs = pstmt.executeQuery();
+				if(rs.next()){
+					return rs.getString(1);
+				}
+		    }catch(ClassNotFoundException e1){
+		            e1.printStackTrace();
+		    }catch(SQLException e2){
+		            e2.printStackTrace();
+		    }finally{
+		         try{
+		            if(pstmt!=null)
+		                pstmt.close();
+		            if(rs!=null)
+		                rs.close();
+		            if(con!=null)
+		                con.close();
+		         }catch(SQLException e3){
+		                e3.printStackTrace();
+		         }
+		     } 
+		    return null;
+		}
 }

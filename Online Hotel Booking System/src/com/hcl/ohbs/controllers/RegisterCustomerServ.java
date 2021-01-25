@@ -40,14 +40,17 @@ public class RegisterCustomerServ extends HttpServlet {
 			//int sessionId = (int) session.getAttribute("id");
 			int sessionId = custService.getIdByUsernameAndPassword("username", "password");
 			//if(id>0) {
-				out.println("<font>customer registration success!!<font>");
+				//out.println("<font>customer registration success!!<font>");
 			//}else{
 				//out.println("<font color='red'>internal error! try again!<font>");
 			//}
 			//call ownerHome.jsp and pass the id in session
-			session.setAttribute("customerId", sessionId);			
+			session.setAttribute("customerId", sessionId);
+			session.setAttribute("customerName", firstName);
+			request.getRequestDispatcher("Customer-Home.jsp").include(request, response);	
 		}else {
 			out.println("<font color='red'>Error in registering the Customer<font>");
+			request.getRequestDispatcher("Customer-Signup.jsp").include(request, response);
 		}
 		out.println("</boby><html>");
 	}

@@ -19,11 +19,11 @@ pageEncoding="ISO-8859-1"%>
 
 	<div class="container center_div col-md-6">
 
-		<form action="" method="post">
+		<form action="CustomerLoginServ">
 			<div class="form-group">
-				<label for="exampleInputEmail1">Email address</label>
-				<input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-				<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+				<label for="exampleInputEmail1">Username</label>
+				<input name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">
+				<!--  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>-->
 			</div>
 			<div class="form-group">
 				<label for="exampleInputPassword1">Password</label>

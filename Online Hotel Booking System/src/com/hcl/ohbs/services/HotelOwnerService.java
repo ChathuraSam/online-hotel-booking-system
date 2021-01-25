@@ -2,14 +2,14 @@ package com.hcl.ohbs.services;
 import com.hcl.ohbs.dao.HotelOwnerDAO;
 import com.hcl.ohbs.entities.HotelOwner;
 public class HotelOwnerService {
-	
+	HotelOwnerDAO h;
 	public boolean registerHotelOwner(String fistName, String lastName, String nic, String phoneNumber, String email, String username, String password) {
-		HotelOwnerDAO h = new HotelOwnerDAO();
+		h = new HotelOwnerDAO();
 		return h.addHotelOwner(new HotelOwner(fistName, lastName, nic, phoneNumber, email, username, password));
 	}
 	
 	public boolean logInHotelOwner(String username, String password) {
-		HotelOwnerDAO h = new HotelOwnerDAO();
+		h = new HotelOwnerDAO();
 		boolean isLogInSuccess = false;
 		if(h.logInHotelOwner(username)==null) {
 			System.out.println("Incorrect username");
@@ -25,7 +25,12 @@ public class HotelOwnerService {
 	}
 	
 	public int getIdByUsernameAndPassword(String username, String password) {
-		HotelOwnerDAO h = new HotelOwnerDAO();
+		h = new HotelOwnerDAO();
 		return h.findIdByUsernamePassword(username, password);
+	}
+	
+	public String getNameByUsernameAndPassword(String username, String password) {
+		h = new HotelOwnerDAO();
+		return h.findNameByUsernamePassword(username, password);
 	}
 }
