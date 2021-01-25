@@ -35,7 +35,7 @@
    		last_name VARCHAR2(15),
 		nic VARCHAR2(10),
   		phone_number VARCHAR2(10),
-    		email VARCHAR2(20),
+    	email VARCHAR2(20),
    		username VARCHAR2(15),
   		password VARCHAR2(15)
   	);
@@ -172,3 +172,42 @@
     		FROM dual;
     	END;
     	/
+
+
+
+======================================================================================================
+new Changes part 1(24/01/2021)
+
+1. Alter hotel table ->
+
+	alter table hotel add category varchar2(15);
+	alter table hotel add features varchar2(60);
+	alter table hotel add price number(8,2);
+	alter table hotel drop column hotel_type_id;
+
+2. Drop hotel_type table
+	
+	drop table hotel_type;
+	
+======================================================================================================
+new Changes part 2(24/01/2021)
+	
+	drop sequence hotel_type_sequence;	
+====================================================================================
+Dropping database tables
+	drop table hotel_image;
+	drop trigger invoice_trigger;
+	drop table invoice;
+	drop sequence invoice_sequence;
+	drop trigger reservation_trigger;
+	drop table reservation;
+	drop sequence reservation_sequence;
+	drop trigger hotel_trigger;
+	drop table hotel;
+	drop sequence hotel_sequence;
+	drop trigger hotel_owner_trigger;
+	drop table hotel_owner;
+	drop sequence hotel_owner_sequence;
+	drop trigger customer_trigger;
+	drop table customer;
+	drop sequence customer_sequence;
