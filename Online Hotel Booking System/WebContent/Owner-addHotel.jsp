@@ -90,7 +90,8 @@
 				<div class="panel panel-danger">
 					<div class="panel-heading">ADD HOTEL DETAILS</div>
 					<div class="panel-body">
-						<form role="form" action="AddHotel" method="post" enctype="multipart/form-data">
+						<form role="form" action="AddHotel" method="post"
+							enctype="multipart/form-data">
 
 							<div class="form-group">
 								<label>Enter Hotel Name</label> <input name="hotelname"
@@ -123,14 +124,25 @@
 								<p class="help-block"></p>
 							</div>
 							<div class="form-group">
-								<label>Available slots</label> <input name="hotelslots"
+								<label>Available Slots</label> <input name="hotelslots"
 									class="form-control" type="number" required />
 								<p class="help-block"></p>
 							</div>
 							<div class="form-group">
-								<label>Hotel URL</label> <input name="hotelurl"
-									class="form-control" type="url" required />
-								<p class="help-block">Hotel Website URL</p>
+								<label>Hotel Type</label>
+								<select class="form-control" name="roomType" id="rooms" required>
+									<option value="luxurys">Luxury Suite</option>
+									<option value="deluxs">Delux Suite</option>
+									<option value="premiers">Premier Suite</option>
+									<option value="Luxuryr">Luxury Room</option>
+									<option value="deluxs">Delux Room</option>
+									<option value="premierr">Premier Room</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label>Hotel Price</label> <input name="hotelsprice"
+									class="form-control" type="text" required />
+								<p class="help-block"></p>
 							</div>
 							<div class="row">
 								<div class="col-sm-4">
