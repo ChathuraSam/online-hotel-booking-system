@@ -16,6 +16,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import com.hcl.ohbs.entities.Hotel;
 import com.hcl.ohbs.entities.HotelOwner;
 import com.hcl.ohbs.services.HotelOwnerService;
 import com.hcl.ohbs.services.HotelService;
@@ -117,19 +118,24 @@ public class AddHotel extends HttpServlet {
 		
 		// recieve the id from coming from the session and assign into id variable
 		HttpSession session = request.getSession();
-		int ownerId = (int) session.getAttribute("hotelOwnerId");
+ 		int ownerId = (int) session.getAttribute("hotelOwnerId");
 		System.out.println("owner id in add hotel page = " + ownerId);
 		String hotelOwnerName = (String) session.getAttribute("hotelOwnerName");
 		System.out.println("owner name in add hotel page = " + hotelOwnerName);
 		
-		
 		//ownerId = 3;
-		if (hotelService.addHotelAndImages("HotelY", "cwcew", "3454324", "fcervfre", "fewfref", 1000, 100, ownerId,
+		if (hotelService.addHotelAndImages("HotelK", "cwcew", "3454324", "fcervfre", "fewfref", 1000, 100, ownerId,
 				"budget", "feature1,feature2", 2000.00, filePath)) {
-			out.println("<font>hotel added success!!<font>");
+			out.println("<font>hotel added success!!<font>");	
 		} else {
 			out.println("<font color='red'>Error in adding the hotel<font>");
+		}		
+		List<Hotel> hotelList = hotelService.getHotelsByOwnerId(ownerId);
+		for(Hotel h:hotelList) {
+			System.out.println("hotel name = " + h.getName());
 		}
+		request.setAttribute("hotels", hotelList);
+		request.getRequestDispatcher("Owner-homepage.jsp").include(request, response);
 		out.println("</boby><html>");
 	}
 

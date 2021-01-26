@@ -1,6 +1,9 @@
 package com.hcl.ohbs.controllers;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.hcl.ohbs.entities.Hotel;
 import com.hcl.ohbs.services.HotelOwnerService;
 @WebServlet("/RegisterHotelOwner")
 public class RegisterHotelOwner extends HttpServlet {
@@ -49,6 +53,8 @@ public class RegisterHotelOwner extends HttpServlet {
 			//call ownerHome.jsp and pass the id in session
 			session.setAttribute("hotelOwnerId", sessionId);
 			session.setAttribute("hotelOwnerName", firstName);
+			List<Hotel> hotelList = null;
+			request.setAttribute("hotels", hotelList);
 			request.getRequestDispatcher("Owner-homepage.jsp").include(request, response);
 		}else {
 			out.println("<font color='red'>Error in registering the hotel owner<font>");
