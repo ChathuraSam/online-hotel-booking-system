@@ -35,7 +35,7 @@
    		last_name VARCHAR2(15),
 		nic VARCHAR2(10),
   		phone_number VARCHAR2(10),
-    	email VARCHAR2(20),
+    		email VARCHAR2(20),
    		username VARCHAR2(15),
   		password VARCHAR2(15)
   	);
@@ -176,7 +176,7 @@
 
 
 ======================================================================================================
-new Changes part 1(24/01/2021)
+new Changes(24/01/2021)
 
 1. Alter hotel table ->
 
@@ -190,8 +190,13 @@ new Changes part 1(24/01/2021)
 	drop table hotel_type;
 	
 ======================================================================================================
-new Changes part 2(24/01/2021)
+new Changes(26/01/2021)
+
+1. Alter hotel-image table column->
+
+	alter table hotel_image modify images VARCHAR2(200);
 	
+
 	drop sequence hotel_type_sequence;	
 ====================================================================================
 Dropping database tables
@@ -214,3 +219,7 @@ Dropping database tables
 ===============================================================================================
 alter table reservation modify check_out varchar(15);
 alter table reservation modify check_in varchar(15);
+
+
+
+
