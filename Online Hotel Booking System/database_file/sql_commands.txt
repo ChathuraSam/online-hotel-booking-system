@@ -197,4 +197,29 @@ new Changes(26/01/2021)
 	alter table hotel_image modify images VARCHAR2(200);
 	
 
+	drop sequence hotel_type_sequence;	
+====================================================================================
+Dropping database tables
+	drop table hotel_image;
+	drop trigger invoice_trigger;
+	drop table invoice;
+	drop sequence invoice_sequence;
+	drop trigger reservation_trigger;
+	drop table reservation;
+	drop sequence reservation_sequence;
+	drop trigger hotel_trigger;
+	drop table hotel;
+	drop sequence hotel_sequence;
+	drop trigger hotel_owner_trigger;
+	drop table hotel_owner;
+	drop sequence hotel_owner_sequence;
+	drop trigger customer_trigger;
+	drop table customer;
+	drop sequence customer_sequence;
+===============================================================================================
+alter table reservation modify check_out varchar(15);
+alter table reservation modify check_in varchar(15);
+
+
+
 

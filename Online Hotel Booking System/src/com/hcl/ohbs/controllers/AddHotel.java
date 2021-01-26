@@ -34,7 +34,7 @@ public class AddHotel extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		String filePath= "path2";
+		String filePath= null;
 		
 		// checks if the request actually contains upload file
 				if (!ServletFileUpload.isMultipartContent(request)) {
@@ -97,7 +97,7 @@ public class AddHotel extends HttpServlet {
 				} catch (Exception ex) {
 					request.setAttribute("message", "There was an error: " + ex.getMessage());
 				}
-		
+
 				/*String hotelName = request.getParameter("hotelname");
 				System.out.println("hotel = " + hotelName);
 				String hotelCity = request.getParameter("hotelcity");
