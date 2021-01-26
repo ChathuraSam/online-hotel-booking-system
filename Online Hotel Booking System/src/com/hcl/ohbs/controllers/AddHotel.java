@@ -33,8 +33,14 @@ public class AddHotel extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		PrintWriter out = response.getWriter();
-		String filePath= null;
+		//String filePath= null;
+		String filePath= "path/";
+		
+		
+		
+		/*
 		
 		// checks if the request actually contains upload file
 				if (!ServletFileUpload.isMultipartContent(request)) {
@@ -98,7 +104,7 @@ public class AddHotel extends HttpServlet {
 		
 		
 		
-		
+		*/
 		
 		
 		
