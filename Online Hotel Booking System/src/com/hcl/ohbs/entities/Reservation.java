@@ -1,25 +1,25 @@
 package com.hcl.ohbs.entities;
 
-import java.util.Date;
+
 
 public class Reservation {
 	private int id;
-	private Date checkIn;
-	private Date checkOut;
+	private String checkIn;
+	private String checkOut;
 	private int noOfPersons;
 	private Customer customer;
 	private Hotel hotel;
 	public Reservation() {
 
 	}
-	public Reservation(Date checkIn, Date checkOut, int noOfPersons, Customer customer, Hotel hotel) {
+	public Reservation(String checkIn, String checkOut, int noOfPersons, Customer customer, Hotel hotel) {
 		this.checkIn = checkIn;
 		this.checkOut = checkOut;
 		this.noOfPersons = noOfPersons;
 		this.customer = customer;
 		this.hotel = hotel;
 	}
-	public Reservation(int id, Date checkIn, Date checkOut, int noOfPersons, Customer customer, Hotel hotel) {
+	public Reservation(int id, String checkIn, String checkOut, int noOfPersons, Customer customer, Hotel hotel) {
 		super();
 		this.id = id;
 		this.checkIn = checkIn;
@@ -38,16 +38,16 @@ public class Reservation {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Date getCheckIn() {
+	public String getCheckIn() {
 		return checkIn;
 	}
-	public void setCheckIn(Date checkIn) {
+	public void setCheckIn(String checkIn) {
 		this.checkIn = checkIn;
 	}
-	public Date getCheckOut() {
+	public String getCheckOut() {
 		return checkOut;
 	}
-	public void setCheckOut(Date checkOut) {
+	public void setCheckOut(String checkOut) {
 		this.checkOut = checkOut;
 	}
 	public int getNoOfPersons() {

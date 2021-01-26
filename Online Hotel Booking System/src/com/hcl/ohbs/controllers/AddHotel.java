@@ -34,10 +34,10 @@ public class AddHotel extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		String filePath= null;
+		String filePath= "path2";
 		
 		// checks if the request actually contains upload file
-				if (!ServletFileUpload.isMultipartContent(request)) {
+			/*	if (!ServletFileUpload.isMultipartContent(request)) {
 					// if not, we stop here
 					PrintWriter writer = response.getWriter();
 					writer.println("Error: Form must has enctype=multipart/form-data.");
@@ -96,6 +96,7 @@ public class AddHotel extends HttpServlet {
 					request.setAttribute("message", "There was an error: " + ex.getMessage());
 				}
 		
+
 		String hotelName = request.getParameter("hotelname");
 		String hotelCity = request.getParameter("hotelcity");
 		String phone_number = request.getParameter("hotelcontact");
@@ -107,6 +108,9 @@ public class AddHotel extends HttpServlet {
 		//String features = request.getParameter("hoteladdress");
 		//double price = Double.parseDouble(request.getParameter("hotelslots"));
 				
+
+		*/
+
 		out.println("<html><boby>");
 		HotelService hotelService = new HotelService();
 		//String[] images = { filePath };
