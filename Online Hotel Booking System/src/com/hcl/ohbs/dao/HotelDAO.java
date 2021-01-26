@@ -51,8 +51,7 @@ public class HotelDAO {
 		Connection con = null;
 		Statement st = null;
 		ResultSet rs = null;
-		
-		
+
 			con = DBConnection.getConnection();
 			String query = "select name,city,phone_number,address,status,maximum_capacity,available_capacity,hotel_owner_id,category,features,price from hotel where name like '"+name+"%'";
 			st = con.createStatement();
@@ -77,8 +76,7 @@ public class HotelDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		
-		
+
 			con = DBConnection.getConnection();
 			String query = "select name,city,phone_number,address,status,maximum_capacity,available_capacity,hotel_owner_id,category,features,price from hotel where CITY=?";
 			pstmt = con.prepareStatement(query);
@@ -191,6 +189,41 @@ public class HotelDAO {
 	}
 	
 
+	public List<Hotel> findHotelByOwnerId(int ownerId){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Hotel> list = null;
+		try{
+			con = DBConnection.getConnection();
+			String query = "select name,city,phone_number,address,status,maximum_capacity,available_capacity,hotel_owner_id,category,features,price from hotel where hotel_owner_id=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, ownerId);
+			rs = pstmt.executeQuery();
+			list = new ArrayList<>();
+			while(rs.next()){
+				Hotel h = new Hotel(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getInt(7),new HotelOwner(rs.getInt(8)),rs.getString(9),rs.getString(10),rs.getDouble(11));
+				list.add(h);				
+			}
+	    }catch(ClassNotFoundException e1){
+	            e1.printStackTrace();
+	    }catch(SQLException e2){
+	            e2.printStackTrace();
+	    }finally{
+            try{
+                if(pstmt!=null)
+                    pstmt.close();
+                if(con!=null)
+                    con.close();
+                if(rs!=null)
+                    rs.close();
+            }catch(SQLException e) {
+            
+            }
+       return list;
+    }
+}
+
 	public List<Hotel> getAllHotels() {
 		Connection con = null;
         Statement st = null;
@@ -219,12 +252,20 @@ public class HotelDAO {
                     rs.close();
                 if(con!=null)
                     con.close();
+
             }catch(SQLException e3){
                 e3.printStackTrace();
             }
         } 
-        return hotels;
+   return hotels;
+
+       
 	}
+	
+
+       
+	}
+
 
 	public String getNameById(int id) {
 		Connection con = null;
@@ -289,5 +330,4 @@ public class HotelDAO {
         } 
         return 0.0;
 	}
-	
 }

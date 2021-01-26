@@ -1,3 +1,5 @@
+<%@ page language="java" import="com.hcl.ohbs.entities.Hotel,java.util.*" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -47,7 +49,7 @@ $(document).ready(function(){
             </div>
 
             <div class="right-div">
-                <a href="index.jsp" class="btn btn-danger pull-right">LOG ME OUT</a>
+                <a href="LogOutServlet" class="btn btn-danger pull-right">LOG ME OUT</a>
             </div>
             <div class="right-div">
                 <a  href="#" ><img style="vertical-align: middle; height: 50px; width: 50px;  border-radius: 50%;" src="images/profileavatar.jpg" alt="MY Profile" ></a>
@@ -101,75 +103,46 @@ $(document).ready(function(){
                     </div>
                 </div>
             </div>
+            <% // retrieve your list from the request, with casting 
+			List<Hotel> list = (ArrayList<Hotel>) request.getAttribute("hotels");
+            if(list!=null){ %>
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>Hotel Id</th>
                         <th>Hotel Name</th>						
                         <th>City</th>
-                        <th>Hotel Type</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                        <th>Phone number</th>
+                        <th>Maximum Capacity</th>
+                        <th>Available Capacity</th>
+                       	<th>Category</th>
+                       	<th>Price</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody>	
+				<% 	// print the information about every hotel of the list
+					for(Hotel hotel : list) { %> 
+				              
                     <tr>
-                        <td>1</td>
-                        <td><a href="#"><img src="images/hoicon1.jpg" class="avatar" alt="Avatar">Kingsbury Hotel</a></td>
-                        <td>Colombo</td>                        
-                        <td>Super Luxary</td>
-                        <td><span class="status text-success">&bull;</span> Available</td>
+                        <td><%=hotel.getId()%></td>
+                        <td><a href="#"><img src="images/hoicon1.jpg" class="avatar" alt="Avatar"><%=hotel.getName()%></a></td>
+                        <td><%=hotel.getCity()%></td>                        
+                        <td><%=hotel.getPhoneNumber()%></td>
+                        <td><%=hotel.getMaximum_capacity()%></td>
+                        <td><%=hotel.getAvailable_capacity()%></td>
+                        <td><%=hotel.getCategory()%></td>
+                        <td><%=hotel.getPrice()%></td>
                         <td>
                             <a href="#" class="settings" title="Update" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
                             <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td><a href="#"><img src="images/hoicon1.jpg" class="avatar" alt="Avatar"> Cinnamon Grand Hotel</a></td>
-                        <td>Colombo</td>                       
-                        <td>Luxary</td>
-                        <td><span class="status text-success">&bull;</span> Available</td>
-                        <td>
-                            <a href="#" class="settings" title="Update" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td><a href="#"><img src="images/hoicon1.jpg" class="avatar" alt="Avatar"> Hotel Topaz</a></td>
-                        <td>Kandy</td>
-                        <td>Semi Luxary</td>
-                        <td><span class="status text-danger">&bull;</span> Not-Available</td>                        
-                        <td>
-                            <a href="#" class="settings" title="Update" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                        </td>                        
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td><a href="#"><img src="images/hoicon1.jpg" class="avatar" alt="Avatar"> Mary Saveley</a></td>
-                        <td>Negambo</td>
-                        <td>Luxary</td>
-                        <td><span class="status text-success">&bull;</span> Available</td>
-                        <td>
-                            <a href="#" class="settings" title="Update" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td><a href="#"><img src="images/hoicon1.jpg" class="avatar" alt="Avatar"> Martin Sommer</a></td>
-                        <td>Galle</td>                        
-                        <td>Super Luxary</td>
-                        <td><span class="status text-warning">&bull;</span> Reserved</td>
-                        <td>
-                            <a href="#" class="settings" title="Update" data-toggle="tooltip"><i class="material-icons">&#xE8B8;</i></a>
-                            <a href="#" class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE5C9;</i></a>
-                        </td>
-                    </tr>
+				<%	} %>
                 </tbody>
             </table>
+            <%	}else{  %>
+            <font color="red">You didn't add hotels yet</font>
+           	<%	} %>
             <div class="clearfix">
                 <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
                 <ul class="pagination">
