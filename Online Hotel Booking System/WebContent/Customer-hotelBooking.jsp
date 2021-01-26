@@ -37,29 +37,18 @@
     <form>
         <div class="tm-form1">
      
-    <label  for="rooms" id="inlinelable">Hotel Type</label>
-    <select name="Rooms" id="rooms">
-        <option value="luxurys">Luxury Suite</option>
-        <option value="deluxs">Delux Suite</option>
-        <option value="premiers">Premier Suite</option>
-        <option value="Luxuryr">Luxury Room</option>
-        <option value="deluxs">Delux Room</option>
-        <option value="premierr">Premier Room</option>
-    </select> 
+    
             
             
             
 
             
             
-    <div class="tm-num1" id="handleCounter1">    
-    <label for="number1" ></label><br/>
-        
-        </div>
-    <div>      
+    
+    <div class="tm-num1" id="handleCounter1">      
         <label for="number2">Number of Guests</label><br/>
         <button type="button" class="counter-minus btn btn-primary">-</button>
-        <input type="text" name="number2" id="number2" value="1">
+        <input type="text" name="number1" id="number1" value="1">
             <button type="button" class="counter-plus btn btn-primary">+</button>
             </div>
               
@@ -73,11 +62,16 @@
         
     <div class="tm-form2">
    <div class="tm-cl">
-        <label for="date1" class="arrival">Visiting Dates from Arrival to Departure</label>
-
-     <input type="text" name="date1" class="range" readonly="readonly"> 
-        
-
+        <label for="date1" class="arrival">Check-In Date</label>
+	<div>
+     <input type="date" name="date1" class="range" readonly="readonly">
+    </div>
+    <div class="tm-cl">
+        <label for="date1" class="arrival">Check-Out Date</label>
+	<div>
+    <div>
+     <input type="date" name="date1" class="range" readonly="readonly">
+    </div>
      <input type="submit" id="sub" value="Proceed">
     </div>
     </div>
