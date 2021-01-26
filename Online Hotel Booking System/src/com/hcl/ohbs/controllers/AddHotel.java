@@ -36,15 +36,7 @@ public class AddHotel extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 
-		//String filePath= null;
-		String filePath= "path/";
-		
-		
-		
-		/*
-
-		String filePath= "path2";
-
+		String filePath= null;
 		
 		// checks if the request actually contains upload file
 				if (!ServletFileUpload.isMultipartContent(request)) {
@@ -109,29 +101,6 @@ public class AddHotel extends HttpServlet {
 				}
 		
 
-
-		
-		
-				
-
-		*/
-
-		String hotelName = request.getParameter("hotelname");
-		String hotelCity = request.getParameter("hotelcity");
-		String phone_number = request.getParameter("hotelcontact");
-		String address = request.getParameter("hoteladdress");
-		String status = request.getParameter("hotelstatus");
-		
-		//int max_capacity = Integer.parseInt(request.getParameter("hotelguestcapacity"));
-		//int available_capacity = Integer.parseInt(request.getParameter("hotelslots"));
-		//String category = request.getParameter("hoteladdress");
-		//String features = request.getParameter("hoteladdress");
-		//double price = Double.parseDouble(request.getParameter("hotelslots"));
-		
-		
-		
-
-
 				/*String hotelName = request.getParameter("hotelname");
 				System.out.println("hotel = " + hotelName);
 				String hotelCity = request.getParameter("hotelcity");
@@ -144,7 +113,6 @@ public class AddHotel extends HttpServlet {
 				//String category = request.getParameter("hoteladdress");
 				//String features = request.getParameter("hoteladdress");
 				//double price = Double.parseDouble(request.getParameter("hotelslots"));
- 
 
 
 		out.println("<html><boby>");
