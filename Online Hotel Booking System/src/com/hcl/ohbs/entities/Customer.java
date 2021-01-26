@@ -90,4 +90,7 @@ public class Customer {
 	public Customer(int id) {
 		this.id=id;
 	}
+	public Customer(String firstName) {
+		this.firstName=firstName;
+	}
 }

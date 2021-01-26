@@ -1,9 +1,6 @@
 package com.hcl.ohbs.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.*;
-import java.sql.SQLException;
 import java.util.*;
 import com.hcl.ohbs.entities.Hotel;
 import com.hcl.ohbs.entities.HotelOwner;
@@ -190,6 +187,7 @@ public class HotelDAO {
         return 0;
 	}
 	
+
 	public List<Hotel> getAllHotels() {
 		Connection con = null;
         Statement st = null;
@@ -207,7 +205,8 @@ public class HotelDAO {
         	   hotels.add(h);
         	   System.out.println(h);
            }
-        }catch(ClassNotFoundException e1){
+          
+          }catch(ClassNotFoundException e1){
             e1.printStackTrace();
         }catch(SQLException e2){
             e2.printStackTrace();
@@ -222,6 +221,70 @@ public class HotelDAO {
             }
         } 
         return hotels;
+          
+
+	public String getNameById(int id) {
+		Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try{
+            con = DBConnection.getConnection();
+            String query = "SELECT name FROM hotel WHERE id=?";
+            pstmt = con.prepareStatement(query);
+            pstmt.setInt(1, id);
+            rs = pstmt.executeQuery();
+            if(rs.next()){
+                return rs.getString(1);
+            }
+        }catch(ClassNotFoundException e1){
+            e1.printStackTrace();
+        }catch(SQLException e2){
+            e2.printStackTrace();
+        }finally{
+            try{
+                if(pstmt!=null)
+                    pstmt.close();
+                if(con!=null)
+                    con.close();
+            }catch(SQLException e3){
+                e3.printStackTrace();
+            }
+        } 
+        return null;
+	}
+	
+	public double getPriceById(int id) {
+		Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        try{
+            con = DBConnection.getConnection();
+            String query = "SELECT price FROM hotel WHERE id=?";
+            pstmt = con.prepareStatement(query);
+            pstmt.setDouble(1, id);
+            rs = pstmt.executeQuery();
+            if(rs.next()){
+                return rs.getDouble(1);
+            }
+
+        }catch(ClassNotFoundException e1){
+            e1.printStackTrace();
+        }catch(SQLException e2){
+            e2.printStackTrace();
+        }finally{
+            try{
+
+                if(rs!=null)
+                    rs.close();
+                if(pstmt!=null)
+                    pstmt.close();
+                if(con!=null)
+                    con.close();
+            }catch(SQLException e3){
+                e3.printStackTrace();
+            }
+        } 
+        return 0.0;
 	}
 	
 }

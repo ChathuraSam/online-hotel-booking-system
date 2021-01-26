@@ -123,4 +123,34 @@ public class CustomerDAO {
 		     } 
 		    return null;
 		}
+		
+		public String getNameById(int id) {
+			Connection con = null;
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
+	        try{
+	            con = DBConnection.getConnection();
+	            String query = "SELECT first_name FROM customer WHERE id=?";
+	            pstmt = con.prepareStatement(query);
+	            pstmt.setInt(1, id);
+	            rs = pstmt.executeQuery();
+	            if(rs.next()){
+	                return rs.getString(1);
+	            }
+	        }catch(ClassNotFoundException e1){
+	            e1.printStackTrace();
+	        }catch(SQLException e2){
+	            e2.printStackTrace();
+	        }finally{
+	            try{
+	                if(pstmt!=null)
+	                    pstmt.close();
+	                if(con!=null)
+	                    con.close();
+	            }catch(SQLException e3){
+	                e3.printStackTrace();
+	            }
+	        } 
+	        return null;
+		}
 }
