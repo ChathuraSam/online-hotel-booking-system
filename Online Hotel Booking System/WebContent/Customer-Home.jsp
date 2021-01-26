@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 pageEncoding="ISO-8859-1"%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@page import="java.util.*"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +21,7 @@ pageEncoding="ISO-8859-1"%>
 	<%@include file="./comp/Navbar.jsp" %>
 
 	<br>
-	<form class="form-inline center_div" action="" method="get">
+	<form class="form-inline center_div" action="SearchHotel" method="get">
 		
 		<div class="form-group mb-2 m-2">
 			Search Hotels
@@ -25,7 +29,7 @@ pageEncoding="ISO-8859-1"%>
 
 		<div class="form-group mx-sm-3 mb-2">
 			<label for="inputPassword2" class="sr-only">Room Type</label>
-			<input type="text" class="form-control" id="roomType" placeholder="Room Type" name="toomType">
+			<input type="text" class="form-control" id="hotelName" placeholder="Hotel Name" name="hotelName">
 		</div>
 		<div class="form-group mx-sm-3 mb-2">
 			<label for="inputPassword2" class="sr-only">City</label>
@@ -50,7 +54,16 @@ pageEncoding="ISO-8859-1"%>
 
 		</div>
 	</div>
-
+	
+	
+	<c:forEach var="h" items="${requestScope.hotels }">
+		<tr>
+			<td>${h.getName() }</td>
+			<td>${h.getCity() }</td>
+			
+		</tr>
+	</c:forEach>
+	
 	<%@include file="./comp/Footer.jsp" %>
 
 
