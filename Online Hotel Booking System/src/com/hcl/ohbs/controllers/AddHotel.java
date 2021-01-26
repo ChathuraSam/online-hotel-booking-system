@@ -107,24 +107,23 @@ public class AddHotel extends HttpServlet {
 				}
 		
 
+		
+		
+				
+
+		*/
+
 		String hotelName = request.getParameter("hotelname");
 		String hotelCity = request.getParameter("hotelcity");
 		String phone_number = request.getParameter("hotelcontact");
 		String address = request.getParameter("hoteladdress");
 		String status = request.getParameter("hotelstatus");
+		
 		//int max_capacity = Integer.parseInt(request.getParameter("hotelguestcapacity"));
 		//int available_capacity = Integer.parseInt(request.getParameter("hotelslots"));
 		//String category = request.getParameter("hoteladdress");
 		//String features = request.getParameter("hoteladdress");
 		//double price = Double.parseDouble(request.getParameter("hotelslots"));
-				
-
-		*/
-
-		
-		
-		
-		
 		
 		
 		

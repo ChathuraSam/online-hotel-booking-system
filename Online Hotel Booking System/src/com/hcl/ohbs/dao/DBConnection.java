@@ -27,14 +27,13 @@ public class DBConnection {
 		
 		
 		Class.forName("oracle.jdbc.driver.OracleDriver");
-<<<<<<< HEAD
+
 		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","br3akDown"); // chathura
-=======
+
 		//Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","br3akDown"); // chathura
 
 		//Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","br3akDown"); // sithara
-		Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","shanu123"); // shanuka
->>>>>>> d97c1daa881a5f37224bb673b89afbfe6b6e88f5
+		//Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","shanu123"); // shanuka
 		//Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","sithara123"); // sithara
 		//Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","br3akDown"); // shanuka
 		//Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","br3akDown"); // thanusha
