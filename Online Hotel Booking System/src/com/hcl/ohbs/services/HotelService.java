@@ -10,10 +10,10 @@ public class HotelService {
 
 	public boolean addHotelAndImages(String name, String city, String phoneNumber, String address, String status, int maximum_capacity, int available_capacity, int id,
 								String category, String features, double price, String imagePath) { 
-		boolean isAddHotelImageSuccess = false;
 		HotelDAO h = new HotelDAO();
 		HotelImageDAO hImage = new HotelImageDAO();
 		boolean isAddHotelSuccess = h.addHotel(new Hotel(name, city, phoneNumber, address, status, maximum_capacity, available_capacity, new HotelOwner(id), category, features, price));
+		System.out.println("Is add hotel succes: " + isAddHotelSuccess);
 		int hotelId = h.getIdByName(name);
 		/*for(String imagePath: images) {
 			isAddHotelImageSuccess = hImage.addHotelImage(new HotelImage(new Hotel(hotelId),imagePath));
@@ -21,7 +21,8 @@ public class HotelService {
 				break;
 			}
 		}*/
-		isAddHotelImageSuccess = hImage.addHotelImage(new HotelImage(new Hotel(hotelId),imagePath));
+		boolean isAddHotelImageSuccess = hImage.addHotelImage(new HotelImage(new Hotel(hotelId),imagePath));
+		System.out.println("Is add image succes: " + isAddHotelImageSuccess);
 		if(isAddHotelImageSuccess && isAddHotelImageSuccess) {
 			return true;
 		}else {
