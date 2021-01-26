@@ -190,4 +190,38 @@ public class HotelDAO {
         return 0;
 	}
 	
+	public List<Hotel> getAllHotels() {
+		Connection con = null;
+        Statement st = null;
+        ResultSet rs = null;
+        List<Hotel> hotels = new ArrayList<>();
+        System.out.println("inside get all hotels");
+        try{
+            con = DBConnection.getConnection();
+            String query = "SELECT * FROM hotel";
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+            
+           while(rs.next()) {
+        	   Hotel h = new Hotel(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+        	   hotels.add(h);
+        	   System.out.println(h);
+           }
+        }catch(ClassNotFoundException e1){
+            e1.printStackTrace();
+        }catch(SQLException e2){
+            e2.printStackTrace();
+        }finally{
+            try{
+                if(rs!=null)
+                    rs.close();
+                if(con!=null)
+                    con.close();
+            }catch(SQLException e3){
+                e3.printStackTrace();
+            }
+        } 
+        return hotels;
+	}
+	
 }
