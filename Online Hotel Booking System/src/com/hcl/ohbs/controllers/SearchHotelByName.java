@@ -26,11 +26,11 @@ public class SearchHotelByName extends HttpServlet {
 		
 		HotelDAO dao = new HotelDAO();
 	
-		Hotel hotel = dao.findHotelByName(name);
+		//Hotel hotel = dao.findHotelByName(name);
 		
 		out.println("<html><body>");
-		out.println("<p>"+hotel.getName()+"</p>");
-		out.println("<p>"+hotel.getFeatures()+"</p>");
+		//out.println("<p>"+hotel.getName()+"</p>");
+		//out.println("<p>"+hotel.getFeatures()+"</p>");
 		out.println("</body></html>");
 
 	}

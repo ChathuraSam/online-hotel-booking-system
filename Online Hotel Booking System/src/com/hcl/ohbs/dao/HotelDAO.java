@@ -44,20 +44,23 @@ public class HotelDAO {
         return false;
 	}
 	
-	public Hotel findHotelByName(String name){
+	public List<Hotel> findHotelByName(String name){
+		
+		List<Hotel> hotels = new ArrayList<Hotel>();
 		try{
 		Connection con = null;
-		PreparedStatement pstmt = null;
+		Statement st = null;
 		ResultSet rs = null;
 		
+		
 			con = DBConnection.getConnection();
-			String query = "select name,city,phone_number,address,status,maximum_capacity,available_capacity,hotel_owner_id,category,features,price from hotel where NAME=?";
-			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, name);
-			rs = pstmt.executeQuery();
+			String query = "select name,city,phone_number,address,status,maximum_capacity,available_capacity,hotel_owner_id,category,features,price from hotel where name like '"+name+"%'";
+			st = con.createStatement();
+			
+			rs = st.executeQuery(query);
 			if(rs.next()){
 				Hotel h = new Hotel(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getInt(7),new HotelOwner(rs.getInt(8)),rs.getString(9),rs.getString(10),rs.getDouble(11));
-				return h;
+				hotels.add(h);
 				
 			}
 	    }catch(ClassNotFoundException e1){
@@ -65,7 +68,7 @@ public class HotelDAO {
 	    }catch(SQLException e2){
 	            e2.printStackTrace();
 	    }
-	    return null;
+	    return hotels;
 	}
 	
 	public List<Hotel> findHotelByCity(String city){
@@ -221,7 +224,7 @@ public class HotelDAO {
             }
         } 
         return hotels;
-          
+	}
 
 	public String getNameById(int id) {
 		Connection con = null;
