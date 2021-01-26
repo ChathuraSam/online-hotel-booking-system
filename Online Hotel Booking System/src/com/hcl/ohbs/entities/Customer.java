@@ -1,6 +1,7 @@
 package com.hcl.ohbs.entities;
 
 public class Customer {
+	private int id;
 	private String firstName;
 	private String lastName;
 	private String phoneNumber;
@@ -8,6 +9,14 @@ public class Customer {
 	private String email;
 	private String username;
 	private String password;
+	
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getFirstName() {
 		return firstName;
 	}
@@ -61,7 +70,24 @@ public class Customer {
 		this.username = username;
 		this.password = password;
 	}
+	
+	
+	public Customer(int id, String firstName, String lastName, String phoneNumber, String address, String email,
+			String username, String password) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
+		this.address = address;
+		this.email = email;
+		this.username = username;
+		this.password = password;
+	}
 	public Customer() {
 
 	}	
+	public Customer(int id) {
+		this.id=id;
+	}
 }
