@@ -211,3 +211,6 @@ Dropping database tables
 	drop trigger customer_trigger;
 	drop table customer;
 	drop sequence customer_sequence;
+===============================================================================================
+alter table reservation modify check_out varchar(15);
+alter table reservation modify check_in varchar(15);
