@@ -26,29 +26,49 @@ public class SearchHotel extends HttpServlet {
 		
 		HotelDAO dao = new HotelDAO();
 		
+		List<Hotel> hotellist =new ArrayList<>();
+		hotellist = dao.getAllHotels();
+		for(Hotel h : hotellist) {
+			System.out.println(h);
+		}
+		
 		// hotel and city both
-		if(hotelName !=null && city!=null) {
+		if(hotelName !="" && city!="") {
 			
 		}
 		
 		//hotel name only
-		else if(hotelName !=null && city==null) {
-			Hotel hotel = dao.findHotelByName(hotelName);
-			request.setAttribute("hotels", hotel);
+		else if(hotelName !="" && city=="") {
+			hotellist =new ArrayList<>();
+			hotellist= dao.findHotelByName(hotelName);
+			request.setAttribute("hotels", hotellist);
+			request.setAttribute("msg", "City Name only");
 			request.getRequestDispatcher("Customer-Home.jsp").include(request, response);
 			
 		//city name only
-		}else if(hotelName ==null && city!=null) {
+		}else if(hotelName =="" && city!="") {
 			
-			List<Hotel> hotellist =new ArrayList<>();
+			hotellist =new ArrayList<>();
 			hotellist = dao.findHotelByCity(city);
 			request.setAttribute("hotels", hotellist);
+			request.setAttribute("msg", "City Name only");
 			request.getRequestDispatcher("Customer-Home.jsp").include(request, response);
 			
 		// both hotel name and city are empty
 		}else {
+			hotellist = dao.getAllHotels();
+			if(hotellist.size()==0) {
+				request.setAttribute("error", "No hotels availabl");
+			}else {
+				request.setAttribute("error", "No error");
+				request.setAttribute("hotels", hotellist);
+			}
+			
+			request.getRequestDispatcher("Customer-Home.jsp").include(request, response);
 			
 		}
+			
+		
 			
 	}
 

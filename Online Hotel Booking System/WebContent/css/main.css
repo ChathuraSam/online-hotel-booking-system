@@ -601,10 +601,7 @@ textarea {
 
 
 .tm-num1, .tm-num2{
-    display: inline-block;
-
-    max-width: 39%;
-    width: 39%;
+    display: inline-block;    
     margin: 5%;
 }
 
@@ -620,7 +617,7 @@ textarea {
 .range{
     font-size: 1.5vw;
     margin-top: 5%;
-    margin-bottom: 50%;
+    margin-bottom: 10% !important;
     padding: 1% 3%;
     width: 70%;
 }
@@ -629,7 +626,7 @@ textarea {
 input[type=submit]{
     display: block;
     background: #353535;
-    padding: 1% 3%;
+    padding: 3% 25%;
      color: #fff;
     border: 1px solid #fff;
 
@@ -637,8 +634,7 @@ input[type=submit]{
 
 }
 
-#sub{
-     margin-left: 25%;
+
   
 }
 
