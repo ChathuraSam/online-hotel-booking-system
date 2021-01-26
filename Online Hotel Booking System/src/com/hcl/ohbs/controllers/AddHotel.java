@@ -106,7 +106,21 @@ public class AddHotel extends HttpServlet {
 					request.setAttribute("message", "There was an error: " + ex.getMessage());
 				}
 		
+
+		String hotelName = request.getParameter("hotelname");
+		String hotelCity = request.getParameter("hotelcity");
+		String phone_number = request.getParameter("hotelcontact");
+		String address = request.getParameter("hoteladdress");
+		String status = request.getParameter("hotelstatus");
+		//int max_capacity = Integer.parseInt(request.getParameter("hotelguestcapacity"));
+		//int available_capacity = Integer.parseInt(request.getParameter("hotelslots"));
+		//String category = request.getParameter("hoteladdress");
+		//String features = request.getParameter("hoteladdress");
+		//double price = Double.parseDouble(request.getParameter("hotelslots"));
+				
+
 		*/
+
 		
 		
 		
@@ -114,15 +128,18 @@ public class AddHotel extends HttpServlet {
 		
 		
 		
+
+
 		out.println("<html><boby>");
 		HotelService hotelService = new HotelService();
-		String[] images = { filePath };
+		//String[] images = { filePath };
 		// recieve the id from coming from the session and assign into id variable
-		// HttpSession session = request.getSession();
-		// int ownerId = (int) session.getAttribute("id");
-		int ownerId = 1;
-		if (hotelService.addHotelAndImages("HotelA", "Nugegoda", "0756789364", "abc", "status", 1000, 450, ownerId,
-				"World class", "feature1,feature2", 5000.00, images)) {
+		//HttpSession session = request.getSession();
+		//int ownerId = (int) session.getAttribute("hotelOwnerId");
+		//String hotelOwnerName = (String) session.getAttribute("hotelOwnerName");
+		int ownerId = 2;
+		if (hotelService.addHotelAndImages(hotelName, hotelCity, phone_number, address, status, 1000, 100, ownerId,
+				"budget", "feature1,feature2", 2000.00, filePath)) {
 			out.println("<font>hotel added success!!<font>");
 		} else {
 			out.println("<font color='red'>Error in adding the hotel<font>");

@@ -9,18 +9,19 @@ import com.hcl.ohbs.entities.HotelOwner;
 public class HotelService {
 
 	public boolean addHotelAndImages(String name, String city, String phoneNumber, String address, String status, int maximum_capacity, int available_capacity, int id,
-								String category, String features, double price, String[] images) { 
+								String category, String features, double price, String imagePath) { 
 		boolean isAddHotelImageSuccess = false;
 		HotelDAO h = new HotelDAO();
 		HotelImageDAO hImage = new HotelImageDAO();
 		boolean isAddHotelSuccess = h.addHotel(new Hotel(name, city, phoneNumber, address, status, maximum_capacity, available_capacity, new HotelOwner(id), category, features, price));
 		int hotelId = h.getIdByName(name);
-		for(String imagePath: images) {
+		/*for(String imagePath: images) {
 			isAddHotelImageSuccess = hImage.addHotelImage(new HotelImage(new Hotel(hotelId),imagePath));
 			if(!isAddHotelImageSuccess) {
 				break;
 			}
-		}
+		}*/
+		isAddHotelImageSuccess = hImage.addHotelImage(new HotelImage(new Hotel(hotelId),imagePath));
 		if(isAddHotelImageSuccess && isAddHotelImageSuccess) {
 			return true;
 		}else {
