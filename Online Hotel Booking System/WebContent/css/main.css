@@ -340,15 +340,14 @@ padding-bottom: 10%;
 
 .tm-main{
       background: #f0ad4e;
-    padding: 2%;
+   
 }
 
 .tm-main p{
     display: table;
     max-width: 30%;
     margin: 0 auto;
-    font-size: 4vw;
-     padding: 2%;
+    font-size: 3vw;    
     color: #fff;
     font-weight: 700;
 }
@@ -558,6 +557,7 @@ textarea::-webkit-input-placeholder{
 
 
 label{
+	margin-top:10%;
      font-size: 1.5vw;
     color: #fff;
     font-weight: 700;
@@ -626,9 +626,10 @@ textarea {
 input[type=submit]{
     display: block;
     background: #353535;
-    padding: 3% 25%;
+    padding: 3% 85%;
      color: #fff;
     border: 1px solid #fff;
+    margin-top: 50%;
 
  
 

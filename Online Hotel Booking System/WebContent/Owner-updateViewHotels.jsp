@@ -32,7 +32,7 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="Owner-homepage.jsp"> 
-				<img src="images/largelogo.png" height="150px" width="180px" alt="logo" />
+				<a href="index.jsp"><img src="images/largelogo.png" height="150px" width="130px" alt="logo" /></a>
 				</a>
 
 			</div>

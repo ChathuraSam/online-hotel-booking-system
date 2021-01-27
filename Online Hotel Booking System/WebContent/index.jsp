@@ -27,6 +27,7 @@ pageEncoding="ISO-8859-1"%>
 
 	<%@include file="./comp/Navbar.jsp" %>
 	
+	
 	<%@include file="./comp/Slider.jsp" %>
 
 	<div class="section no-pad-bot" id="index-banner">
