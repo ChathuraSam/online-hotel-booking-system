@@ -54,7 +54,7 @@ public class ReservationDAO {
 		
 		
 			con = DBConnection.getConnection();
-			String query = "select check_in,check_out,no_of_persons,customer_id,hotel_id from reservation where id=?";
+			String query = "select check_in,check_out,no_of_persons,customer_id,hotel_id from reservation where customer_id=?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, id);
 			rs = pstmt.executeQuery();

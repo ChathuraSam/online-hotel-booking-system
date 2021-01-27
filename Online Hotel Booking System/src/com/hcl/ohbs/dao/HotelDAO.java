@@ -221,7 +221,7 @@ public class HotelDAO {
             }
         } 
         return hotels;
-          
+	}  
 
 	public String getNameById(int id) {
 		Connection con = null;
