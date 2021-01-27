@@ -65,7 +65,7 @@ $(document).ready(function(){
                         <ul id="menu-top" class="nav navbar-nav navbar-right">
                             <li><a href="Owner-homepage.jsp" class="menu-top-active">OWNER DASHBOARD</a></li>
                            
-                            <li><a href="Owner-updateViewHotels.jsp">VIEW HOTEL RESERVATIONS</a></li>
+                            <li><a href="ViewBookingsOwner">VIEW HOTEL RESERVATIONS</a></li>
                            <!--  <li>
                                 <a href="#" class="dropdown-toggle" id="ddlmenuItem" data-toggle="dropdown">UI ELEMENTS <i class="fa fa-angle-down"></i></a>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="ddlmenuItem">

@@ -1,3 +1,5 @@
+<%@ page language="java" import="com.hcl.ohbs.entities.Reservation,java.util.*" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -90,47 +92,43 @@
                     <div class="panel panel-default">
                        
                         <div class="panel-heading">
-                            YOUR HOTELS
+                            YOUR HOTEL RESERVATION DETAILS
                         </div>
                         
                         <div class="panel-body">
                             <div class="table-responsive">
+                            <% // retrieve your list from the request, with casting 
+							List<Reservation> list = (ArrayList<Reservation>) request.getAttribute("bookings");
+            				if(list!=null){ %>
                                 <table class="table">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
                                             <th>Hotel Name</th>
-                                            <th>Hotel RegNo</th>
-                                            <th>Hotel URL</th>
+                                            <th>Customer Name</th>
+                                            <th>Contact Number</th>
+                                            <th>Check In</th>
+                                            <th>Check Out</th>
+                                            <th>No of Persons</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="success">
-                                            <td>01</td>
-                                            <td>Kingsbury Hotel</td>
-                                            <td>H12345</td>
-                                            <td>www.kingsburyhotel.com</td>
+                                        <% 	// print the information about every hotel of the list
+										for(Reservation reservation : list) { %> 
+				              
+                    					<tr>
+                        					<td><%=reservation.getHotel().getName()%></td>
+                        					<td><%=reservation.getCustomer().getFirstName()%></td>
+                        					<td><%=reservation.getCustomer().getPhoneNumber()%></td>
+                        					<td><%=reservation.getCheckIn()%></td>
+                        					<td><%=reservation.getCheckOut()%></td>
+                        					<td><%=reservation.getNoOfPersons()%></td>
                                         </tr>
-                                        <tr class="info">
-                                            <td>02</td>
-                                            <td>Hotel Galadhari </td>
-                                            <td>H54321</td>
-                                            <td>www.hotelgaladhari.lk</td>
-                                        </tr>
-                                        <tr class="warning">
-                                            <td>03</td>
-                                            <td>dsgrdgr</td>
-                                            <td>vdsrgzvrdg</td>
-                                            <td>www.fdzdrh.com</td>
-                                        </tr>
-                                        <tr class="danger">
-                                            <td>04</td>
-                                            <td>dsgrdgr</td>
-                                            <td>vdsrgzvrdg</td>
-                                            <td>www.fdzdrh.com</td>
-                                        </tr>
+										<%	} %>    
                                     </tbody>
                                 </table>
+                                <%	}else{  %>
+            					<font color="red">You do not have any reservation details to view yet</font>
+           						<%	} %>
                             </div>
                         </div>
                     </div>

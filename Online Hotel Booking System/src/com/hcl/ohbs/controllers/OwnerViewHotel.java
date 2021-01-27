@@ -16,6 +16,7 @@ import com.hcl.ohbs.services.HotelService;
 public class OwnerViewHotel extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("start owner view hotel servlet");
 		PrintWriter out = response.getWriter();
 		// recieve the id from coming from the session and assign into id variable
 		HttpSession session = request.getSession();
@@ -25,6 +26,9 @@ public class OwnerViewHotel extends HttpServlet {
 		System.out.println("owner name in add hotel page = " + hotelOwnerName);
 		HotelService hotelService = new HotelService();
 		List<Hotel> hotelList = hotelService.getHotelsByOwnerId(ownerId);
+		request.setAttribute("hotels", hotelList);
+		System.out.println("end owner view hotel servlet");
+		request.getRequestDispatcher("Owner-homepage.jsp").include(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

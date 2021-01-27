@@ -1,6 +1,7 @@
 package com.hcl.ohbs.services;
 
 import java.util.Date;
+import java.util.List;
 
 import com.hcl.ohbs.dao.HotelDAO;
 import com.hcl.ohbs.dao.ReservationDAO;
@@ -37,5 +38,10 @@ public class BookingService {
 		}
 		
 		return false;
+	}
+	
+	public List<Reservation> getReservationByOwnerId(int ownerId){
+		ReservationDAO r = new ReservationDAO();
+		return r.getReservationByOwnerId(ownerId);
 	}
 }

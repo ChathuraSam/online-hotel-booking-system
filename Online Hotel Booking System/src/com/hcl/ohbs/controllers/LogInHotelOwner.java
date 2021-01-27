@@ -17,6 +17,7 @@ import com.hcl.ohbs.services.HotelService;
 public class LogInHotelOwner extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("start Log in hotel owner servlet");
 		PrintWriter out = response.getWriter();
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
@@ -32,9 +33,11 @@ public class LogInHotelOwner extends HttpServlet {
 			List<Hotel> hotelList = hotelService.getHotelsByOwnerId(sessionId);
 			request.setAttribute("hotels", hotelList);
 			out.println("<font>hotel owner login success!!<font>");
+			System.out.println("end Log in hotel owner servlet");
 			request.getRequestDispatcher("Owner-homepage.jsp").include(request, response);
 		}else {
 			out.println("<font color='red'>Error in login the hotel owner<font>");
+			System.out.println("end Log in hotel owner servlet");
 			request.getRequestDispatcher("Owner-Login.jsp").include(request, response);
 		}
 		out.println("</boby><html>");

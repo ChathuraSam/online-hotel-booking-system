@@ -16,6 +16,9 @@ public class Hotel {
 	public Hotel() {
 
 	}
+	public Hotel(String name) {
+		this.name = name;
+	}
 	public Hotel(String name, String city, String phoneNumber, String address, String status, int maximum_city,
 			int available_city, HotelOwner hotelOwner, String category, String features,
 			double price) {

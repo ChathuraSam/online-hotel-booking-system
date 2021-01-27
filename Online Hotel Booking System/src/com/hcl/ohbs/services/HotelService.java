@@ -36,4 +36,9 @@ public class HotelService {
 		h = new HotelDAO();
 		return h.findHotelByOwnerId(ownerId);
 	}
+	
+	public String getHotelNameById(int Id){
+		h = new HotelDAO();
+		return h.getNameById(Id);
+	}
 }
