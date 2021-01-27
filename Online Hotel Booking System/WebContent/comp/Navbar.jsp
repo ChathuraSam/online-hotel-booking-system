@@ -12,10 +12,10 @@
         <a class="nav-link" href="#">About Us <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">My Bookings</a>
+        <a class="nav-link" href="Customer-hotelBooking.jsp">My Bookings</a>
       </li>
        <li class="nav-item">
-        <a class="nav-link" href="./Customer-Home.jsp">Find Hotels</a>
+        <a class="nav-link" href="SearchHotel?hotelName=&city=">Find Hotels</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

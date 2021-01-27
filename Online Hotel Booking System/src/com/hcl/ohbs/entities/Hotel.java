@@ -18,6 +18,13 @@ public class Hotel {
 	}
 	public Hotel(String name) {
 		this.name = name;
+	}	
+	//this constructor is for populating the home page. Don't delete
+	public Hotel(String name, String city, String phone, String address) {
+		this.name = name;
+		this.city = city;
+		this.phoneNumber = phone;
+		this.address = address;
 	}
 	public Hotel(String name, String city, String phoneNumber, String address, String status, int maximum_city,
 			int available_city, HotelOwner hotelOwner, String category, String features,
@@ -34,8 +41,8 @@ public class Hotel {
 		this.features = features;
 		this.price = price;
 	}
-	public Hotel(int id, String name, String city, String phoneNumber, String address, String status, int maximum_city,
-			int available_city, HotelOwner hotelOwner, String category, String features,
+	public Hotel(int id, String name, String city, String phoneNumber, String address, String status, int maximum_capacity,
+			int available_capacity, HotelOwner hotelOwner, String category, String features,
 			double price) {
 		this.id = id;
 		this.name = name;
@@ -43,8 +50,8 @@ public class Hotel {
 		this.phoneNumber = phoneNumber;
 		this.address = address;
 		this.status = status;
-		this.maximum_capacity = maximum_city;
-		this.available_capacity = available_city;
+		this.maximum_capacity = maximum_capacity;
+		this.available_capacity = available_capacity;
 		this.hotelOwner = hotelOwner;
 		this.category = category;
 		this.features = features;
@@ -124,5 +131,13 @@ public class Hotel {
 	}
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "Hotel [id=" + id + ", name=" + name + ", city=" + city + ", phoneNumber=" + phoneNumber + ", address="
+				+ address + "]";
 	}	
+	
+	
 }
