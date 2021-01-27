@@ -44,9 +44,10 @@
 
 	<div class='container center_div m-5 p-2'>
 		<div class='row'>
+		
 			<c:forEach items="${hotels}" var="hotel">
 
-				<div class="card" style="width: 18rem;">
+				<div class="card m-1" style="width: 18rem;">
 					<img class="card-img-top" src="./img/hotel1.jpg"
 						alt="Card image cap">
 					<div class="card-body">

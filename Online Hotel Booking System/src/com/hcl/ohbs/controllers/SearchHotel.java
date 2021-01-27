@@ -39,9 +39,10 @@ public class SearchHotel extends HttpServlet {
 		
 		//hotel name only
 		else if(hotelName !="" && city=="") {
-			Hotel hotel = dao.findHotelByName(hotelName);
-			request.setAttribute("hotels", hotel);
-			request.setAttribute("msg", "Hotel Name only");
+			hotellist =new ArrayList<>();
+			hotellist= dao.findHotelByName(hotelName);
+			request.setAttribute("hotels", hotellist);
+			request.setAttribute("msg", "City Name only");
 			request.getRequestDispatcher("Customer-Home.jsp").include(request, response);
 			
 		//city name only
