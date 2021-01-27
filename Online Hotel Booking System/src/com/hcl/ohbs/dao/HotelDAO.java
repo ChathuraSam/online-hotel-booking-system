@@ -220,9 +220,10 @@ public class HotelDAO {
             }catch(SQLException e) {
             
             }
+	    }
        return list;
     }
-}
+
 
 	public List<Hotel> getAllHotels() {
 		Connection con = null;

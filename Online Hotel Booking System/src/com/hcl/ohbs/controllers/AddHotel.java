@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,7 @@ import com.hcl.ohbs.entities.HotelOwner;
 import com.hcl.ohbs.services.HotelOwnerService;
 import com.hcl.ohbs.services.HotelService;
 
+
 @WebServlet("/AddHotel")
 public class AddHotel extends HttpServlet {
 
@@ -34,17 +36,25 @@ public class AddHotel extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		doPost(request, response);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		
+		
 		PrintWriter out = response.getWriter();
 		String filePath= null;
 		
 		// checks if the request actually contains upload file
-				if (!ServletFileUpload.isMultipartContent(request)) {
-					// if not, we stop here
-					PrintWriter writer = response.getWriter();
-					writer.println("Error: Form must has enctype=multipart/form-data.");
-					writer.flush();
-					return;
-				}
+//				if (!ServletFileUpload.isMultipartContent(request)) {
+//					// if not, we stop here
+//					PrintWriter writer = response.getWriter();
+//					writer.println("Error: Form must has enctype=multipart/form-data.");
+//					writer.flush();
+//					return;
+//				}
 
 				// configures upload settings
 				DiskFileItemFactory factory = new DiskFileItemFactory();
@@ -99,18 +109,23 @@ public class AddHotel extends HttpServlet {
 					request.setAttribute("message", "There was an error: " + ex.getMessage());
 				}
 
-				/*String hotelName = request.getParameter("hotelname");
-				System.out.println("hotel = " + hotelName);
+				String hotelName = request.getParameter("hotelname");
 				String hotelCity = request.getParameter("hotelcity");
-				System.out.println("hotel city= " + hotelCity);
 				String phone_number = request.getParameter("hotelcontact");
 				String address = request.getParameter("hoteladdress");
-				String status = request.getParameter("hotelstatus"); */
-				//int max_capacity = Integer.parseInt(request.getParameter("hotelguestcapacity"));
-				//int available_capacity = Integer.parseInt(request.getParameter("hotelslots"));
-				//String category = request.getParameter("hoteladdress");
-				//String features = request.getParameter("hoteladdress");
-				//double price = Double.parseDouble(request.getParameter("hotelslots"));
+				String status = request.getParameter("hotelstatus");
+				
+				System.out.println(hotelCity + " "+ hotelName);
+				
+				if(hotelName==null) {
+					System.out.println("hotelName is null");
+				}
+				
+				int max_capacity = Integer.parseInt(request.getParameter("hotelguestcapacity"));
+				int available_capacity = Integer.parseInt(request.getParameter("hotelslots"));
+				String category = request.getParameter("hoteladdress");
+				String features = request.getParameter("hoteladdress");
+				double price = Double.parseDouble(request.getParameter("hotelslots"));
 
 		out.println("<html><boby>");
 		HotelService hotelService = new HotelService();
@@ -118,14 +133,15 @@ public class AddHotel extends HttpServlet {
 		
 		// recieve the id from coming from the session and assign into id variable
 		HttpSession session = request.getSession();
- 		int ownerId = (int) session.getAttribute("hotelOwnerId");
+ 		//int ownerId = (int) session.getAttribute("hotelOwnerId");
+		int ownerId = 1;
 		System.out.println("owner id in add hotel page = " + ownerId);
 		String hotelOwnerName = (String) session.getAttribute("hotelOwnerName");
-		System.out.println("owner name in add hotel page = " + hotelOwnerName);
+
 		
 		//ownerId = 3;
-		if (hotelService.addHotelAndImages("HotelK", "cwcew", "3454324", "fcervfre", "fewfref", 1000, 100, ownerId,
-				"budget", "feature1,feature2", 2000.00, filePath)) {
+		if (hotelService.addHotelAndImages(hotelName, hotelCity, phone_number, address, status, max_capacity, available_capacity, ownerId,
+				category, features, price, filePath)) {
 			out.println("<font>hotel added success!!<font>");	
 		} else {
 			out.println("<font color='red'>Error in adding the hotel<font>");
@@ -137,11 +153,6 @@ public class AddHotel extends HttpServlet {
 		request.setAttribute("hotels", hotelList);
 		request.getRequestDispatcher("Owner-homepage.jsp").include(request, response);
 		out.println("</boby><html>");
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doGet(request, response);
 	}
 
 }
