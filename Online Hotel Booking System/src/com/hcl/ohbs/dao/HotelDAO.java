@@ -257,14 +257,10 @@ public class HotelDAO {
                 e3.printStackTrace();
             }
         } 
-   return hotels;
 
-       
-	}
-	
+        return hotels;
+	}  
 
-       
-	}
 
 
 	public String getNameById(int id) {

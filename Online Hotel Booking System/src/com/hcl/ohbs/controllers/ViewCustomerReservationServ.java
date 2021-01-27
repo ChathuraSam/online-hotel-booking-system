@@ -29,16 +29,17 @@ public class ViewCustomerReservationServ extends HttpServlet {
 		ReservationDAO reservation = new ReservationDAO();
 		
 		//viewReservationById method should contains the logged in customer id
-		list = reservation.viewReservationById(2);
+		list = reservation.viewReservationById(1);
 		
 		//get the customer name by logged in customer id
 		CustomerDAO cust = new CustomerDAO();
-		String firstName=cust.getNameById(1);
+		String fname = cust.getNameById(1);
+		
 		
 		//get the hotel name by hotel id
 		HotelDAO hotel = new HotelDAO();
-		String hotelName = hotel.getNameById(2);
-		double price = hotel.getPriceById(2);
+		//String hname = hotel.getNameById(1);
+		double price = hotel.getPriceById(1);
 		
 		out.println("<html><body>");
 		out.println("<h1>My Reservation Details</h1>");
@@ -46,7 +47,8 @@ public class ViewCustomerReservationServ extends HttpServlet {
 		out.println("<table border='1'>");
 		out.println("<tr><th>Check In</th><th>Check Out</th><th>No of Persons</th><th>Reserved By</th><th>Hotel Name</th><th>Total Price</th></tr>");
 		for(Reservation r:list) {
-			out.println("<tr><td>"+r.getCheckIn()+"</td><td>"+r.getCheckOut()+"</td><td>"+r.getNoOfPersons()+"</td><td>"+firstName+"</td><td>"+hotelName+"</td><td>"+price+"</td><td><input type='submit' id='delete' value='Cancel Order'></td></tr>");
+			String hname = hotel.getNameById((r.getHotel().getId()));
+			out.println("<tr><td>"+r.getCheckIn()+"</td><td>"+r.getCheckOut()+"</td><td>"+r.getNoOfPersons()+"</td><td>"+fname+"</td><td>"+hname+"</td><td>"+price+"</td><td><input type='submit' id='delete' value='Cancel Order'></td></tr>");
 		}
 		out.println("</form>");
 		out.println("</table>");
