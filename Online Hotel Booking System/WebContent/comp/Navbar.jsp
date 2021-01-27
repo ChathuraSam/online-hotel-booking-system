@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
   
-  <a class="navbar-brand" href="index.jsp"><img src="images/largelogo.png" height="150px" width="180px" alt="logo"></a>
+  <a class="navbar-brand" href="index.jsp"><img src="images/largelogo.png" height="150px" width="130px" alt="logo"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -34,4 +34,7 @@
     </ul>
    
   </div>
+  <div class="col-sm-4 right-div">
+                <a href="#" name="login" class="btn btn-info pull-right">LOG IN</a>
+            </div>
 </nav>

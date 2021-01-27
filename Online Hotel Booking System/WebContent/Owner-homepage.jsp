@@ -43,16 +43,25 @@ $(document).ready(function(){
                 </button>
                 <a class="navbar-brand" href="Owner-homepage.jsp">
 
-                    <img src="images/largelogo.png" height="150px" width="180px" alt="logo" />
+                 <a href="index.jsp"><img src="images/largelogo.png" height="150px" width="130px" alt="logo" /></a>
                 </a>
 
             </div>
-
-            <div class="right-div">
+            <div class="row right-div">
+            <div class="col-sm-4">
+			<label class="right-div">Hi..Name</label>
+			</div>
+			<div class="col-sm-4">
+            
+                <a  href="#" ><img style="vertical-align: middle; height: 50px; width: 50px;  border-radius: 50%;" src="images/profileavatar.jpg" alt="MY Profile" ></a>
+           
+            </div>
+			
+            <div class="col-sm-4 right-div">
                 <a href="LogOutServlet" class="btn btn-danger pull-right">LOG ME OUT</a>
             </div>
-            <div class="right-div">
-                <a  href="#" ><img style="vertical-align: middle; height: 50px; width: 50px;  border-radius: 50%;" src="images/profileavatar.jpg" alt="MY Profile" ></a>
+            
+            
             </div>
         </div>
     </div>
@@ -141,7 +150,7 @@ $(document).ready(function(){
                 </tbody>
             </table>
             <%	}else{  %>
-            <font color="red">You didn't add hotels yet</font>
+            <font color="red">You have not added any Hotels yet.</font>
            	<%	} %>
             <div class="clearfix">
                 <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
