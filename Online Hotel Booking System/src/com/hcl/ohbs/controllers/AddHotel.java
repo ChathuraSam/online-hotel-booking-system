@@ -99,18 +99,16 @@ public class AddHotel extends HttpServlet {
 					request.setAttribute("message", "There was an error: " + ex.getMessage());
 				}
 
-				/*String hotelName = request.getParameter("hotelname");
-				System.out.println("hotel = " + hotelName);
+				String hotelName = request.getParameter("hotelname");
 				String hotelCity = request.getParameter("hotelcity");
-				System.out.println("hotel city= " + hotelCity);
 				String phone_number = request.getParameter("hotelcontact");
 				String address = request.getParameter("hoteladdress");
-				String status = request.getParameter("hotelstatus"); */
-				//int max_capacity = Integer.parseInt(request.getParameter("hotelguestcapacity"));
-				//int available_capacity = Integer.parseInt(request.getParameter("hotelslots"));
-				//String category = request.getParameter("hoteladdress");
-				//String features = request.getParameter("hoteladdress");
-				//double price = Double.parseDouble(request.getParameter("hotelslots"));
+				String status = request.getParameter("hotelstatus");
+				int max_capacity = Integer.parseInt(request.getParameter("hotelguestcapacity"));
+				int available_capacity = Integer.parseInt(request.getParameter("hotelslots"));
+				String category = request.getParameter("hoteladdress");
+				String features = request.getParameter("hoteladdress");
+				double price = Double.parseDouble(request.getParameter("hotelslots"));
 
 		out.println("<html><boby>");
 		HotelService hotelService = new HotelService();
@@ -121,11 +119,11 @@ public class AddHotel extends HttpServlet {
  		int ownerId = (int) session.getAttribute("hotelOwnerId");
 		System.out.println("owner id in add hotel page = " + ownerId);
 		String hotelOwnerName = (String) session.getAttribute("hotelOwnerName");
-		System.out.println("owner name in add hotel page = " + hotelOwnerName);
+
 		
 		//ownerId = 3;
-		if (hotelService.addHotelAndImages("HotelK", "cwcew", "3454324", "fcervfre", "fewfref", 1000, 100, ownerId,
-				"budget", "feature1,feature2", 2000.00, filePath)) {
+		if (hotelService.addHotelAndImages(hotelName, hotelCity, phone_number, address, status, max_capacity, available_capacity, ownerId,
+				category, features, price, filePath)) {
 			out.println("<font>hotel added success!!<font>");	
 		} else {
 			out.println("<font color='red'>Error in adding the hotel<font>");
