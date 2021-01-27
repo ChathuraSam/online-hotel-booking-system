@@ -97,5 +97,28 @@ public class ReservationDAO {
 	        }
 		return false; 
 	}
+	
+	public List<Reservation> getReservationByOwnerId(int ownerId){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Reservation> list = new ArrayList<>();
+		try{
+			con = DBConnection.getConnection();
+			String query = "select reservation.check_in,reservation.check_out,reservation.no_of_persons,reservation.customer_id,reservation.hotel_id FROM reservation,hotel WHERE reservation.hotel_id=hotel.id AND hotel.hotel_owner_id=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, ownerId);
+			rs = pstmt.executeQuery(); 
+			while(rs.next()){
+				Reservation r = new Reservation(rs.getString(1),rs.getString(2),rs.getInt(3),new Customer(rs.getInt(4)),new Hotel(rs.getInt(5)));
+				list.add(r);					
+			}
+		}catch(ClassNotFoundException e1){
+		            e1.printStackTrace();
+		}catch(SQLException e2){
+		            e2.printStackTrace();
+		}		
+		return list;		
+	}
 
 }

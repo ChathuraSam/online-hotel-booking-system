@@ -21,4 +21,9 @@ public class RegisterCustomerService {
 		c = new CustomerDAO();
 		return c.findNameByUsernamePassword(username, password);
 	}
+    
+    public Customer getCustomerById(int id) {
+		c = new CustomerDAO();
+		return c.findCustomerById(id);
+	}   
 }

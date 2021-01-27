@@ -16,7 +16,9 @@ public class Hotel {
 	public Hotel() {
 
 	}
-	
+	public Hotel(String name) {
+		this.name = name;
+	}	
 	//this constructor is for populating the home page. Don't delete
 	public Hotel(String name, String city, String phone, String address) {
 		this.name = name;
@@ -24,8 +26,6 @@ public class Hotel {
 		this.phoneNumber = phone;
 		this.address = address;
 	}
-	
-	
 	public Hotel(String name, String city, String phoneNumber, String address, String status, int maximum_city,
 			int available_city, HotelOwner hotelOwner, String category, String features,
 			double price) {

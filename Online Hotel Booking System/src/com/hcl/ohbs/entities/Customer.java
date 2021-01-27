@@ -70,8 +70,10 @@ public class Customer {
 		this.username = username;
 		this.password = password;
 	}
-	
-	
+	public Customer(String firstName, String phoneNumber) {
+		this.firstName = firstName;
+		this.phoneNumber = phoneNumber;
+	}	
 	public Customer(int id, String firstName, String lastName, String phoneNumber, String address, String email,
 			String username, String password) {
 		super();
