@@ -40,6 +40,6 @@ public class DBConnection {
 		//Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","br3akDown"); // shanuka
 		//Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","br3akDown"); // thanusha
 		System.out.println("Connected");
-		return con;
+		return null;
     }
 }
