@@ -90,9 +90,8 @@
 				<div class="panel panel-danger">
 					<div class="panel-heading">ADD HOTEL DETAILS</div>
 					<div class="panel-body">
-						<form role="form" action="AddHotel" method="post"
-							enctype="multipart/form-data">
-
+						<!-- <form action="AddHotel" method="post" enctype="multipart/form-data"> -->	
+					<form action="AddHotel" method="post">
 							<div class="form-group">
 								<label>Enter Hotel Name</label> <input name="hotelname"
 									class="form-control" type="text" required />
@@ -144,6 +143,8 @@
 									class="form-control" type="text" required />
 								<p class="help-block"></p>
 							</div>
+							
+							<!-- 
 							<div class="row">
 								<div class="col-sm-4">
 									<div class="custom-file">
@@ -152,14 +153,8 @@
 											class="custom-file-label" for="customFile">Add image</label>
 									</div>
 								</div>
-
-								<div class="col-sm-4">
-									<div class="custom-file">
-										<input multiple name="hotelimg2" type="file"
-											class="custom-file-input" id="customFile"> <label
-											class="custom-file-label" for="customFile">Add image</label>
-									</div>
-								</div>
+ 							-->
+								
 							</div>
 
 							<div class="form-group">
