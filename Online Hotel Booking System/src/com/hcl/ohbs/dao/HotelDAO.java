@@ -218,10 +218,11 @@ public class HotelDAO {
                 if(rs!=null)
                     rs.close();
             }catch(SQLException e) {
-            
+            	e.printStackTrace();
             }
-       return list;
+    
     }
+		return list;
 }
 
 	public List<Hotel> getAllHotels() {
