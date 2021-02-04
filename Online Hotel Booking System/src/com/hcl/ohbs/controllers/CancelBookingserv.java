@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.hcl.ohbs.dao.ReservationDAO;
 
@@ -23,7 +24,9 @@ public class CancelBookingserv extends HttpServlet {
 		ReservationDAO reserv =new ReservationDAO();
 		
 		out.println("<html><body>");
-		if(reserv.deleteReservation(1)) {
+		HttpSession session = request.getSession();
+		int custId = (int) session.getAttribute("customerId");
+		if(reserv.deleteReservation(custId)) {
 			response.sendRedirect("Customer-Home.jsp");
 		}
 		else {

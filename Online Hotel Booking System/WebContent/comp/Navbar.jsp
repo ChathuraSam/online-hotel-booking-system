@@ -12,7 +12,7 @@
         <a class="nav-link" href="#">About Us <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="Customer-hotelBooking.jsp">My Bookings</a>
+        <a class="nav-link" href="ViewCustomerReservationServ">My Bookings</a>
       </li>
        <li class="nav-item">
         <a class="nav-link" href="SearchHotel?hotelName=&city=">Find Hotels</a>
@@ -35,6 +35,7 @@
    
   </div>
   <div class="col-sm-4 right-div">
-                <a href="#" name="login" class="btn btn-info pull-right">LOG IN</a>
+                <a href="./Customer-Login.jsp" name="login" class="btn btn-info pull-right">Login As Customer</a>
+                <a href="./Owner-Login.jsp" name="login" class="btn btn-info pull-right">Login As Hotel Owner</a>
             </div>
 </nav>

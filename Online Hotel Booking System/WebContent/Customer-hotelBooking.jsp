@@ -34,7 +34,7 @@
     
     <section class="tm-booking">
     
-    <form>
+    <form method='GET' action='MakeReservation'>
         <div class="tm-form1">
      
     
