@@ -22,12 +22,15 @@ public class MakeReservation extends HttpServlet {
 
 		PrintWriter out = response.getWriter();
 		
-		String checkin = "05-02-2021";
-		String checkout="10-02-2021";
+		//String checkin = "05-02-2021";
+		//String checkout="10-02-2021";
+		String checkin = request.getParameter("checkin");
+		String checkout = request.getParameter("checkout");
 
-		int noOfPersons = 300;
+		//int noOfPersons = 300;
+		int noOfPersons = Integer.parseInt(request.getParameter("number1"));
 		int customer = 1;
-		int hotel = 1;
+		int hotel = 2;
 		
 		out.println("<html><body>");
 		BookingService book = new BookingService();

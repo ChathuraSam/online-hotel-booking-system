@@ -48,7 +48,7 @@ public class ViewCustomerReservationServ extends HttpServlet {
 		out.println("<tr><th>Check In</th><th>Check Out</th><th>No of Persons</th><th>Reserved By</th><th>Hotel Name</th><th>Total Price</th></tr>");
 		for(Reservation r:list) {
 			String hname = hotel.getNameById((r.getHotel().getId()));
-			out.println("<tr><td>"+r.getCheckIn()+"</td><td>"+r.getCheckOut()+"</td><td>"+r.getNoOfPersons()+"</td><td>"+fname+"</td><td>"+hname+"</td><td>"+price+"</td><td><input type='submit' id='delete' value='Cancel Order'></td></tr>");
+			out.println("<tr><td>"+r.getCheckIn()+"</td><td>"+r.getCheckOut()+"</td><td>"+r.getNoOfPersons()+"</td><td>"+fname+"</td><td>"+hname+"</td><td>"+price+"</td><td><a href='#'>Cancel Order</a></td></tr>");
 		}
 		out.println("</form>");
 		out.println("</table>");
