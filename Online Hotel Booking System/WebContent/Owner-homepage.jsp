@@ -49,7 +49,8 @@ $(document).ready(function(){
             </div>
             <div class="row right-div">
             <div class="col-sm-4">
-			<label class="right-div">Hi..Name</label>
+			<% String ownerName = (String) session.getAttribute("hotelOwnerName"); %>        
+			<label class="right-div">Hi.. <%=ownerName%></label>
 			</div>
 			<div class="col-sm-4">
             

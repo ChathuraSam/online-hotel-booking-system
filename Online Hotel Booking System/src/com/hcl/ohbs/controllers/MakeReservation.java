@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.hcl.ohbs.services.BookingService;
 
@@ -21,7 +22,8 @@ public class MakeReservation extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		PrintWriter out = response.getWriter();
-		
+		HttpSession session = request.getSession();
+		int custId = (int) session.getAttribute("customerId");
 		//String checkin = "05-02-2021";
 		//String checkout="10-02-2021";
 		String checkin = request.getParameter("checkin");
@@ -29,8 +31,8 @@ public class MakeReservation extends HttpServlet {
 
 		//int noOfPersons = 300;
 		int noOfPersons = Integer.parseInt(request.getParameter("number1"));
-		int customer = 1;
-		int hotel = 2;
+		//int customer = 1;
+		int hotel = 1;
 		
 		out.println("<html><body>");
 		BookingService book = new BookingService();
@@ -38,7 +40,7 @@ public class MakeReservation extends HttpServlet {
 			out.println("<font>Not Avilable!!<font>");
 		}
 		else {
-			if(book.booking(checkin,checkout,noOfPersons,customer,hotel)) {
+			if(book.booking(checkin,checkout,noOfPersons,custId,hotel)) {
 				
 				out.println("<font>Reservation added success!!<font>");
 			}
