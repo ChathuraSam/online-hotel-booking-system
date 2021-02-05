@@ -49,7 +49,8 @@ $(document).ready(function(){
             </div>
             <div class="row right-div">
             <div class="col-sm-4">
-			<label class="right-div">Hi..Name</label>
+			<% String ownerName = (String) request.getAttribute("OwnerName"); %>       
+            <label class="right-div">Hi.. <%=ownerName%></label>
 			</div>
 			<div class="col-sm-4">
             
@@ -83,6 +84,8 @@ $(document).ready(function(){
                                 </ul>
                             </li> -->
                             <li><a href="Owner-addHotel.jsp">ADD HOTEL</a></li>
+                            <li><a href="Owner-addRoom.jsp" class="">ADD
+									ROOM</a></li>
                              <li><a href="table.html">HOTELS REPORT</a></li>
                             
 
