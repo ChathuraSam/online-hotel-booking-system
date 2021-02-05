@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.hcl.ohbs.dao.ReservationDAO;
 
@@ -22,11 +23,16 @@ public class CancelBookingserv extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		ReservationDAO reserv =new ReservationDAO();
 		
+		HttpSession session = request.getSession();
+		int custId = (int) session.getAttribute("customerId");
+		
 		out.println("<html><body>");
-		if(reserv.deleteReservation(1)) {
+		if(reserv.deleteReservation(custId)) {
+			System.out.println("delete order");
 			response.sendRedirect("Customer-Home.jsp");
 		}
 		else {
+			System.out.println("error page");
 			out.println("<font color='red'>Internal Server Error!!!</font>");
 		}
 		out.println("</body></html>");

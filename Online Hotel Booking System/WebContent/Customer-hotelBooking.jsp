@@ -23,7 +23,9 @@
 <body>
 
 	<%@include file="./comp/Navbar.jsp" %>
-
+<%int id = Integer.parseInt(request.getParameter("id"));
+System.out.println(id);
+%>
 
 
 <section class="tm-main">
@@ -45,7 +47,8 @@
             
             
     
-    <div class="tm-num1" id="handleCounter1">      
+    <div class="tm-num1" id="handleCounter1">    
+      	<input type="text" name="hotelName" value="<%out.println(id); %>" >
         <label for="number2">Number of Guests</label><br/>
         <button type="button" class="counter-minus btn btn-primary">-</button>
         <input type="text" name="number1" id="number1" value="1">

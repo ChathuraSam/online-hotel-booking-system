@@ -53,8 +53,9 @@
 					<div class="card-body">
 						<h5 class="card-title">${hotel.getName()}</h5>
 						<p class="card-text">${hotel.getCity()}</p>
+						<p class="card-text">${hotel.getPrice()}</p>
 						<!--  <a href="Book/${hotel.getId()}" class="btn btn-primary">Book Online</a> -->
-						<a href="./Customer-hotelBooking.jsp" class="btn btn-primary">Book Online</a>
+						<a href="./Customer-hotelBooking.jsp?id=${hotel.getId()}" class="btn btn-primary">Book Online</a>
 					</div>
 				</div>
 

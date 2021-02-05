@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.hcl.ohbs.dao.CustomerDAO;
 import com.hcl.ohbs.dao.HotelDAO;
@@ -27,19 +28,21 @@ public class ViewCustomerReservationServ extends HttpServlet {
 		List<Reservation> list = new ArrayList<>();
 		
 		ReservationDAO reservation = new ReservationDAO();
+		HttpSession session = request.getSession();
+		int custId = (int) session.getAttribute("customerId");
 		
 		//viewReservationById method should contains the logged in customer id
-		list = reservation.viewReservationById(1);
+		list = reservation.viewReservationById(custId);
 		
 		//get the customer name by logged in customer id
 		CustomerDAO cust = new CustomerDAO();
-		String fname = cust.getNameById(1);
+		String fname = cust.getNameById(custId);
 		
 		
 		//get the hotel name by hotel id
 		HotelDAO hotel = new HotelDAO();
 		//String hname = hotel.getNameById(1);
-		double price = hotel.getPriceById(1);
+		double price = hotel.getPriceById(custId);
 		
 		out.println("<html><body>");
 		out.println("<h1>My Reservation Details</h1>");
@@ -48,7 +51,7 @@ public class ViewCustomerReservationServ extends HttpServlet {
 		out.println("<tr><th>Check In</th><th>Check Out</th><th>No of Persons</th><th>Reserved By</th><th>Hotel Name</th><th>Total Price</th></tr>");
 		for(Reservation r:list) {
 			String hname = hotel.getNameById((r.getHotel().getId()));
-			out.println("<tr><td>"+r.getCheckIn()+"</td><td>"+r.getCheckOut()+"</td><td>"+r.getNoOfPersons()+"</td><td>"+fname+"</td><td>"+hname+"</td><td>"+price+"</td><td><a href='#'>Cancel Order</a></td></tr>");
+			out.println("<tr><td>"+r.getCheckIn()+"</td><td>"+r.getCheckOut()+"</td><td>"+r.getNoOfPersons()+"</td><td>"+fname+"</td><td>"+hname+"</td><td>"+price+"</td><td><a href='CancelBookingserv'>Cancel Order</a></td></tr>");
 		}
 		out.println("</form>");
 		out.println("</table>");

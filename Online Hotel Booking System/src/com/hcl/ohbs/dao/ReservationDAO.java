@@ -72,14 +72,17 @@ public class ReservationDAO {
 	}
 	
 	public boolean deleteReservation(int id) {
+		System.out.println("start delete reservation......");
 		Connection con = null;
-		PreparedStatement pstmt = null;      
+		PreparedStatement pstmt = null;    
+		int n=0;
 		try{
 			con = DBConnection.getConnection();
 			String query = "DELETE FROM reservation WHERE id=?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, id);
-			int n = pstmt.executeUpdate();
+			n = pstmt.executeUpdate();
+			System.out.println("delete 1"+n);
 			return n>0?true:false;
 		}catch(ClassNotFoundException e1){
 	            e1.printStackTrace();
@@ -95,6 +98,7 @@ public class ReservationDAO {
 	              e3.printStackTrace();  
 	            }
 	        }
+		System.out.println("delete "+n);
 		return false; 
 	}
 	
