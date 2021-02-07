@@ -15,7 +15,7 @@ pageEncoding="ISO-8859-1"%>
 </head>
 <body>
 
-	<%@include file="./comp/Navbar.jsp" %>
+	<%@include file="./comp/Navbar-Customer.jsp" %>
 
 	<div class="container center_div col-md-6">
 

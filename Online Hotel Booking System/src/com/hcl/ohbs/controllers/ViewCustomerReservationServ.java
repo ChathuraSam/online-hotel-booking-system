@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.*;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -55,6 +56,12 @@ public class ViewCustomerReservationServ extends HttpServlet {
 		out.println("</form>");
 		out.println("</table>");
 		out.println("</body></html>");
+		
+		
+		
+		RequestDispatcher disp = request.getRequestDispatcher("MyBookings.jsp");
+		disp.forward(request, response);
+		
 	}
 
 

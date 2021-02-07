@@ -1,4 +1,6 @@
 package com.hcl.ohbs.services;
+import java.util.List;
+
 import com.hcl.ohbs.dao.RoomDAO;
 import com.hcl.ohbs.entities.Hotel;
 import com.hcl.ohbs.entities.Room;
@@ -30,5 +32,9 @@ public class RoomService {
 			System.out.println("End addRoomAndImages: ");
 			return false;
 		}
+	}
+	
+	public List<Room> getAllRoomsByHotelId(int hotelId){
+		return roomDao.getAllRoomsByHotelId(hotelId);
 	}
 }
