@@ -114,7 +114,8 @@ $(document).ready(function(){
                 </div>
             </div>
             <% // retrieve your list from the request, with casting 
-			List<Hotel> list = (ArrayList<Hotel>) request.getAttribute("hotels");
+			//List<Hotel> list = (ArrayList<Hotel>) request.getAttribute("hotels");
+            List<Hotel> list = (ArrayList<Hotel>) session.getAttribute("hotels");
             if(list!=null){ %>
             <table class="table table-striped table-hover">
                 <thead>

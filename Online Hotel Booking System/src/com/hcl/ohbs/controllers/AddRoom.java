@@ -1,12 +1,10 @@
 package com.hcl.ohbs.controllers;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,34 +15,26 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import com.hcl.ohbs.dao.HotelDAO;
+import com.hcl.ohbs.dao.RoomDAO;
 import com.hcl.ohbs.entities.Hotel;
-import com.hcl.ohbs.entities.HotelOwner;
-import com.hcl.ohbs.services.HotelOwnerService;
 import com.hcl.ohbs.services.HotelService;
+import com.hcl.ohbs.services.RoomService;
+@WebServlet("/AddRoom")
+public class AddRoom extends HttpServlet {
+		// location to store file uploaded
+		private static final String UPLOAD_DIRECTORY = "upload";
 
-
-@WebServlet("/AddHotel")
-public class AddHotel extends HttpServlet {
-
-	// location to store file uploaded
-	private static final String UPLOAD_DIRECTORY = "upload";
-
-	// upload settings
-	private static final int MEMORY_THRESHOLD = 1024 * 1024 * 3; // 3MB
-	private static final int MAX_FILE_SIZE = 1024 * 1024 * 40; // 40MB
-	private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 50; // 50MB
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doPost(request, response);
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+		// upload settings
+		private static final int MEMORY_THRESHOLD = 1024 * 1024 * 3; // 3MB
+		private static final int MAX_FILE_SIZE = 1024 * 1024 * 40; // 40MB
+		private static final int MAX_REQUEST_SIZE = 1024 * 1024 * 50; // 50MB
 		
-		
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Begin /AddRoom: ");
 		PrintWriter out = response.getWriter();
+		HotelService hotelService = new HotelService();
+		RoomService roomService = new RoomService();
 		String filePath= null;
 		
 		// checks if the request actually contains upload file
@@ -109,50 +99,46 @@ public class AddHotel extends HttpServlet {
 					request.setAttribute("message", "There was an error: " + ex.getMessage());
 				}
 
-				String hotelName = request.getParameter("hotelname");
-				String hotelCity = request.getParameter("hotelcity");
-				String phone_number = request.getParameter("hotelcontact");
-				String address = request.getParameter("hoteladdress");
-				String status = request.getParameter("hotelstatus");
-				
-				System.out.println(hotelCity + " "+ hotelName);
-				
-				if(hotelName==null) {
-					System.out.println("hotelName is null");
-				}
-				
-				int max_capacity = Integer.parseInt(request.getParameter("hotelguestcapacity"));
-				int available_capacity = Integer.parseInt(request.getParameter("hotelslots"));
-				String category = request.getParameter("hoteladdress");
-				String features = request.getParameter("hoteladdress");
-				double price = Double.parseDouble(request.getParameter("hotelslots"));
-
+		//String hotelName = request.getParameter("hotelName");
+		//String roomName = request.getParameter("roomName");
+		//Double price = Double.parseDouble(request.getParameter("price"));
+		//String features = request.getParameter("features");
+		//int noOfPersons = Integer.parseInt(request.getParameter("hotelPrice"));
+		String hotelName = "HotelA";
+		String roomName = "Executive Room";
+		Double price = 8000.00;
+		String features = "Complimentary Breakfast is available,Complimentary Lunch Or Dinner is available,AC,King Bed sized bed,625 sq.ft.";
+		int noOfPersons = 4;
 		out.println("<html><boby>");
-		HotelService hotelService = new HotelService();
-		//String[] images = { filePath };
-		
-		// recieve the id from coming from the session and assign into id variable
-		HttpSession session = request.getSession();
- 		int ownerId = (int) session.getAttribute("hotelOwnerId");
-		//int ownerId = 1;
-		System.out.println("owner id in add hotel page = " + ownerId);
-		String hotelOwnerName = (String) session.getAttribute("hotelOwnerName");
-
-		
-		//ownerId = 3;
-		if (hotelService.addHotelAndImages(hotelName, hotelCity, phone_number, address, status, max_capacity, available_capacity, ownerId,
-				category, features, price, filePath)) {
-			out.println("<font>hotel added success!!<font>");	
-		} else {
-			out.println("<font color='red'>Error in adding the hotel<font>");
-		}		
-		List<Hotel> hotelList = hotelService.getHotelsByOwnerId(ownerId);
-		for(Hotel h:hotelList) {
-			System.out.println("hotel name = " + h.getName());
+		//String[] images = { filePath };			
+		HttpSession session = request.getSession();// recieve the id from coming from the session and assign into id variable
+ 		//int ownerId = (int) session.getAttribute("hotelOwnerId");
+		//String hotelOwnerName = (String) session.getAttribute("hotelOwnerName");
+		Hotel hotel = hotelService.getHotelDetailsByName(hotelName);
+		if(hotel==null) {
+			System.out.println("no hotels found!!!");			
+		}else {
+			if (roomService.addRoomAndImages(roomName, price, features, noOfPersons, 1, hotel, filePath)) {
+				out.println("<font>Room added success!!<font>");	
+			} else {
+				out.println("<font color='red'>Error in adding the room<font>");
+			}		
+			/*List<Hotel> hotelList = hotelService.getHotelsByOwnerId(ownerId);
+			for(Hotel h:hotelList) {
+				System.out.println("hotel name = " + h.getName());
+			}*/
 		}
-		request.setAttribute("hotels", hotelList);
+		
+		
+		//request.setAttribute("hotels", hotelList);
 		request.getRequestDispatcher("Owner-homepage.jsp").include(request, response);
 		out.println("</boby><html>");
+		System.out.println("End /AddRoom: ");
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

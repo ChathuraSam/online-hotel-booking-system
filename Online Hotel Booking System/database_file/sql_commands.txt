@@ -35,7 +35,7 @@
    		last_name VARCHAR2(15),
 		nic VARCHAR2(10),
   		phone_number VARCHAR2(10),
-    		email VARCHAR2(20),
+    	email VARCHAR2(20),
    		username VARCHAR2(15),
   		password VARCHAR2(15)
   	);
@@ -88,7 +88,7 @@
    		name VARCHAR2(15),
 		city VARCHAR2(15),
 		phone_number VARCHAR2(10),
-    		address VARCHAR2(30),
+    	address VARCHAR2(30),
    		status VARCHAR2(15),
 		maximum_capacity NUMBER(5),
 		available_capacity NUMBER(5),
@@ -220,6 +220,35 @@ Dropping database tables
 alter table reservation modify check_out varchar(15);
 alter table reservation modify check_in varchar(15);
 
+===============================================================================================
+02/05/2021 - Add Rooms table
 
+1. create room table ->
 
+	CREATE TABLE room(
+    		id NUMBER(5) PRIMARY KEY,
+    		name VARCHAR2(30),
+    		price number(8,2),
+    		features varchar2(200),
+    		no_of_persons NUMBER(2),
+    		isAvailable NUMBER(2) check (isAvailable in (1, 0)),
+			hotel_id NUMBER(5) REFERENCES hotel(id)
+   	);
 
+2. create sequence to auto increment the id column ->
+
+	CREATE SEQUENCE room_sequence START WITH 1;
+
+3. create trigger to auto increment the id column using sequence ->
+
+	CREATE or replace trigger room_trigger
+   	before insert on room
+    	for each row
+    	begin
+    		select room_sequence.nextval
+    		into:new.id
+    		from dual;
+    	end;
+    	/
+
+4. alter table hotel_owner modify nic VARCHAR2(12);

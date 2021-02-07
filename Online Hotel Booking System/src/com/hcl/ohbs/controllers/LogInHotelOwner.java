@@ -31,7 +31,8 @@ public class LogInHotelOwner extends HttpServlet {
 			session.setAttribute("hotelOwnerName", sessionName);
 			HotelService hotelService = new HotelService();			
 			List<Hotel> hotelList = hotelService.getHotelsByOwnerId(sessionId);
-			request.setAttribute("hotels", hotelList);
+			session.setAttribute("hotels", hotelList);
+			//request.setAttribute("hotels", hotelList);
 			out.println("<font>hotel owner login success!!<font>");
 			System.out.println("end Log in hotel owner servlet");
 			request.getRequestDispatcher("Owner-homepage.jsp").include(request, response);
