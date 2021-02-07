@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
  <%@ page import="com.hcl.ohbs.entities.Hotel,com.hcl.ohbs.entities.Room, java.util.*"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@page import="java.util.*"%>
+<%@page import="com.hcl.ohbs.dao.*"%>
+<%@page import="com.hcl.ohbs.entities.*"%>
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -175,9 +180,10 @@
 </head>
 <body>
 
-<%@include file="./comp/Navbar-Customer.jsp"%>
+<%@include file="./comp/Navbar-Customer.jsp" %>
 
 <!-- ------------- -->
+<%-- 
 <% Hotel hotel = (Hotel) request.getAttribute("hotelDetails");
 	List<Room> roomList = (List<Room>) request.getAttribute("roomList");
 %>
@@ -193,14 +199,19 @@
 		<li><%=feature%></li>
 		<% }%>
 	</ul>
-</div>
+</div> --%>
+
 
 
 
 <!-- All the rooms in this hotel will be display in below. A dummy room component is added -->
-<%if(roomList==null || roomList.isEmpty()){%>
+<%-- <%if(roomList==null || roomList.isEmpty()){%>
 <font color="red">This hotel has no added rooms yet</font>
-<%}else{%>
+<%}else{}%> --%>
+
+-------------------------
+Hotel Details
+-------------------------
 <div class="container bootdey">
 <div class="col-md-12">
 <section class="panel">
@@ -214,29 +225,54 @@
           <div class="col-md-6">
               <h4 class="pro-d-title">
                   <a href="#" class="">
-                      Room Name
+                      Hotel Name
                   </a>
               </h4>
               <p>
-                  Description Goes Here
+                  City 
               </p>
-              <div class="product_meta">
-                  <span class="posted_in"> <strong>Categories:</strong> <a rel="tag" href="#">Jackets</a>, <a rel="tag" href="#">Men</a>, <a rel="tag" href="#">Shirts</a>, <a rel="tag" href="#">T-shirt</a>.</span>
-                  <span class="tagged_as"><strong>Tags:</strong> <a rel="tag" href="#">mens</a>, <a rel="tag" href="#">womens</a>.</span>
-              </div>
-              <div class="m-bot15"> <strong>Price : </strong> <span class="amount-old">$544</span>  <span class="pro-price"> $300.00</span></div>
-              <div class="form-group">
-                  <label>Quantity</label>
-                  <input type="quantiy" placeholder="1" class="form-control quantity">
-              </div>
-              <p>
-                  <button class="btn btn-round btn-danger" type="button"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
-              </p>
+              
+              
           </div>
       </div>
   </section>
   </div>
   </div>
+
+
+
+
+<div class='container center_div m-5 p-2'>
+		<div class='row'>
+		
+			<c:forEach items="${roomList}" var="room">
+
+				<div class="card m-1" style="width: 18rem;">
+					<img class="card-img-top" src="./img/hotel1.jpg"
+						alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title">${room.getName()}</h5>
+						<p class="card-text">Price : ${room.getPrice()}</p>
+						<p class="card-text">Features : ${room.getFeatures()}</p>
+						<p class="card-text">No of Persons : ${room.getNoOfPersons()}</p>
+						<p class="card-text">Availability ${room.getIsAvailable()}</p>
+						
+						<!--  <a href="Book/${hotel.getId()}" class="btn btn-primary">Book Online</a> -->
+						<a href="./ViewRoomDetails?hotelid=${room.getPrice()}" class="btn btn-primary">Book Online</a>
+					</div>
+				</div>
+
+
+			</c:forEach>
+		</div>
+	</div>
+
+
+
+
+
+
+
 
 <!-- ----------------------- -->
 

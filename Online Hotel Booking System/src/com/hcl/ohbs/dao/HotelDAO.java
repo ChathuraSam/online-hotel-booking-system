@@ -290,7 +290,7 @@ public class HotelDAO {
             rs = st.executeQuery(query);
             
            while(rs.next()) {
-        	   Hotel h = new Hotel(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
+        	   Hotel h = new Hotel(rs.getInt(1),rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
         	   hotels.add(h);
         	   System.out.println(h);
            }
