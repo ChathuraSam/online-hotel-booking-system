@@ -16,7 +16,7 @@
 </head>
 <body>
 
-	<%@include file="./comp/Navbar.jsp"%>
+	<%@include file="./comp/Navbar-Customer.jsp"%>
 
 	<br>
 	<form class="form-inline center_div" action="SearchHotel" method="get">

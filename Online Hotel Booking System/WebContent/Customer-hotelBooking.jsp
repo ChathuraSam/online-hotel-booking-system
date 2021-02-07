@@ -22,7 +22,7 @@
 </head>
 <body>
 
-	<%@include file="./comp/Navbar.jsp" %>
+	<%@include file="./comp/Navbar-Customer.jsp" %>
 
 
 

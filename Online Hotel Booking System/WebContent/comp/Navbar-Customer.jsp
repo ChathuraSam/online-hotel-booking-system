@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
 
   
   <a class="navbar-brand" href="index.jsp"><img src="images/largelogo.png" height="150px" width="130px" alt="logo"></a>
@@ -27,10 +27,7 @@
         </div>
       </li>
       
-      </li>
-       <li class="nav-item">
-        <a class="nav-link" href="./Owner-addHotel.jsp">Add a Hotel</a>
-      </li>
+    
     </ul>
    
   </div>

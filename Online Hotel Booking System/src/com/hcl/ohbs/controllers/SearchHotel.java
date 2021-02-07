@@ -65,13 +65,10 @@ public class SearchHotel extends HttpServlet {
 			}
 			
 			request.getRequestDispatcher("Customer-Home.jsp").include(request, response);
-			
 		}
-			
-		
-			
 	}
 
+	
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
