@@ -26,7 +26,7 @@ pageEncoding="ISO-8859-1"%>
 <body>
 
 
-	<%@include file="./comp/newNav.jsp" %>
+	<%@include file="./comp/Navbar-Customer.jsp" %>
 
 
 	

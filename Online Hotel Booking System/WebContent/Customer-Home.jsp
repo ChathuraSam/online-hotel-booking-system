@@ -12,11 +12,18 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+	body{
+		padding-top:100px;
+	}
+	
+	</style>
+
 
 </head>
 <body>
 
-	<%@include file="./comp/Navbar.jsp"%>
+	<%@include file="./comp/Navbar-Customer.jsp"%>
 
 	<br>
 	<form class="form-inline center_div" action="SearchHotel" method="get">

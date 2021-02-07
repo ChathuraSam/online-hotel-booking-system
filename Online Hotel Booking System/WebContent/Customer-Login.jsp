@@ -12,14 +12,24 @@ pageEncoding="ISO-8859-1"%>
 	<title>Online Hotel Booking System</title>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+	body{
+		padding-top:100px;
+	}
+	
+	</style>
+
 </head>
 <body>
 
 	<%@include file="./comp/Navbar-Customer.jsp" %>
 
+
 	<div class="container center_div col-md-6">
 
-		<form action="CustomerLoginServ">
+<h2>Customer Login</h2>
+			<hr>
+		<form action="CustomerLoginServ" method="post">
 			<div class="form-group">
 				<label for="exampleInputEmail1">Username</label>
 				<input name="username" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter username">

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light fixed-top"
-	style="background-color: #ecf0f1">
+	style="background-color: #ecf0f1;">
 	<a class="navbar-brand" href="./index.jsp"> <img
-		src="./images/largelogo.png" width="70px"> OHBS
+		src="./images/largelogo.png" width="70px"> OHBS - Admin Panel
 	</a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse"
 		data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
@@ -31,7 +31,18 @@
 
 	<div class="inline my-2 my-lg-0">
 		<img src="img/user-regular.svg" width="10%"> Guest
-		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Signup as</button>
+		
+		<ul class="navbar-nav">
+		<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+				role="button" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false"> Signin as </a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" href="./Owner-Login.jsp">Hotel Owner</a>
+					<a class="dropdown-item" href="./Customer-Login.jsp">Customer</a>
+				</div></li>
+		</ul>
+		
 	</div>
 
 </nav>
