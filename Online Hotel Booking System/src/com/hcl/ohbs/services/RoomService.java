@@ -37,4 +37,20 @@ public class RoomService {
 	public List<Room> getAllRoomsByHotelId(int hotelId){
 		return roomDao.getAllRoomsByHotelId(hotelId);
 	}
+	
+	public boolean updateAvailability(int roomId){
+		return roomDao.updateIsAvailablity(roomId);
+	}
+	
+	public int getHotelIdByRoomID(int roomId){
+		return roomDao.getHotelIdByRoomId(roomId);
+	}
+	
+	public String getNameById(int roomId){
+		return roomDao.getNameById(roomId);
+	}
+	
+	public Room getRoomById(int roomId){
+		return roomDao.getRoomById(roomId);
+	}
 }

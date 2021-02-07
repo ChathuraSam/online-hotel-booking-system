@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.hcl.ohbs.services.BookingService;
+import com.hcl.ohbs.entities.Hotel;
+import com.hcl.ohbs.services.ReservationService;
+import com.hcl.ohbs.services.RoomService;
 
 @WebServlet("/MakeReservation")
 public class MakeReservation extends HttpServlet {
@@ -26,6 +28,7 @@ public class MakeReservation extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		int custId = (int) session.getAttribute("customerId");
+		int hotel = (int) session.getAttribute("hotelId");				
 		//String checkin = "05-02-2021";
 		//String checkout="10-02-2021";
 		String checkin = request.getParameter("checkin");
@@ -49,20 +52,28 @@ public class MakeReservation extends HttpServlet {
 
 		//int noOfPersons = 300;
 		int noOfPersons = Integer.parseInt(request.getParameter("number1"));
+		//int roomId = Integer.parseInt(request.getParameter("roomId"));
 		//int customer = 1;
-		int hotel = 1;
+		//int hotel = 1;
+		int roomId = 1;
 
 		out.println("<html><body>");
-		BookingService book = new BookingService();
+		ReservationService book = new ReservationService();
+		RoomService roomService = new RoomService();
 		if(check_in_date.compareTo(current_date)>0 || check_in_date.compareTo(current_date)==0) {
 			if(check_in_date.compareTo(check_out_date)<0) {
-				if(!book.checkAvailability(noOfPersons, hotel)) {
+				if(!book.checkAvailability(noOfPersons, roomId)) {
 					out.println("<font>Not Avilable!!<font>");
 				}
 				else {
-					if(book.booking(checkin,checkout,noOfPersons,custId,hotel)) {
-						
-						out.println("<font>Reservation added success!!<font>");
+					if(book.booking(checkin,checkout,noOfPersons,custId,roomId)) {
+						if(roomService.updateAvailability(roomId)) {
+							out.println("<font>Reservation added success!!<font>");
+							request.getRequestDispatcher("Customer-Home.jsp.jsp").include(request, response);
+						}else {
+							out.println("<font color='red'>Error in updating room availability<font>");
+							request.getRequestDispatcher("Customer-hotelBooking.jsp").include(request, response);
+						}
 					}
 					else {
 						out.println("<font color='red'>Error in adding the reservation<font>");

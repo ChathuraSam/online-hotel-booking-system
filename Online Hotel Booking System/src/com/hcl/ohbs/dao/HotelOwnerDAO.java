@@ -77,10 +77,11 @@ public class HotelOwnerDAO {
 	}
 	
 	public int findStatusByUsernamePassword(String username, String password){
-		System.out.println("Begin findStatusByUsernamePassword: username=" + username);
+		System.out.println("Begin findStatusByUsernamePassword: username=" + username + " passowrd=" + password);
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		int status = 0;
 		try{
 			con = DBConnection.getConnection();
 			String query = "SELECT status FROM hotel_owner WHERE username=? AND password=?";
@@ -89,9 +90,10 @@ public class HotelOwnerDAO {
 			pstmt.setString(2, password);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
-				System.out.println("End findStatusByUsernamePassword: status = " + rs.getInt(1));
-				return rs.getInt(1);
+				status = rs.getInt(1);
+				System.out.println("status1 = " + status);
 			}
+			System.out.println("status2 = " + status);
 	    }catch(ClassNotFoundException e1){
 	            e1.printStackTrace();
 	    }catch(SQLException e2){
@@ -108,8 +110,8 @@ public class HotelOwnerDAO {
 	                e3.printStackTrace();
 	         }
 	     }
-		System.out.println("End findStatusByUsernamePassword: status=0");
-	    return 0;
+		System.out.println("End findStatusByUsernamePassword: status3=" + status);
+	    return status;
 	}
 	
 	public HotelOwner logInHotelOwner(String username) {

@@ -198,9 +198,7 @@
 
 
 <!-- All the rooms in this hotel will be display in below. A dummy room component is added -->
-<%if(roomList==null || roomList.isEmpty()){%>
 <font color="red">This hotel has no added rooms yet</font>
-<%}else{%>
 <div class="container bootdey">
 <div class="col-md-12">
 <section class="panel">
@@ -237,7 +235,6 @@
   </section>
   </div>
   </div>
-
 <!-- ----------------------- -->
 
 </body>

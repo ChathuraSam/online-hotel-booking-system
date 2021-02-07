@@ -268,3 +268,7 @@ alter table reservation modify check_in varchar(15);
 		images VARCHAR2(200),
 		PRIMARY KEY (room_id,images)
   	);
+  	
+2. alter table reservation drop column hotel_id;
+
+3. alter table reservation add room_id NUMBER(5) REFERENCES room(id);

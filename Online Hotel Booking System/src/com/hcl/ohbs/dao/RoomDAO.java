@@ -104,4 +104,155 @@ public class RoomDAO {
 		System.out.println("Begin findRoomByHotelId: Room = " + room);
 	    return list;
 	}
+	
+	public Room getnoOfPersonsAndAvailablityById(int id) {
+		System.out.println("Begin getnoOfPersonsAndAvailablityById : Room Id=" + id);
+		Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        Room room = null;
+        try{
+            con = DBConnection.getConnection();
+            String query = "SELECT NO_OF_PERSONS,ISAVAILABLE FROM room WHERE id=?";
+            pstmt = con.prepareStatement(query);
+            pstmt.setInt(1, id);
+            rs = pstmt.executeQuery();
+            if(rs.next()){
+            	room = new Room(rs.getInt(1), rs.getInt(2));
+            }
+        }catch(ClassNotFoundException e1){
+            e1.printStackTrace();
+        }catch(SQLException e2){
+            e2.printStackTrace();
+        }finally{
+            try{
+                if(pstmt!=null)
+                    pstmt.close();
+                if(con!=null)
+                    con.close();
+            }catch(SQLException e3){
+                e3.printStackTrace();
+            }
+        }
+        System.out.println("End getnoOfPersonsAndAvailablityById : Room=" + room);
+        return room;
+	}
+	
+	//update isAvailablity into 0, when reservation made
+	public boolean updateIsAvailablity(int roomId){		
+        Connection con = null;
+        PreparedStatement pstmt = null;      
+        try{
+            con = DBConnection.getConnection();
+            String query = "UPDATE room SET ISAVAILABLE=0 WHERE id=?";
+            pstmt = con.prepareStatement(query);
+            pstmt.setInt(1,roomId);
+            int n = pstmt.executeUpdate();
+            return n>0?true:false; 
+        }catch(ClassNotFoundException e1){
+            e1.printStackTrace();
+        }catch(SQLException e2){
+            e2.printStackTrace();
+        }finally{
+            try{
+                if(pstmt!=null)
+                    pstmt.close();
+                if(con!=null)
+                    con.close();
+            }catch(SQLException e3){
+              e3.printStackTrace();  
+            }
+        }
+        return false;       
+	}
+	
+	public int getHotelIdByRoomId(int roomId) {
+		System.out.println("Begin getHotelIdByRoomId : Room id=" + roomId);
+		Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        int id = 0;
+        try{
+            con = DBConnection.getConnection();
+            String query = "SELECT hotel_id FROM room WHERE id=?";
+            pstmt = con.prepareStatement(query);
+            pstmt.setInt(1, roomId);
+            rs = pstmt.executeQuery();
+            if(rs.next()){
+            	id = rs.getInt(1);
+            }
+        }catch(ClassNotFoundException e1){
+            e1.printStackTrace();
+        }catch(SQLException e2){
+            e2.printStackTrace();
+        }finally{
+            try{
+                if(pstmt!=null)
+                    pstmt.close();
+                if(con!=null)
+                    con.close();
+            }catch(SQLException e3){
+                e3.printStackTrace();
+            }
+        }
+        System.out.println("End getHotelIdByRoomId : hotel Id=" + id);
+        return id;
+	}
+	
+	public String getNameById(int roomId) {
+		System.out.println("Begin getNameById : Room id=" + roomId);
+		Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String name = null;
+        try{
+            con = DBConnection.getConnection();
+            String query = "SELECT name FROM room WHERE id=?";
+            pstmt = con.prepareStatement(query);
+            pstmt.setInt(1, roomId);
+            rs = pstmt.executeQuery();
+            if(rs.next()){
+            	name = rs.getString(1);
+            }
+        }catch(ClassNotFoundException e1){
+            e1.printStackTrace();
+        }catch(SQLException e2){
+            e2.printStackTrace();
+        }finally{
+            try{
+                if(pstmt!=null)
+                    pstmt.close();
+                if(con!=null)
+                    con.close();
+            }catch(SQLException e3){
+                e3.printStackTrace();
+            }
+        }
+        System.out.println("End getNameById : Room name=" + name);
+        return name;
+	}
+	
+	public Room getRoomById(int id){
+		System.out.println("Begin getRoomById: room id=" + id);
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Room room = null;
+		try{
+			con = DBConnection.getConnection();
+			String query = "select * from room where id=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				room = new Room(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getString(4), rs.getInt(5), rs.getInt(6), new Hotel(rs.getInt(7)));
+			}
+	    }catch(ClassNotFoundException e1){
+	            e1.printStackTrace();
+	    }catch(SQLException e2){
+	            e2.printStackTrace();
+	    }
+		System.out.println("Begin findRoomByHotelId: Room = " + room);
+	    return room;
+	}
 }
