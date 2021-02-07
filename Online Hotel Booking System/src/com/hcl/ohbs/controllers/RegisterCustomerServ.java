@@ -19,7 +19,7 @@ public class RegisterCustomerServ extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		System.out.println("begin RegisterCustomerServ");
 		String firstName = request.getParameter("firstName");
 		String lastname = request.getParameter("lastname");
 		String phone = request.getParameter("phone");
@@ -27,32 +27,34 @@ public class RegisterCustomerServ extends HttpServlet {
 		String email = request.getParameter("email");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		String confirmPassword = request.getParameter("confirmPassword");
-		
-//		asd
-		
-		PrintWriter out = response.getWriter();
+		String confirmPassword = request.getParameter("confirmPassword");		
+		PrintWriter out = response.getWriter();		
 		out.println("<html><boby>");
-		RegisterCustomerService custService = new RegisterCustomerService();
-		if(custService.registerCustomer(firstName, lastname, phone, address, email, username, password, confirmPassword )) {
-			out.println("<font>Customer registration success!!<font>");
-			HttpSession session = request.getSession();
-			//int sessionId = (int) session.getAttribute("id");
-			int sessionId = custService.getIdByUsernameAndPassword("username", "password");
-			//if(id>0) {
-				//out.println("<font>customer registration success!!<font>");
-			//}else{
-				//out.println("<font color='red'>internal error! try again!<font>");
-			//}
-			//call ownerHome.jsp and pass the id in session
-			session.setAttribute("customerId", sessionId);
-			session.setAttribute("customerName", firstName);
-			request.getRequestDispatcher("Customer-Home.jsp").include(request, response);	
-		}else {
+		if(!phone.matches("^07[0-9]{8}$")){
+			out.println("<center><font color='red'><B>Phone Number is invalid!</B></font>");
+			request.getRequestDispatcher("Customer-Signup.jsp").include(request, response);
+		}else if(!email.matches("^([A-Za-z0-9_\\-\\.])+\\@([A-Za-z0-9_\\-\\.])+\\.([A-Za-z]{2,4})$")){
+			out.println("<center><font color='red'><B>Email is invalid!</B></font>");
+			request.getRequestDispatcher("Customer-Signup.jsp").include(request, response);
+		}else if(!confirmPassword.equals(password)) {
+			out.println("<center><font color='red'><B>Confirm Password & Password should match</B></font>");
+			request.getRequestDispatcher("Customer-Signup.jsp").include(request, response);
+		}else{
+			RegisterCustomerService custService = new RegisterCustomerService();
+			if(custService.registerCustomer(firstName, lastname, phone, address, email, username, password, confirmPassword )) {
+				out.println("<font>Customer registration success!!<font>");
+				HttpSession session = request.getSession();
+				int sessionId = custService.getIdByUsernameAndPassword("username", "password");
+				session.setAttribute("customerId", sessionId); //call Customer-Home.jsp and pass the id in session
+				session.setAttribute("customerName", firstName);
+				request.getRequestDispatcher("Customer-Home.jsp").include(request, response);	
+			}else {
 			out.println("<font color='red'>Error in registering the Customer<font>");
 			request.getRequestDispatcher("Customer-Signup.jsp").include(request, response);
+			}
 		}
 		out.println("</boby><html>");
+		System.out.println("end RegisterCustomerServ");
 	}
 		
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

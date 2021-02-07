@@ -111,7 +111,7 @@
                         <div class="panel-body">
                             <div class="table-responsive">
                             <% // retrieve your list from the request, with casting 
-							List<Reservation> list = (ArrayList<Reservation>) request.getAttribute("bookings");
+							List<Reservation> list = (ArrayList<Reservation>) session.getAttribute("bookings");
             				if(list!=null){ %>
                                 <table class="table">
                                     <thead>

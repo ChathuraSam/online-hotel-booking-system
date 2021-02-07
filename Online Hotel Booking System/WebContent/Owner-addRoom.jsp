@@ -93,21 +93,22 @@
 					<div class="panel-heading">ADD ROOM DETAILS</div>
 					<div class="panel-body">
 						<!-- <form action="AddHotel" method="post" enctype="multipart/form-data"> -->	
-					<form action="AddRoom" method="post">
+					<form action="AddRoom">
 					
-					<div class="form-group">
-								<label>Room Type</label>
-								<select class="form-control" name="roomType" id="rooms" required>
-									<option value="luxurys">Luxury Suite</option>
-									<option value="deluxs">Delux Suite</option>
-									<option value="premiers">Premier Suite</option>
-									<option value="Luxuryr">Luxury Room</option>
-									<option value="deluxs">Delux Room</option>
-									<option value="premierr">Premier Room</option>
-								</select>
-							</div>
 							<div class="form-group">
-								<label>Room Price</label> <input name="roomprice"
+								<label>Hotel Name</label> <input name="hotelName"
+									class="form-control" type="text" required />
+								<p class="help-block"></p>
+							</div>
+					
+							<div class="form-group">
+								<label>Room Name</label> <input name="roomName"
+									class="form-control" type="text" required />
+								<p class="help-block"></p>
+							</div>
+					
+							<div class="form-group">
+								<label>Room Price</label> <input name="roomPrice"
 									class="form-control" type="text" required />
 								<p class="help-block"></p>
 							</div>
@@ -134,9 +135,11 @@
 								<p class="help-block"></p>
 							</div> -->
 							<div class="form-group">
-								<label>Room Status</label> <input name="roomstatus"
-									class="form-control" type="text" required />
-								<p class="help-block">Available/Reserved</p>
+								<label>Room Status</label> 
+								<select name="roomStatus" class="form-control">
+									<option value="1">Available</option>
+									<option value="0">Reserved</option>
+								</select>
 							</div>
 							<!-- <div class="form-group">
 								<label>Maximum Guests</label> <input name="roomcapacity"
@@ -144,7 +147,7 @@
 								<p class="help-block"></p>
 							</div> -->
 							<div class="form-group">
-								<label>Available Slots</label> <input name="roomslots"
+								<label>Available Slots</label> <input name="roomSlots"
 									class="form-control" type="number" required />
 								<p class="help-block"></p>
 							</div>
@@ -172,7 +175,7 @@
 									required></textarea>
 							</div><br>
 							
-							
+							<!-- 
 							<div class="row">
 								<div class="col-sm-4">
 									<div class="custom-file">
@@ -182,8 +185,8 @@
 									</div>
 								</div>
  							
-								
-							</div><br>
+								 
+							</div><br> -->
 
 							<button type="reset" class="btn btn-danger">Reset</button>
 							<button type="submit" class="btn btn-info">Add Room</button>

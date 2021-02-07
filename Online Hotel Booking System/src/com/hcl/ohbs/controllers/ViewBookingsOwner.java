@@ -36,7 +36,8 @@ public class ViewBookingsOwner extends HttpServlet {
 			r.setHotel(new Hotel(hotelService.getHotelNameById(r.getHotel().getId())));
 			System.out.println(r);
 		}
-		request.setAttribute("bookings", reservationList);
+		session.setAttribute("bookings", reservationList);
+		//request.setAttribute("bookings", reservationList);
 		out.println("<font>view booking success!!<font>");
 		System.out.println("end owner view bookings servlet");
 		request.getRequestDispatcher("Owner-updateViewHotels.jsp").include(request, response);

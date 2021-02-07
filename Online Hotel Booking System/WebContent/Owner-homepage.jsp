@@ -117,7 +117,8 @@ $(document).ready(function(){
                 </div>
             </div>
             <% // retrieve your list from the request, with casting 
-			List<Hotel> list = (ArrayList<Hotel>) request.getAttribute("hotels");
+			//List<Hotel> list = (ArrayList<Hotel>) request.getAttribute("hotels");
+            List<Hotel> list = (ArrayList<Hotel>) session.getAttribute("hotels");
             if(list!=null){ %>
             <table class="table table-striped table-hover">
                 <thead>
@@ -127,7 +128,6 @@ $(document).ready(function(){
                         <th>City</th>
                         <th>Phone number</th>
                         <th>Maximum Capacity</th>
-                        <th>Available Capacity</th>
                        	<th>Category</th>
                        	<th>Price</th>
                     </tr>
@@ -142,7 +142,6 @@ $(document).ready(function(){
                         <td><%=hotel.getCity()%></td>                        
                         <td><%=hotel.getPhoneNumber()%></td>
                         <td><%=hotel.getMaximum_capacity()%></td>
-                        <td><%=hotel.getAvailable_capacity()%></td>
                         <td><%=hotel.getCategory()%></td>
                         <td><%=hotel.getPrice()%></td>
                         <td>

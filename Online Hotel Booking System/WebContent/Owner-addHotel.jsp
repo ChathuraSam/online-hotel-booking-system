@@ -136,11 +136,6 @@
 								<p class="help-block"></p>
 							</div>
 							<div class="form-group">
-								<label>Available Slots</label> <input name="hotelslots"
-									class="form-control" type="number" required />
-								<p class="help-block"></p>
-							</div>
-							<div class="form-group">
 								<label>Hotel Type</label>
 								<select class="form-control" name="roomType" id="rooms" required>
 									<option value="luxurys">Luxury Suite</option>

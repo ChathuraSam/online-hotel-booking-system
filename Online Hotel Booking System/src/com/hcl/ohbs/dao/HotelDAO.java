@@ -95,6 +95,32 @@ public class HotelDAO {
 	    return list;
 	}
 	
+	public Hotel findHotelDetailsByName(String name){
+		System.out.println("Begin findHotelDetailsByName: Name=" + name);
+		try{
+		Connection con = null;
+		Statement st = null;
+		ResultSet rs = null;
+
+			con = DBConnection.getConnection();
+			String query = "select * from hotel where name like '"+name+"%'";
+			st = con.createStatement();
+			
+			rs = st.executeQuery(query);
+			if(rs.next()){
+				Hotel h = new Hotel(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getInt(8),new HotelOwner(rs.getInt(9)),rs.getString(10),rs.getString(11),rs.getDouble(12));
+				System.out.println("End findHotelDetailsByName: Hotel=" + h);
+				return h;				
+			}
+	    }catch(ClassNotFoundException e1){
+	            e1.printStackTrace();
+	    }catch(SQLException e2){
+	            e2.printStackTrace();
+	    }
+		System.out.println("End findHotelDetailsByName: Hotel=null");
+	    return null;
+	}
+	
 	public int getIdByName(String hotelName) {
 		Connection con = null;
         PreparedStatement pstmt = null;
