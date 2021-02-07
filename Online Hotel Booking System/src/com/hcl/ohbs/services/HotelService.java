@@ -46,4 +46,8 @@ public class HotelService {
 	public Hotel getHotelDetailsByName(String name){
 		return h.findHotelDetailsByName(name);
 	}
+	
+	public Hotel getHotelDetailsById(int id){
+		return h.findHotelDetailsById(id);
+	}
 }

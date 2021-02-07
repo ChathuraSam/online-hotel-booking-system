@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.hcl.ohbs.dao.HotelDAO;
 import com.hcl.ohbs.entities.Hotel;
@@ -41,6 +42,9 @@ public class SearchHotel extends HttpServlet {
 		else if(hotelName !="" && city=="") {
 			hotellist =new ArrayList<>();
 			hotellist= dao.findHotelByName(hotelName);
+			for(Hotel hotel:hotellist) {
+				System.out.println(hotel);
+			}
 			request.setAttribute("hotels", hotellist);
 			request.setAttribute("msg", "City Name only");
 			request.getRequestDispatcher("Customer-Home.jsp").include(request, response);
@@ -50,6 +54,9 @@ public class SearchHotel extends HttpServlet {
 			
 			hotellist =new ArrayList<>();
 			hotellist = dao.findHotelByCity(city);
+			for(Hotel hotel:hotellist) {
+				System.out.println(hotel);
+			}
 			request.setAttribute("hotels", hotellist);
 			request.setAttribute("msg", "City Name only");
 			request.getRequestDispatcher("Customer-Home.jsp").include(request, response);

@@ -3,6 +3,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.hcl.ohbs.entities.Hotel;
+import com.hcl.ohbs.entities.HotelOwner;
 import com.hcl.ohbs.entities.Room;
 public class RoomDAO {
 	public boolean addRoom(Room room) {
@@ -72,5 +77,31 @@ public class RoomDAO {
         }
         System.out.println("End getRoomIdByName : Room Id=0");
         return 0;
+	}
+	
+	public List<Room> getAllRoomsByHotelId(int id){
+		System.out.println("Begin findRoomByHotelId: hotel id=" + id);
+		List<Room> list =new ArrayList<>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Room room = null;
+		try{
+			con = DBConnection.getConnection();
+			String query = "select * from room where hotel_id=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				room = new Room(rs.getInt(1), rs.getString(2), rs.getDouble(3), rs.getString(4), rs.getInt(5), rs.getInt(6));
+				list.add(room);
+			}
+	    }catch(ClassNotFoundException e1){
+	            e1.printStackTrace();
+	    }catch(SQLException e2){
+	            e2.printStackTrace();
+	    }
+		System.out.println("Begin findRoomByHotelId: Room = " + room);
+	    return list;
 	}
 }

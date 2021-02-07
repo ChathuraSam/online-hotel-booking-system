@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+ <%@ page import="com.hcl.ohbs.entities.Hotel,com.hcl.ohbs.entities.Room, java.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -178,12 +179,30 @@
 
 <!-- ------------- -->
 
-<h1>Hotel Details will be display in this section.</h1>
+<% Hotel hotel = (Hotel) request.getAttribute("hotelDetails");
+	List<Room> roomList = (List<Room>) request.getAttribute("roomList");
+%>
+<!-- <h1>Hotel Details wil be display in this section.</h1> -->
+<div id="hotelDetails">
+	<h4><%=hotel.getName()%></h3>
+	<h2><%=hotel.getCategory()%></h4>
+	<h2><%=hotel.getPhoneNumber()%></h4>
+	<h2><%=hotel.getAddress()%></h4>
+	<% String[] features = hotel.getFeatures().split(",");%>
+	<ul>
+		<% for(String feature: features){%>
+		<li><%=feature%></li>
+		<% }%>
+	</ul>
+</div>
 
 
 
 
 <!-- All the rooms in this hotel will be display in below. A dummy room component is added -->
+<%if(roomList==null || roomList.isEmpty()){%>
+<font color="red">This hotel has no added rooms yet</font>
+<%}else{}%>
 <div class="container bootdey">
 <div class="col-md-12">
 <section class="panel">

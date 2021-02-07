@@ -16,7 +16,7 @@
 </head>
 <body>
 
-	<%@include file="./comp/Navbar-Customer.jsp"%>
+	<%@include file="./comp/Navbar.jsp"%>
 
 	<br>
 	<form class="form-inline center_div" action="SearchHotel" method="get">
@@ -53,8 +53,9 @@
 					<div class="card-body">
 						<h5 class="card-title">${hotel.getName()}</h5>
 						<p class="card-text">${hotel.getCity()}</p>
+						<p class="card-text">Price = ${hotel.getPrice()}.0</p>
 						<!--  <a href="Book/${hotel.getId()}" class="btn btn-primary">Book Online</a> -->
-						<a href="./Customer-hotelBooking.jsp" class="btn btn-primary">Book Online</a>
+						<a href="./ViewRoomDetails?hotelid=${hotel.getId()}" class="btn btn-primary">Book Online</a>
 					</div>
 				</div>
 
