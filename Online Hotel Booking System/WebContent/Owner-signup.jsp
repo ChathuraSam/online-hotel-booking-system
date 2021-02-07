@@ -14,7 +14,7 @@ pageEncoding="ISO-8859-1"%>
 
 <body >
 
-	<%@include file="./comp/Navbar.jsp" %>
+	<%@include file="./comp/Navbar-Owner.jsp" %>
 
 	<form action="RegisterHotelOwner">
 		<div class="container center_div">
