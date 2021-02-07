@@ -252,3 +252,19 @@ alter table reservation modify check_in varchar(15);
     	/
 
 4. alter table hotel_owner modify nic VARCHAR2(12);
+
+=========================================================================================
+07/02/2021 - Alter owner table
+
+1. alter table hotel_owner add status NUMBER(2);
+
+====================================================================
+07/02/2021 - add room_image table 
+
+1. create room_image table ->
+
+	CREATE TABLE hotel_image(
+   		room_id NUMBER(5) REFERENCES room(id),
+		images VARCHAR2(200),
+		PRIMARY KEY (room_id,images)
+  	);

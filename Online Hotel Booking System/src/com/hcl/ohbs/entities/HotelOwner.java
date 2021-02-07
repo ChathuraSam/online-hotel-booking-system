@@ -9,10 +9,10 @@ public class HotelOwner {
 	private String email;
 	private String username;
 	private String password;
+	private int status;
 	public HotelOwner() {
 		
 	}
-	
 	public HotelOwner(String fistName, String lastName, String nic, String phoneNumber, String email, String username,
 			String password) {
 		this.fistName = fistName;
@@ -23,8 +23,42 @@ public class HotelOwner {
 		this.username = username;
 		this.password = password;
 	}
+	public HotelOwner(String fistName, String lastName, String nic, String phoneNumber, String email, String username,
+			String password, int status) {
+		this.fistName = fistName;
+		this.lastName = lastName;
+		this.nic = nic;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+		this.username = username;
+		this.password = password;
+		this.status = status;
+	}
 	public HotelOwner(int id) {
 		this.id = id;
+	}
+	public HotelOwner(int id, String fistName, String lastName, String nic, String phoneNumber, String email,
+			String username, String password, int status) {
+		this.id = id;
+		this.fistName = fistName;
+		this.lastName = lastName;
+		this.nic = nic;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+		this.username = username;
+		this.password = password;
+		this.status = status;
+	}
+	public HotelOwner(int id, String fistName, String lastName, String nic, String phoneNumber, String email,int status) {
+		this.id = id;
+		this.fistName = fistName;
+		this.lastName = lastName;
+		this.nic = nic;
+		this.phoneNumber = phoneNumber;
+		this.email = email;
+		this.username = username;
+		this.password = password;
+		this.status = status;
 	}
 	public HotelOwner(int id, String fistName, String lastName, String nic, String phoneNumber, String email,
 			String username, String password) {
@@ -36,6 +70,14 @@ public class HotelOwner {
 		this.email = email;
 		this.username = username;
 		this.password = password;
+		this.status = status;
+	}
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 	public int getId() {
 		return id;

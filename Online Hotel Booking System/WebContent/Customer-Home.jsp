@@ -15,10 +15,11 @@
 
 </head>
 <body>
-
+	
 	<%@include file="./comp/Navbar.jsp"%>
 
 	<br>
+	
 	<form class="form-inline center_div" action="SearchHotel" method="get">
 
 		<div class="form-group mb-2 m-2">Search Hotels</div>
