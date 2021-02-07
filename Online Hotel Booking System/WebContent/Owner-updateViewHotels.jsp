@@ -74,6 +74,8 @@
                             </li> -->
 							<li><a href="Owner-addHotel.jsp" >ADD
 									HOTEL</a></li>
+							<li><a href="Owner-addRoom.jsp" class="">ADD
+									ROOM</a></li>
 							<li><a href="Owner-hotelsReport.jsp" >HOTELS REPORT</a></li>
 
 
