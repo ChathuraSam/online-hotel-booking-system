@@ -178,7 +178,7 @@
 
 <!-- ------------- -->
 
-<h1>Hotel Details wil be display in this section.</h1>
+<h1>Hotel Details will be display in this section.</h1>
 
 
 
