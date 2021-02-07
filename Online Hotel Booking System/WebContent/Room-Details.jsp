@@ -209,7 +209,35 @@
 <font color="red">This hotel has no added rooms yet</font>
 <%}else{}%> --%>
 
-
+-------------------------
+Hotel Details
+-------------------------
+<div class="container bootdey">
+<div class="col-md-12">
+<section class="panel">
+      <div class="panel-body">
+          <div class="col-md-6">
+              <div class="pro-img-details">
+                  <img src="./img/hotel2.jpg" alt="">
+              </div>
+              
+          </div>
+          <div class="col-md-6">
+              <h4 class="pro-d-title">
+                  <a href="#" class="">
+                      Hotel Name
+                  </a>
+              </h4>
+              <p>
+                  City 
+              </p>
+              
+              
+          </div>
+      </div>
+  </section>
+  </div>
+  </div>
 
 
 
@@ -224,8 +252,11 @@
 						alt="Card image cap">
 					<div class="card-body">
 						<h5 class="card-title">${room.getName()}</h5>
-						<p class="card-text">${room.getPrice()}</p>
-						<p class="card-text">${room.getPrice()}</p>
+						<p class="card-text">Price : ${room.getPrice()}</p>
+						<p class="card-text">Features : ${room.getFeatures()}</p>
+						<p class="card-text">No of Persons : ${room.getNoOfPersons()}</p>
+						<p class="card-text">Availability ${room.getIsAvailable()}</p>
+						
 						<!--  <a href="Book/${hotel.getId()}" class="btn btn-primary">Book Online</a> -->
 						<a href="./ViewRoomDetails?hotelid=${room.getPrice()}" class="btn btn-primary">Book Online</a>
 					</div>
@@ -241,42 +272,7 @@
 
 
 
-<div class="container bootdey">
-<div class="col-md-12">
-<section class="panel">
-      <div class="panel-body">
-          <div class="col-md-6">
-              <div class="pro-img-details">
-                  <img src="./img/hotel2.jpg" alt="">
-              </div>
-              
-          </div>
-          <div class="col-md-6">
-              <h4 class="pro-d-title">
-                  <a href="#" class="">
-                      Room Name
-                  </a>
-              </h4>
-              <p>
-                  Description Goes Here
-              </p>
-              <div class="product_meta">
-                  <span class="posted_in"> <strong>Categories:</strong> <a rel="tag" href="#">Jackets</a>, <a rel="tag" href="#">Men</a>, <a rel="tag" href="#">Shirts</a>, <a rel="tag" href="#">T-shirt</a>.</span>
-                  <span class="tagged_as"><strong>Tags:</strong> <a rel="tag" href="#">mens</a>, <a rel="tag" href="#">womens</a>.</span>
-              </div>
-              <div class="m-bot15"> <strong>Price : </strong> <span class="amount-old">$544</span>  <span class="pro-price"> $300.00</span></div>
-              <div class="form-group">
-                  <label>Quantity</label>
-                  <input type="quantiy" placeholder="1" class="form-control quantity">
-              </div>
-              <p>
-                  <button class="btn btn-round btn-danger" type="button"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
-              </p>
-          </div>
-      </div>
-  </section>
-  </div>
-  </div>
+
 
 <!-- ----------------------- -->
 
