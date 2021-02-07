@@ -42,15 +42,17 @@ public class RegisterHotelOwner extends HttpServlet {
 			request.getRequestDispatcher("Owner-signup.jsp").include(request, response);
 		}else {
 			HotelOwnerService hotelOwnerService = new HotelOwnerService();
-			if(hotelOwnerService.registerHotelOwner(firstName, lastname, nic, phone, email, username, password)) {		
-				HttpSession session = request.getSession();
+			if(hotelOwnerService.registerHotelOwner(firstName, lastname, nic, phone, email, username, password,0)) {		
+				/*HttpSession session = request.getSession();
 				//int sessionId = (int) session.getAttribute("id");
 				int sessionId = hotelOwnerService.getIdByUsernameAndPassword(username, password);
 				session.setAttribute("hotelOwnerId", sessionId); //call ownerHome.jsp and pass the id in session
 				session.setAttribute("hotelOwnerName", firstName);
 				List<Hotel> hotelList = null;
 				request.setAttribute("hotels", hotelList);
-				request.getRequestDispatcher("Owner-homepage.jsp").include(request, response);
+				request.getRequestDispatcher("Owner-homepage.jsp").include(request, response);*/
+				out.println("<font color='red'>Your request is pending<font>");
+				request.getRequestDispatcher("index.jsp").include(request, response);
 			}else {
 				out.println("<font color='red'>Error in registering the hotel owner<font>");
 				request.getRequestDispatcher("Owner-signup.jsp").include(request, response);			

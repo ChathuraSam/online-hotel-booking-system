@@ -22,24 +22,30 @@ public class LogInHotelOwner extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		out.println("<html><boby>");
-		HotelOwnerService hotelOwnerService = new HotelOwnerService();		
-		if(hotelOwnerService.logInHotelOwner(username, password)) {
-			HttpSession session = request.getSession();
-		    int sessionId = hotelOwnerService.getIdByUsernameAndPassword(username, password);
-		    String sessionName = hotelOwnerService.getNameByUsernameAndPassword(username, password);
-			session.setAttribute("hotelOwnerId", sessionId);
-			session.setAttribute("hotelOwnerName", sessionName);
-			HotelService hotelService = new HotelService();			
-			List<Hotel> hotelList = hotelService.getHotelsByOwnerId(sessionId);
-			session.setAttribute("hotels", hotelList);
-			out.println("<font>hotel owner login success!!<font>");
-			System.out.println("end Log in hotel owner servlet");
-			request.getRequestDispatcher("Owner-homepage.jsp").include(request, response);
+		HotelOwnerService hotelOwnerService = new HotelOwnerService();
+		if(hotelOwnerService.getStatusByUsernameAndPassword(username, password)==1){
+			if(hotelOwnerService.logInHotelOwner(username, password)) {
+				HttpSession session = request.getSession();
+			    int sessionId = hotelOwnerService.getIdByUsernameAndPassword(username, password);
+			    String sessionName = hotelOwnerService.getNameByUsernameAndPassword(username, password);
+				session.setAttribute("hotelOwnerId", sessionId);
+				session.setAttribute("hotelOwnerName", sessionName);
+				HotelService hotelService = new HotelService();			
+				List<Hotel> hotelList = hotelService.getHotelsByOwnerId(sessionId);
+				session.setAttribute("hotels", hotelList);
+				out.println("<font>hotel owner login success!!<font>");
+				System.out.println("end Log in hotel owner servlet");
+				request.getRequestDispatcher("Owner-homepage.jsp").include(request, response);
+			}else {
+				out.println("<font color='red'>Error in login the hotel owner<font>");
+				System.out.println("end Log in hotel owner servlet");
+				request.getRequestDispatcher("Owner-Login.jsp").include(request, response);
+			}
 		}else {
-			out.println("<font color='red'>Error in login the hotel owner<font>");
-			System.out.println("end Log in hotel owner servlet");
-			request.getRequestDispatcher("Owner-Login.jsp").include(request, response);
+			out.println("<font color='red'>Your registering request is still pending<font>");
+			request.getRequestDispatcher("index.jsp").include(request, response);
 		}
+		
 		out.println("</boby><html>");
 	}
 

@@ -11,6 +11,13 @@ public class Room {
 	public Room() {
 
 	}
+	public Room(int id, String name, Double price, String features, int noOfPersons, int isAvailable) {
+		this.name = name;
+		this.price = price;
+		this.features = features;
+		this.noOfPersons = noOfPersons;
+		this.isAvailable = isAvailable;
+	}
 	public Room(String name, Double price, String features, int noOfPersons, int isAvailable, Hotel hotel) {
 		this.name = name;
 		this.price = price;

@@ -53,12 +53,12 @@ public class HotelDAO {
 		ResultSet rs = null;
 
 			con = DBConnection.getConnection();
-			String query = "select name,city,phone_number,address,status,maximum_capacity,available_capacity,hotel_owner_id,category,features,price from hotel where name like '"+name+"%'";
+			String query = "select * from hotel where name like '"+name+"%'";
 			st = con.createStatement();
 			
 			rs = st.executeQuery(query);
 			if(rs.next()){
-				Hotel h = new Hotel(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getInt(7),new HotelOwner(rs.getInt(8)),rs.getString(9),rs.getString(10),rs.getDouble(11));
+				Hotel h = new Hotel(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getInt(8),new HotelOwner(rs.getInt(9)),rs.getString(10),rs.getString(11),rs.getDouble(12));
 				hotels.add(h);
 				
 			}
@@ -78,12 +78,12 @@ public class HotelDAO {
 		ResultSet rs = null;
 
 			con = DBConnection.getConnection();
-			String query = "select name,city,phone_number,address,status,maximum_capacity,available_capacity,hotel_owner_id,category,features,price from hotel where CITY=?";
+			String query = "select * from hotel where CITY=?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, city);
 			rs = pstmt.executeQuery();
 			while(rs.next()){
-				Hotel h = new Hotel(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getInt(6),rs.getInt(7),new HotelOwner(rs.getInt(8)),rs.getString(9),rs.getString(10),rs.getDouble(11));
+				Hotel h = new Hotel(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getInt(8),new HotelOwner(rs.getInt(9)),rs.getString(10),rs.getString(11),rs.getDouble(12));
 				list.add(h);
 				
 			}
@@ -118,6 +118,32 @@ public class HotelDAO {
 	            e2.printStackTrace();
 	    }
 		System.out.println("End findHotelDetailsByName: Hotel=null");
+	    return null;
+	}
+	
+	public Hotel findHotelDetailsById(int id){
+		System.out.println("Begin findHotelDetailsById: id=" + id);
+		try{
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+			con = DBConnection.getConnection();
+			String query = "select * from hotel where id=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				Hotel h = new Hotel(rs.getInt(1), rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(5),rs.getString(6),rs.getInt(7),rs.getInt(8),new HotelOwner(rs.getInt(9)),rs.getString(10),rs.getString(11),rs.getDouble(12));
+				System.out.println("End findHotelDetailsById: Hotel=" + h);
+				return h;				
+			}
+	    }catch(ClassNotFoundException e1){
+	            e1.printStackTrace();
+	    }catch(SQLException e2){
+	            e2.printStackTrace();
+	    }
+		System.out.println("End findHotelDetailsById: Hotel=null");
 	    return null;
 	}
 	
