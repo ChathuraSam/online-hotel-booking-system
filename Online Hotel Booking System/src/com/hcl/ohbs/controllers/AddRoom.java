@@ -99,39 +99,40 @@ public class AddRoom extends HttpServlet {
 					request.setAttribute("message", "There was an error: " + ex.getMessage());
 				}
 
-		//String hotelName = request.getParameter("hotelName");
-		//String roomName = request.getParameter("roomName");
-		//Double price = Double.parseDouble(request.getParameter("price"));
-		//String features = request.getParameter("features");
-		//int noOfPersons = Integer.parseInt(request.getParameter("hotelPrice"));
-		String hotelName = "HotelA";
-		String roomName = "Executive Room";
-		Double price = 8000.00;
-		String features = "Complimentary Breakfast is available,Complimentary Lunch Or Dinner is available,AC,King Bed sized bed,625 sq.ft.";
-		int noOfPersons = 4;
+		String hotelName = request.getParameter("hotelName");
+		String roomName = request.getParameter("roomName");
+		Double price = Double.parseDouble(request.getParameter("roomPrice"));
+		int isAvailable=0;
+		if(request.getParameter("roomStatus").equals("1")) {
+			isAvailable = 1;
+		}else {
+			isAvailable = 0;
+		}
+		String features = request.getParameter("roomdesc");
+		int noOfPersons = Integer.parseInt(request.getParameter("roomSlots"));
 		out.println("<html><boby>");
 		//String[] images = { filePath };			
 		HttpSession session = request.getSession();// recieve the id from coming from the session and assign into id variable
- 		//int ownerId = (int) session.getAttribute("hotelOwnerId");
-		//String hotelOwnerName = (String) session.getAttribute("hotelOwnerName");
+ 		int ownerId = (int) session.getAttribute("hotelOwnerId");
+		String hotelOwnerName = (String) session.getAttribute("hotelOwnerName");
 		Hotel hotel = hotelService.getHotelDetailsByName(hotelName);
 		if(hotel==null) {
-			System.out.println("no hotels found!!!");			
+			System.out.println("no hotels found!!!");
+			request.getRequestDispatcher("Owner-addRoom.jsp").include(request, response);
 		}else {
-			if (roomService.addRoomAndImages(roomName, price, features, noOfPersons, 1, hotel, filePath)) {
-				out.println("<font>Room added success!!<font>");	
+			if (roomService.addRoomAndImages(roomName, price, features, noOfPersons, isAvailable, hotel, filePath)) {
+				out.println("<font>Room added success!!<font>");
+				request.getRequestDispatcher("Owner-addRoom.jsp").include(request, response);
 			} else {
 				out.println("<font color='red'>Error in adding the room<font>");
+				request.getRequestDispatcher("Owner-addRoom.jsp").include(request, response);
 			}		
 			/*List<Hotel> hotelList = hotelService.getHotelsByOwnerId(ownerId);
 			for(Hotel h:hotelList) {
 				System.out.println("hotel name = " + h.getName());
 			}*/
-		}
-		
-		
+		}	
 		//request.setAttribute("hotels", hotelList);
-		request.getRequestDispatcher("Owner-homepage.jsp").include(request, response);
 		out.println("</boby><html>");
 		System.out.println("End /AddRoom: ");
 	}

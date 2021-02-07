@@ -32,7 +32,6 @@ public class LogInHotelOwner extends HttpServlet {
 			HotelService hotelService = new HotelService();			
 			List<Hotel> hotelList = hotelService.getHotelsByOwnerId(sessionId);
 			session.setAttribute("hotels", hotelList);
-			//request.setAttribute("hotels", hotelList);
 			out.println("<font>hotel owner login success!!<font>");
 			System.out.println("end Log in hotel owner servlet");
 			request.getRequestDispatcher("Owner-homepage.jsp").include(request, response);

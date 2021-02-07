@@ -122,7 +122,6 @@ public class AddHotel extends HttpServlet {
 				}
 				
 				int max_capacity = Integer.parseInt(request.getParameter("hotelguestcapacity"));
-				int available_capacity = Integer.parseInt(request.getParameter("hotelslots"));
 				String category = request.getParameter("hoteladdress");
 				String features = request.getParameter("hoteladdress");
 				double price = Double.parseDouble(request.getParameter("hotelslots"));
@@ -140,7 +139,7 @@ public class AddHotel extends HttpServlet {
 
 		
 		//ownerId = 3;
-		if (hotelService.addHotelAndImages(hotelName, hotelCity, phone_number, address, status, max_capacity, available_capacity, ownerId,
+		if (hotelService.addHotelAndImages(hotelName, hotelCity, phone_number, address, status, max_capacity, 100, ownerId,
 				category, features, price, filePath)) {
 			out.println("<font>hotel added success!!<font>");	
 		} else {
