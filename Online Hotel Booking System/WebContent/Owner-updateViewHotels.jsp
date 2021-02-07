@@ -38,7 +38,18 @@
 				</a>
 
 			</div>
-
+			
+			<div class="row right-div">
+            <div class="col-sm-4">
+			<% String ownerName = (String) session.getAttribute("hotelOwnerName"); %>      
+			<label class="right-div">Hi.. <%=ownerName%></label>
+			</div>
+			<div class="col-sm-4">
+            
+                <a  href="#" ><img style="vertical-align: middle; height: 50px; width: 50px;  border-radius: 50%;" src="images/profileavatar.jpg" alt="MY Profile" ></a>
+           
+            </div>
+			
 			<div class="right-div">
 				<a href="index.jsp" class="btn btn-danger pull-right">LOG ME OUT</a>
 			</div>
