@@ -189,17 +189,17 @@
 <%@include file="./comp/Navbar-Customer.jsp" %>
 
 <!-- ------------- -->
-<<<<<<< HEAD
+
 <%-- 
 
-=======
+
 -------------------------
 Hotel Details
 -------------------------
 <% Hotel hotel = (Hotel) session.getAttribute("hotelDetails");
 	List<Room> roomList = (List<Room>) session.getAttribute("roomList");
 %>
->>>>>>> 96636d4b1d7ba129074bdff1f0270a7b878c5b79
+
 <!-- <h1>Hotel Details wil be display in this section.</h1> -->
 <div id="hotelDetails">
 	<h3><%=hotel.getName()%></h3>
@@ -225,10 +225,10 @@ Hotel Details
 
 
 
-<<<<<<< HEAD
+
 <% Hotel hotel = (Hotel) request.getAttribute("hotelDetails");
 %>
-=======
+
 <div class="container bootdey">
 <div class="col-md-12">
 <section class="panel">
@@ -255,7 +255,7 @@ Hotel Details
   </section>
   </div>
   </div>
->>>>>>> 96636d4b1d7ba129074bdff1f0270a7b878c5b79
+
 
 <h3>Hotel Name : <%=hotel.getName()%></h1>
 <h3>Hotel Category : <%=hotel.getCategory()%></h1>
