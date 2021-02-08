@@ -176,19 +176,30 @@
 
 </style>
 
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+	body{
+		padding-top:150px;
+	}
+	
+	</style>
 </head>
 <body>
 
 <%@include file="./comp/Navbar-Customer.jsp" %>
 
 <!-- ------------- -->
+
+<%-- 
+
+
 -------------------------
 Hotel Details
 -------------------------
 <% Hotel hotel = (Hotel) session.getAttribute("hotelDetails");
 	List<Room> roomList = (List<Room>) session.getAttribute("roomList");
 %>
+
 <!-- <h1>Hotel Details wil be display in this section.</h1> -->
 <div id="hotelDetails">
 	<h3><%=hotel.getName()%></h3>
@@ -213,6 +224,10 @@ Hotel Details
 <%}else{%>
 
 
+
+
+<% Hotel hotel = (Hotel) request.getAttribute("hotelDetails");
+%>
 
 <div class="container bootdey">
 <div class="col-md-12">
@@ -241,6 +256,12 @@ Hotel Details
   </div>
   </div>
 
+
+<h3>Hotel Name : <%=hotel.getName()%></h1>
+<h3>Hotel Category : <%=hotel.getCategory()%></h1>
+<h3>Hotel Phone : <%=hotel.getPhoneNumber()%></h1>
+<h3>Hotel address : <%=hotel.getAddress()%></h1>
+<hr>
 
 
 
