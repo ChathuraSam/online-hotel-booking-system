@@ -185,4 +185,36 @@ public class CustomerDAO {
 		     } 
 		    return null;
 		}
+		
+		public Customer findCustomerInvoiceDetailsById(int id){       
+			Connection con = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			try{
+				con = DBConnection.getConnection();
+				String query = "SELECT first_name,last_name,address,email FROM customer WHERE id=?";
+				pstmt = con.prepareStatement(query);
+				pstmt.setInt(1, id);
+				rs = pstmt.executeQuery();
+				if(rs.next()){
+					return new Customer(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4));
+				}
+		    }catch(ClassNotFoundException e1){
+		            e1.printStackTrace();
+		    }catch(SQLException e2){
+		            e2.printStackTrace();
+		    }finally{
+		         try{
+		            if(pstmt!=null)
+		                pstmt.close();
+		            if(rs!=null)
+		                rs.close();
+		            if(con!=null)
+		                con.close();
+		         }catch(SQLException e3){
+		                e3.printStackTrace();
+		         }
+		     } 
+		    return null;
+		}
 }

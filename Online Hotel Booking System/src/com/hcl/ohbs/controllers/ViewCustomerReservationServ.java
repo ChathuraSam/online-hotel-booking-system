@@ -29,23 +29,23 @@ public class ViewCustomerReservationServ extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		List<Reservation> list = new ArrayList<>();
 		ReservationDAO reservationDao = new ReservationDAO();
-		RoomService roomService = new RoomService();
+		//RoomService roomService = new RoomService();
 		HttpSession session = request.getSession();
 		int custId = (int) session.getAttribute("customerId");
 		//viewReservationById method should contains the logged in customer id
 		list = reservationDao.viewReservationById(custId);
-		
+		request.setAttribute("reservationList", list);
 		//get the customer name by logged in customer id
 		CustomerDAO cust = new CustomerDAO();
 		String fname = cust.getNameById(custId);
-		
+		request.setAttribute("firstName", fname);
 		
 		//get the hotel name by hotel id
-		HotelDAO hotel = new HotelDAO();
+		//HotelDAO hotel = new HotelDAO();
 		//String hname = hotel.getNameById(1);
 		//double price = hotel.getPriceById(custId);
 		
-		out.println("<html><body>");
+		/*out.println("<html><body>");
 		out.println("<h1>My Reservation Details</h1>");
 		out.println("<form action='CancelBookingserv' method='GET'>");
 		out.println("<table border='1'>");
@@ -55,13 +55,12 @@ public class ViewCustomerReservationServ extends HttpServlet {
 			int hotelId = roomService.getHotelIdByRoomID(roomId);
 			String hname = hotel.getNameById(hotelId);
 			String roomName = roomService.getNameById(roomId);
-			Double price = r.getRoom().getPrice();
-			out.println("<tr><td>"+r.getCheckIn()+"</td><td>"+r.getCheckOut()+"</td><td>"+r.getNoOfPersons()+"</td><td>"+fname+"</td><td>"+hname+"</td><td>"+roomName+"</td><td>"+price+"</td><td><a href='CancelBookingserv'>Cancel Order</a></td></tr>");
+			Double price = roomService.getPriceById(roomId);
+			out.println("<tr><td>"+r.getCheckIn()+"</td><td>"+r.getCheckOut()+"</td><td>"+r.getNoOfPersons()+"</td><td>"+fname+"</td><td>"+hname+"</td><td>"+roomName+"</td><td>"+price+"</td><td><a href='CancelBookingserv="+ r.getId() +"'>Cancel Order</a></td></tr>");
 		}		
 		out.println("</form>");
 		out.println("</table>");
-		out.println("</body></html>");		
-		RequestDispatcher disp = request.getRequestDispatcher("MyBookings.jsp");
-		disp.forward(request, response);		
+		out.println("</body></html>");*/		
+		request.getRequestDispatcher("MyBookings.jsp").forward(request, response);		
 	}
 }

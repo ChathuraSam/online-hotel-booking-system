@@ -50,6 +50,10 @@ public class RoomService {
 		return roomDao.getNameById(roomId);
 	}
 	
+	public Double getPriceById(int roomId){
+		return roomDao.getPriceById(roomId);
+	}
+	
 	public Room getRoomById(int roomId){
 		return roomDao.getRoomById(roomId);
 	}

@@ -6,8 +6,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hcl.ohbs.entities.Customer;
 import com.hcl.ohbs.entities.Hotel;
 import com.hcl.ohbs.entities.HotelOwner;
+import com.hcl.ohbs.entities.Reservation;
 import com.hcl.ohbs.entities.Room;
 public class RoomDAO {
 	public boolean addRoom(Room room) {
@@ -232,6 +234,39 @@ public class RoomDAO {
         return name;
 	}
 	
+	public Double getPriceById(int roomId) {
+		System.out.println("Begin getPriceById : Room id=" + roomId);
+		Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        Double price = null;
+        try{
+            con = DBConnection.getConnection();
+            String query = "SELECT price FROM room WHERE id=?";
+            pstmt = con.prepareStatement(query);
+            pstmt.setInt(1, roomId);
+            rs = pstmt.executeQuery();
+            if(rs.next()){
+            	price = rs.getDouble(1);
+            }
+        }catch(ClassNotFoundException e1){
+            e1.printStackTrace();
+        }catch(SQLException e2){
+            e2.printStackTrace();
+        }finally{
+            try{
+                if(pstmt!=null)
+                    pstmt.close();
+                if(con!=null)
+                    con.close();
+            }catch(SQLException e3){
+                e3.printStackTrace();
+            }
+        }
+        System.out.println("End getPriceById : Price=" + price);
+        return price;
+	}
+	
 	public Room getRoomById(int id){
 		System.out.println("Begin getRoomById: room id=" + id);
 		Connection con = null;
@@ -254,5 +289,28 @@ public class RoomDAO {
 	    }
 		System.out.println("Begin findRoomByHotelId: Room = " + room);
 	    return room;
+	}
+	
+	public List<Room> getRoomsByOwnerId(int ownerId){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<Room> list = new ArrayList<>();
+		try{
+			con = DBConnection.getConnection();
+			String query = "select room.id FROM room,hotel WHERE room.hotel_id=hotel.id AND hotel.hotel_owner_id=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, ownerId);
+			rs = pstmt.executeQuery(); 
+			while(rs.next()){
+				Room r = new Room(rs.getInt(1));
+				list.add(r);					
+			}
+		}catch(ClassNotFoundException e1){
+		            e1.printStackTrace();
+		}catch(SQLException e2){
+		            e2.printStackTrace();
+		}		
+		return list;		
 	}
 }

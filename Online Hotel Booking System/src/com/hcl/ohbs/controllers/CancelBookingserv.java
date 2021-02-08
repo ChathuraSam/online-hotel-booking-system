@@ -26,7 +26,8 @@ public class CancelBookingserv extends HttpServlet {
 		out.println("<html><body>");
 		HttpSession session = request.getSession();
 		int custId = (int) session.getAttribute("customerId");
-		if(reserv.deleteReservation(custId)) {
+		int reservationId = Integer.parseInt(request.getParameter("reservId"));
+		if(reserv.deleteReservation(reservationId)) {
 			response.sendRedirect("Customer-Home.jsp");
 		}
 		else {
