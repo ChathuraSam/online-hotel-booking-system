@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.hcl.ohbs.entities.Hotel;
+import com.hcl.ohbs.entities.Room;
 import com.hcl.ohbs.services.HotelService;
+import com.hcl.ohbs.services.RoomService;
 @WebServlet("/OwnerViewHotel")
 public class OwnerViewHotel extends HttpServlet {
 
@@ -27,6 +29,9 @@ public class OwnerViewHotel extends HttpServlet {
 		HotelService hotelService = new HotelService();
 		List<Hotel> hotelList = hotelService.getHotelsByOwnerId(ownerId);
 		request.setAttribute("hotels", hotelList);
+		RoomService roomService = new RoomService();
+		List<Room> roomList = roomService.getRooomssByOwnerId(ownerId);
+		request.setAttribute("rooms", roomList);
 		System.out.println("end owner view hotel servlet");
 		request.getRequestDispatcher("Owner-homepage.jsp").include(request, response);
 	}

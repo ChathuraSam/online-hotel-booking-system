@@ -246,7 +246,7 @@ public class HotelOwnerDAO {
         try{  
             con = DBConnection.getConnection();
             stmt = con.createStatement();
-            String query = "SELECT id,first_name,last_name,nic,phone_number,email,status from hote_owner";
+            String query = "SELECT id,first_name,last_name,nic,phone_number,email,status from hotel_owner";
             rs = stmt.executeQuery(query);         
             while(rs.next()){
             	HotelOwner hotelOwner = new HotelOwner(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
@@ -296,5 +296,38 @@ public class HotelOwnerDAO {
             }
         }
         return false;       
+	}
+	
+	public HotelOwner findOwnerById(int id){       
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		HotelOwner hotelOwner = null;
+		try{
+			con = DBConnection.getConnection();
+			String query = "SELECT * FROM hotel_owner WHERE username=? AND password=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				hotelOwner = new HotelOwner(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
+			}
+	    }catch(ClassNotFoundException e1){
+	            e1.printStackTrace();
+	    }catch(SQLException e2){
+	            e2.printStackTrace();
+	    }finally{
+	         try{
+	            if(pstmt!=null)
+	                pstmt.close();
+	            if(rs!=null)
+	                rs.close();
+	            if(con!=null)
+	                con.close();
+	         }catch(SQLException e3){
+	                e3.printStackTrace();
+	         }
+	     } 
+	    return hotelOwner;
 	}
 }

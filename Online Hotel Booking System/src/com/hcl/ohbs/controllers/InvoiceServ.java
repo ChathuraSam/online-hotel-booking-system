@@ -40,47 +40,53 @@ public class InvoiceServ extends HttpServlet {
 		System.out.println(list);
 		Double Totprice = 0.0;
 		
-		for(Integer i :list) {
-			Totprice = Totprice+dao.getPriceByRoomId(i);
-			
-		}
-		System.out.println(Totprice);
+		List<Reservation> rList = new ArrayList<>();
+		rList = dao.getReservationByCustomerId(custId);
+		Invoice invoice = dao.getInvoiceByCustomerId(custId);
 		
-		List<Integer> rList = new ArrayList<>();
-		rList = dao.getReservationIdByCustomerId(custId);
-		Integer resrv = 0;
-		for(Integer i :rList) {
-			resrv = rList.get(rList.size()-1);
+		out.println("<html><body>");
+		out.println("<center>");
+		out.println("<h1>Thank You for the Reservation!! </h1>");
+		out.println("<h2>Your Invoice Details...</h2>");
+		out.println("</center>");
+		out.println("OHBS System,35,2nd Lane,Ratmalana<br/><br/>");
+		out.println("Invoice To: <br/>");			
+		out.println(customer.getFirstName()+ " " + customer.getLastName() + "<br/>");
+		out.println(customer.getAddress() + "<br/>");
+		out.println(customer.getEmail()+"<br/><br/>");
+		
+		for(Integer i :list) {
+			Totprice =Totprice+dao.getPriceByRoomId(i);
 		}
-		if(dao.generateInvoice(new Invoice(Totprice,custId,resrv))) {
-			//out.println("<font color='green'>Successfully generated the invoice</font>");
-			Invoice invoice = dao.getInvoiceByCustomerId(custId);
-			System.out.println(invoice);
-			out.println("<html><body style='background-color:#ffc180;'>");
-			out.println("<center>");
-			out.println("<h1>Thank You for the Reservation!! </h1>");
-			out.println("<h2>Your Invoice Details...</h2>");
-			out.println("</center>");
-			out.println("OHBS System,35,2nd Lane,Ratmalana<br/><br/>");
-			out.println("Invoice To: <br/>");			
-			out.println(customer.getFirstName()+ " " + customer.getLastName() + "<br/>");
-			out.println(customer.getAddress() + "<br/>");
-			out.println(customer.getEmail()+"<br/><br/>");
-			out.println("Invoice ID : "+invoice.getId()+"Invoice Generated Date : " + invoice.getDateGenerated()+"<br/><br/>");
-			
 			out.println("<table border='1'>");
-			out.println("<tr><th>Hotel Name</th><th>Contact Details</th><thRoom Name</th><th>No of Person</th><th>Price</th></tr>");			
+			out.println("<tr><th>Invoice ID</th><th>Invoice Generated Date</th><th>Total Price</th><th>Reservation ID</th></tr>");
 			
-			out.println("Reservation ID : "+invoice.getReservationId()+"<br>");
-			out.println("/table");
+			Reservation r = null;
+			for(Reservation i1 :rList) {
+				if(dao.generateInvoice(new Invoice(dao.getPriceByRoomId(i1.getRoom().getId()),custId,i1.getId()))) {
+					out.println("<tr>");
+					out.println("<td>"+invoice.getId()+"</td>");
+					out.println("<td>"+invoice.getDateGenerated()+"</td>");
+					out.println("<td>"+dao.getPriceByRoomId(i1.getRoom().getId())+"</td>");
+					out.println("<td>"+i1.getId()+"</td>");
+					out.println("</tr><br>");
+				}
+				else {
+					out.println("<font color='red'>error in generating invoice</font>");
+				}
+			}
+
+			
+			out.println("</table>");
+			out.println("</body></html>");
+		
+		
+
 			
 			
 			out.println("Total Amount : "+invoice.getTotalAmount()+"0<br>");
 			out.println("</body></html>");
-		}
-		else {
-			out.println("<font color='red'>error in generating invoice</font>");
-		}
+		
 		
 		/*out.println("<table border='1'>");
 		out.println("<tr><th>Check In</th><th>Check Out</th><th>No of Persons</th><th>Reserved By</th><th>Hotel Name</th><th>Room Name</th><th>Price</th></tr>");

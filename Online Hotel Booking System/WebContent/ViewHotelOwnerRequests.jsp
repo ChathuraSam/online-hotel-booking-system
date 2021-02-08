@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ page import="com.hcl.ohbs.entities.HotelOwner,com.hcl.ohbs.services.*,java.util.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,33 +24,40 @@
 
 
 <%
+	HotelOwnerService hotelOwnerService = new HotelOwnerService();
+	List<HotelOwner> hotelOwnerList = hotelOwnerService.getAllHotelOwners();
+	if(hotelOwnerList.isEmpty() || hotelOwnerList==null) { %>
+	<font color="red">Owner list is empty.</font>
+<% }else { %>
+	<table border="1">
+	<tr>
+		<th>Id</th>
+		<th>First Name</th>
+		<th>Last name</th>
+		<th>NIC</th>
+		<th>Phone</th>
+		<th>email</th>
+		<th>Status</th>
+		<th>Approve</th>
+		<th>Reject</th>
+	</tr>
+	<% for(HotelOwner hotelOwner: hotelOwnerList) { %>
+	<tr>
+		<td><%=hotelOwner.getId()%></td>
+		<td><%=hotelOwner.getFistName()%></td>
+		<td><%=hotelOwner.getFistName()%></td>
+		<td><%=hotelOwner.getNic()%></td>
+		<td><%=hotelOwner.getPhoneNumber()%></td>
+		<td><%=hotelOwner.getEmail()%></td>
+		<td><%=hotelOwner.getStatus()%></td>
+		<td><a href="AdminApproveOwnerRequest?ownerId=<%=hotelOwner.getId()%>">Approve</a></td>
+    	<td><a href="AdminRejectOwnerRequest?ownerId=<%=hotelOwner.getId()%>">Reject</a></td>
+	</tr>
+<%	} %>
+	</table>
+<%	}%>
 	
-	
-%>
 
-
-<table>
-<tr>
-	<th>Id</th>
-	<th>First Name</th>
-	<th>Last name</th>
-	<th>NIC</th>
-	<th>Phone</th>
-	<th>email</th>
-	<th>Status</th>
-</tr>
-
-<tr>
-	<td>1</td>
-	<td>Chathura</td>
-	<td>Last Name</td>
-	<td>NIC</td>
-	<td>Phone</td>
-	<td>Email</td>
-	<td>Status</td>
-</tr>
-	
-</table>
 
 
 

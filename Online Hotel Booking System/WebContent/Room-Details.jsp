@@ -190,7 +190,7 @@
 
 <!-- ------------- -->
 
-<%-- 
+
 
 
 -------------------------
@@ -223,12 +223,6 @@ Hotel Details
 <font color="red">This hotel has no added rooms yet</font>
 <%}else{%>
 
-
-
-
-<% Hotel hotel = (Hotel) request.getAttribute("hotelDetails");
-%>
-
 <div class="container bootdey">
 <div class="col-md-12">
 <section class="panel">
@@ -255,13 +249,6 @@ Hotel Details
   </section>
   </div>
   </div>
-
-
-<h3>Hotel Name : <%=hotel.getName()%></h1>
-<h3>Hotel Category : <%=hotel.getCategory()%></h1>
-<h3>Hotel Phone : <%=hotel.getPhoneNumber()%></h1>
-<h3>Hotel address : <%=hotel.getAddress()%></h1>
-<hr>
 
 
 
