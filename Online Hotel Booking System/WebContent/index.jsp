@@ -21,7 +21,12 @@ pageEncoding="ISO-8859-1"%>
   background-size: cover;
 }
 </style>
-
+<style>
+	body{
+		padding-top:100px;
+	}
+	
+	</style>
 </head>
 <body>
 

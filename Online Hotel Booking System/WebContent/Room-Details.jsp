@@ -176,7 +176,13 @@
 
 </style>
 
-
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<style>
+	body{
+		padding-top:150px;
+	}
+	
+	</style>
 </head>
 <body>
 
@@ -184,9 +190,7 @@
 
 <!-- ------------- -->
 <%-- 
-<% Hotel hotel = (Hotel) request.getAttribute("hotelDetails");
-	List<Room> roomList = (List<Room>) request.getAttribute("roomList");
-%>
+
 <!-- <h1>Hotel Details wil be display in this section.</h1> -->
 <div id="hotelDetails">
 	<h4><%=hotel.getName()%></h3>
@@ -209,36 +213,14 @@
 <font color="red">This hotel has no added rooms yet</font>
 <%}else{}%> --%>
 
--------------------------
-Hotel Details
--------------------------
-<div class="container bootdey">
-<div class="col-md-12">
-<section class="panel">
-      <div class="panel-body">
-          <div class="col-md-6">
-              <div class="pro-img-details">
-                  <img src="./img/hotel2.jpg" alt="">
-              </div>
-              
-          </div>
-          <div class="col-md-6">
-              <h4 class="pro-d-title">
-                  <a href="#" class="">
-                      Hotel Name
-                  </a>
-              </h4>
-              <p>
-                  City 
-              </p>
-              
-              
-          </div>
-      </div>
-  </section>
-  </div>
-  </div>
+<% Hotel hotel = (Hotel) request.getAttribute("hotelDetails");
+%>
 
+<h3>Hotel Name : <%=hotel.getName()%></h1>
+<h3>Hotel Category : <%=hotel.getCategory()%></h1>
+<h3>Hotel Phone : <%=hotel.getPhoneNumber()%></h1>
+<h3>Hotel address : <%=hotel.getAddress()%></h1>
+<hr>
 
 
 
