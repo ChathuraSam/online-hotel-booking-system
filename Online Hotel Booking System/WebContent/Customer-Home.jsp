@@ -60,9 +60,9 @@
 					<div class="card-body">
 						<h5 class="card-title">${hotel.getName()}</h5>
 						<p class="card-text">${hotel.getCity()}</p>
-						<p class="card-text">Price = ${hotel.getPrice()}.0</p>
+						<p class="card-text">Price = ${hotel.getPrice()}0</p>
 						<!--  <a href="Book/${hotel.getId()}" class="btn btn-primary">Book Online</a> -->
-						<a href="./ViewRoomDetails?hotelid=${hotel.getId()}" class="btn btn-primary">Book Online</a>
+						<a href="./ViewRoomDetails?hotelid=${hotel.getId()}" class="btn btn-primary">View Details</a>
 					</div>
 				</div>
 

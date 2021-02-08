@@ -183,35 +183,37 @@
 <%@include file="./comp/Navbar-Customer.jsp" %>
 
 <!-- ------------- -->
-<%-- 
-<% Hotel hotel = (Hotel) request.getAttribute("hotelDetails");
-	List<Room> roomList = (List<Room>) request.getAttribute("roomList");
+-------------------------
+Hotel Details
+-------------------------
+<% Hotel hotel = (Hotel) session.getAttribute("hotelDetails");
+	List<Room> roomList = (List<Room>) session.getAttribute("roomList");
 %>
 <!-- <h1>Hotel Details wil be display in this section.</h1> -->
 <div id="hotelDetails">
-	<h4><%=hotel.getName()%></h3>
-	<h2><%=hotel.getCategory()%></h4>
-	<h2><%=hotel.getPhoneNumber()%></h4>
-	<h2><%=hotel.getAddress()%></h4>
+	<h3><%=hotel.getName()%></h3>
+	<h5><%=hotel.getCategory()%></h4>
+	<h5><%=hotel.getPhoneNumber()%></h4>
+	<h5><%=hotel.getAddress()%></h4>
 	<% String[] features = hotel.getFeatures().split(",");%>
 	<ul>
 		<% for(String feature: features){%>
 		<li><%=feature%></li>
 		<% }%>
 	</ul>
-</div> --%>
+</div> 
 
 
 
 
 <!-- All the rooms in this hotel will be display in below. A dummy room component is added -->
-<%-- <%if(roomList==null || roomList.isEmpty()){%>
-<font color="red">This hotel has no added rooms yet</font>
-<%}else{}%> --%>
 
--------------------------
-Hotel Details
--------------------------
+<%if(roomList==null || roomList.isEmpty()){%>
+<font color="red">This hotel has no added rooms yet</font>
+<%}else{%>
+
+
+
 <div class="container bootdey">
 <div class="col-md-12">
 <section class="panel">
@@ -222,7 +224,7 @@ Hotel Details
               </div>
               
           </div>
-          <div class="col-md-6">
+          <!--  <div class="col-md-6">
               <h4 class="pro-d-title">
                   <a href="#" class="">
                       Hotel Name
@@ -230,7 +232,7 @@ Hotel Details
               </h4>
               <p>
                   City 
-              </p>
+              </p> -->
               
               
           </div>
@@ -242,10 +244,11 @@ Hotel Details
 
 
 
+
 <div class='container center_div m-5 p-2'>
 		<div class='row'>
 		
-			<c:forEach items="${roomList}" var="room">
+			<!-- <c:forEach items="${roomList}" var="room">
 
 				<div class="card m-1" style="width: 18rem;">
 					<img class="card-img-top" src="./img/hotel1.jpg"
@@ -258,21 +261,42 @@ Hotel Details
 						<p class="card-text">Availability ${room.getIsAvailable()}</p>
 						
 						<!--  <a href="Book/${hotel.getId()}" class="btn btn-primary">Book Online</a> -->
-						<a href="./ViewRoomDetails?hotelid=${room.getPrice()}" class="btn btn-primary">Book Online</a>
+						<!-- <a href="./HotelBooking?roomId=${room.getId()}" class="btn btn-primary">Book Online</a>
 					</div>
 				</div>
 
 
-			</c:forEach>
+			</c:forEach> -->
+			<% for(Room room: roomList){ %>
+			<div class="card m-1" style="width: 18rem;">
+					<img class="card-img-top" src="./img/hotel1.jpg"
+						alt="Card image cap">
+					<div class="card-body">
+						<h5 class="card-title"><%=room.getName() %></h5>
+						<p class="card-text">Price : LKR <%=room.getPrice()%>0</p>
+						<p class="card-text">Features : 
+							<ul>
+								<% String[] f = room.getFeatures().split(","); 
+									for(String f2: f){%>
+									<li><%=f2%></li>
+								<% }%>
+							</ul>
+						</p>
+						<p class="card-text">No of Persons : <%=room.getNoOfPersons()%></p>
+						<p class="card-text"> 
+							<%if(room.getIsAvailable()==1){ %>
+								Availability : <font color="green">Available </font>
+							<%}else{ %>
+								Availability : <font color="red">Not Available </font> 
+							<%} %>	
+						</p>
+						<a href="./HotelBooking?roomId=<%=room.getId()%>" class="btn btn-primary">Book Online</a>
+					</div>
+				</div>
+				<%} %>
 		</div>
 	</div>
-
-
-
-
-
-
-
+	<%} %> 
 
 <!-- ----------------------- -->
 

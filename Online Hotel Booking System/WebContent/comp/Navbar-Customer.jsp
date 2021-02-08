@@ -14,7 +14,9 @@
 					<span class="sr-only">(current)</span>
 			</a></li>
 			<li class="nav-item"><a class="nav-link"
-				href="ViewCustomerReservationServ">My Bookings</a></li>
+				href="./ViewCustomerReservationServ">My Bookings</a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="./InvoiceServ">Invoice Details</a></li>	
 			<li class="nav-item"><a class="nav-link"
 				href="SearchHotel?hotelName=&city=">Find Hotels</a></li>
 			<li class="nav-item dropdown"><a

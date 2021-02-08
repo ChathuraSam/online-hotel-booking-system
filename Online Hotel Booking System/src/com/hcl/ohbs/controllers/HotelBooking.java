@@ -14,21 +14,22 @@ import com.hcl.ohbs.entities.Hotel;
 import com.hcl.ohbs.entities.Room;
 import com.hcl.ohbs.services.HotelService;
 import com.hcl.ohbs.services.RoomService;
-@WebServlet("/ViewRoomDetails")
-public class ViewRoomDetails extends HttpServlet {
-	
+@WebServlet("/HotelBooking")
+public class HotelBooking extends HttpServlet {
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		HotelService hotelService = new HotelService();
-		RoomService roomService = new RoomService();
+		int roomId = Integer.parseInt(request.getParameter("roomId"));
 		HttpSession session = request.getSession();
-		int hotelId = Integer.parseInt(request.getParameter("hotelid"));
-		Hotel hotel = hotelService.getHotelDetailsById(hotelId);		
- 		session.setAttribute("hotelId",hotelId);
- 		session.setAttribute("hotelDetails", hotel);
- 		List<Room> roomList = roomService.getAllRoomsByHotelId(hotelId);
- 		session.setAttribute("roomList", roomList);
- 		request.getRequestDispatcher("Room-Details.jsp").forward(request, response);
+		/*if(session.getAttribute("customerId")==null) {
+			System.out.println("Guest");
+			out.println("<font color='red'>Log in or Sign up before continue<font>");
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+		}else {
+			System.out.println("Customer");*/
+			session.setAttribute("roomId",roomId);
+	 		request.getRequestDispatcher("Customer-hotelBooking.jsp").forward(request, response);
+		//}		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -87,7 +87,6 @@ $(document).ready(function(){
                             <li><a href="Owner-addHotel.jsp">ADD HOTEL</a></li>
                             <li><a href="Owner-addRoom.jsp" class="">ADD
 									ROOM</a></li>
-                             <li><a href="table.html">HOTELS REPORT</a></li>
                             
 
                         </ul>

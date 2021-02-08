@@ -52,11 +52,13 @@
 							<div class="table-responsive">
 								<% // retrieve your list from the request, with casting 
 							List<Reservation> list = (ArrayList<Reservation>) session.getAttribute("bookings");
+							List<String> hotelNameList = (ArrayList<String>) session.getAttribute("hotelNameList");	
             				if(list!=null){ %>
 								<table class="table">
 									<thead>
 										<tr>
 											<th>Hotel Name</th>
+											<th>Room Name</th>
 											<th>Customer Name</th>
 											<th>Contact Number</th>
 											<th>Check In</th>
@@ -66,15 +68,15 @@
 									</thead>
 									<tbody>
 										<% 	// print the information about every hotel of the list
-										for(Reservation reservation : list) { %>
-
+										for(int i=0;i<list.size();i++) { %>
 										<tr>
-											<td><%=reservation.getHotel().getName()%></td>
-											<td><%=reservation.getCustomer().getFirstName()%></td>
-											<td><%=reservation.getCustomer().getPhoneNumber()%></td>
-											<td><%=reservation.getCheckIn()%></td>
-											<td><%=reservation.getCheckOut()%></td>
-											<td><%=reservation.getNoOfPersons()%></td>
+											<td><%=hotelNameList.get(i)%></td>
+											<td><%=list.get(i).getRoom().getName()%></td>
+											<td><%=list.get(i).getCustomer().getFirstName()%></td>
+											<td><%=list.get(i).getCustomer().getPhoneNumber()%></td>
+											<td><%=list.get(i).getCheckIn()%></td>
+											<td><%=list.get(i).getCheckOut()%></td>
+											<td><%=list.get(i).getNoOfPersons()%></td>
 										</tr>
 										<%	} %>
 									</tbody>

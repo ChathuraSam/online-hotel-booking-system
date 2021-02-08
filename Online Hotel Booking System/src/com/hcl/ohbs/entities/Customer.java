@@ -86,6 +86,12 @@ public class Customer {
 		this.username = username;
 		this.password = password;
 	}
+	public Customer(String firstName, String lastName,String address, String email) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.address = address;
+		this.email = email;
+	}
 	public Customer() {
 
 	}	
@@ -94,5 +100,11 @@ public class Customer {
 	}
 	public Customer(String firstName) {
 		this.firstName=firstName;
+	}
+	@Override
+	public String toString() {
+		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber="
+				+ phoneNumber + ", address=" + address + ", email=" + email + ", username=" + username + ", password="
+				+ password + "]";
 	}
 }

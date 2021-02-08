@@ -1,6 +1,7 @@
 package com.hcl.ohbs.controllers;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,9 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.hcl.ohbs.dao.HotelDAO;
 import com.hcl.ohbs.entities.Hotel;
 import com.hcl.ohbs.entities.Reservation;
-import com.hcl.ohbs.services.BookingService;
+import com.hcl.ohbs.services.ReservationService;
+import com.hcl.ohbs.services.RoomService;
 import com.hcl.ohbs.services.HotelService;
 import com.hcl.ohbs.services.RegisterCustomerService;
 @WebServlet("/ViewBookingsOwner")
@@ -22,21 +25,29 @@ public class ViewBookingsOwner extends HttpServlet {
 		System.out.println("start owner view bookings servlet");
 		PrintWriter out = response.getWriter();
 		RegisterCustomerService custmerService = new RegisterCustomerService();
-		HotelService hotelService = new HotelService();
+		HotelDAO HotelDao = new HotelDAO();
+		RoomService roomService = new RoomService();
+		List<String> hotelNameList = new ArrayList<>();
 		// recieve the id from coming from the session and assign into id variable
 		HttpSession session = request.getSession();
 		int ownerId = (int) session.getAttribute("hotelOwnerId");
 		System.out.println("owner id in view booking page = " + ownerId);
 		String hotelOwnerName = (String) session.getAttribute("hotelOwnerName");
 		System.out.println("owner name in view booking page = " + hotelOwnerName);
-		BookingService bookingService = new BookingService();
+		ReservationService bookingService = new ReservationService();
 		List<Reservation> reservationList = bookingService.getReservationByOwnerId(ownerId);
+		
 		for(Reservation r:reservationList) {
+			int roomId = r.getRoom().getId();
 			r.setCustomer(custmerService.getCustomerById(r.getCustomer().getId()));
-			r.setHotel(new Hotel(hotelService.getHotelNameById(r.getHotel().getId())));
+			r.setRoom(roomService.getRoomById(roomId));
+			int hotelId = roomService.getHotelIdByRoomID(roomId);
+			String hname = HotelDao.getNameById(hotelId);
+			hotelNameList.add(hname);
 			System.out.println(r);
 		}
 		session.setAttribute("bookings", reservationList);
+		session.setAttribute("hotelNameList", hotelNameList);
 		//request.setAttribute("bookings", reservationList);
 		out.println("<font>view booking success!!<font>");
 		System.out.println("end owner view bookings servlet");
