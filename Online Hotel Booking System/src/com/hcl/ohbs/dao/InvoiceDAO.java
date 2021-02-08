@@ -13,6 +13,8 @@ import com.hcl.ohbs.entities.Customer;
 import com.hcl.ohbs.entities.Hotel;
 import com.hcl.ohbs.entities.HotelOwner;
 import com.hcl.ohbs.entities.Invoice;
+import com.hcl.ohbs.entities.Reservation;
+import com.hcl.ohbs.entities.Room;
 
 
 
@@ -99,31 +101,31 @@ public class InvoiceDAO {
 	    return price;
 	}
 	
-	public List<Integer> getReservationIdByCustomerId(int CustomerId){
-		List<Integer> list =new ArrayList<>();
-		try{
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		
-			con = DBConnection.getConnection();
-			String query = "select id from reservation where customer_id=?";
-			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, CustomerId);
-			rs = pstmt.executeQuery();
-			while(rs.next()){
-				Integer i = new Integer(rs.getInt(1));
-				list.add(i);
-				
-			}
-	    }catch(ClassNotFoundException e1){
-	            e1.printStackTrace();
-	    }catch(SQLException e2){
-	            e2.printStackTrace();
-	    }
-	    return list;
-	}
+	public List<Reservation> getReservationByCustomerId(int CustomerId){
+        List<Reservation> list =new ArrayList<>();
+        try{
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        
+        
+            con = DBConnection.getConnection();
+            String query = "select * from reservation where customer_id=?";
+            pstmt = con.prepareStatement(query);
+            pstmt.setInt(1, CustomerId);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+                Reservation r = new Reservation(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),new Customer(rs.getInt(5)),new Room(rs.getInt(6)));
+                list.add(r);
+                
+            }
+        }catch(ClassNotFoundException e1){
+                e1.printStackTrace();
+        }catch(SQLException e2){
+                e2.printStackTrace();
+        }
+        return list;
+    }
 	
 	public Invoice getInvoiceByCustomerId(int id){       
 		Connection con = null;

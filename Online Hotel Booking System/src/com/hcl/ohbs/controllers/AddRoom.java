@@ -18,6 +18,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import com.hcl.ohbs.dao.HotelDAO;
 import com.hcl.ohbs.dao.RoomDAO;
 import com.hcl.ohbs.entities.Hotel;
+import com.hcl.ohbs.entities.Room;
 import com.hcl.ohbs.services.HotelService;
 import com.hcl.ohbs.services.RoomService;
 @WebServlet("/AddRoom")
@@ -127,12 +128,12 @@ public class AddRoom extends HttpServlet {
 				out.println("<font color='red'>Error in adding the room<font>");
 				request.getRequestDispatcher("Owner-addRoom.jsp").include(request, response);
 			}		
-			/*List<Hotel> hotelList = hotelService.getHotelsByOwnerId(ownerId);
-			for(Hotel h:hotelList) {
-				System.out.println("hotel name = " + h.getName());
-			}*/
-		}	
-		//request.setAttribute("hotels", hotelList);
+			List<Room> roomList = roomService.getRooomssByOwnerId(ownerId);
+			for(Room r:roomList) {
+				System.out.println("Room name = " + r.getName());
+			}
+			request.setAttribute("rooms", roomList);
+		}		
 		out.println("</boby><html>");
 		System.out.println("End /AddRoom: ");
 	}

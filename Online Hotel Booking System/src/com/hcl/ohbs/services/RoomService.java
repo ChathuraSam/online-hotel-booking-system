@@ -57,4 +57,8 @@ public class RoomService {
 	public Room getRoomById(int roomId){
 		return roomDao.getRoomById(roomId);
 	}
+	
+	public List<Room> getRooomssByOwnerId(int ownerId){
+		return roomDao.getRoomsByOwnerId(ownerId);
+	}
 }

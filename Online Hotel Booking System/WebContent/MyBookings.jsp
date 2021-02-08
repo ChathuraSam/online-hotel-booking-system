@@ -11,6 +11,12 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 <title>Insert title here</title>
+<style type="text/css">
+body {
+	padding-top:100px;
+}
+
+</style>
 </head>
 <body>
 
@@ -21,7 +27,7 @@
 
 	
 	<table border='1'>
-		<tr><th>Check In</th><th>Check Out</th><th>No of Persons</th><th>Reserved By</th><th>Hotel Name</th><th>Room Name</th><th>Price</th></tr>
+		<tr><th>Check In</th><th>Check Out</th><th>No of Persons</th><th>Reserved By</th><th>Hotel Name</th><th>Room Name</th><th>Price</th><th>Action</th></tr>
 		
 		<% 
 			List<Reservation> list = (List<Reservation>) request.getAttribute("reservationList");

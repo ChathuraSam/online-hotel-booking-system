@@ -298,12 +298,12 @@ public class RoomDAO {
 		List<Room> list = new ArrayList<>();
 		try{
 			con = DBConnection.getConnection();
-			String query = "select room.id FROM room,hotel WHERE room.hotel_id=hotel.id AND hotel.hotel_owner_id=?";
+			String query = "select room.id,room.name,room.price,room.features,room.no_of_persons,room.isAvailable,room.hotel_id FROM room,hotel WHERE room.hotel_id=hotel.id AND hotel.hotel_owner_id=?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, ownerId);
 			rs = pstmt.executeQuery(); 
 			while(rs.next()){
-				Room r = new Room(rs.getInt(1));
+				Room r = new Room(rs.getInt(1),rs.getString(2),rs.getDouble(3),rs.getString(4),rs.getInt(5),rs.getInt(6),new Hotel(rs.getInt(7)));
 				list.add(r);					
 			}
 		}catch(ClassNotFoundException e1){

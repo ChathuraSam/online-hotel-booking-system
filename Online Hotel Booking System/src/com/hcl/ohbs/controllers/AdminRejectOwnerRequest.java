@@ -14,17 +14,15 @@ import com.hcl.ohbs.dao.HotelOwnerDAO;
 import com.hcl.ohbs.dao.ReservationDAO;
 import com.hcl.ohbs.entities.HotelOwner;
 import com.hcl.ohbs.services.HotelOwnerService;
-@WebServlet("/AdminApproveOwnerRequest")
-public class AdminApproveOwnerRequest extends HttpServlet {
+@WebServlet("/AdminRejectOwnerRequest")
+public class AdminRejectOwnerRequest extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		int ownerId = Integer.parseInt(request.getParameter("ownerId"));
-		HotelOwnerService hotelOwnerService = new HotelOwnerService();
 		HotelOwnerDAO hotelOwnerDao = new HotelOwnerDAO();
-		HotelOwner hotelOwner = hotelOwnerDao.findOwnerById(ownerId);
-		if(hotelOwnerService.updateStatus(hotelOwner)) {
-			out.println("Successfully approved");
+		if(hotelOwnerDao.deleteHotelOwner(ownerId)) {
+			out.println("Successfully rejected");
 			request.getRequestDispatcher("ViewHotelOwnerRequests.jsp").forward(request, response);
 		}else {
 			out.println("Error in approving");
@@ -36,4 +34,5 @@ public class AdminApproveOwnerRequest extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+
 }
