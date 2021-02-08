@@ -25,7 +25,7 @@ public class AdminRejectOwnerRequest extends HttpServlet {
 			out.println("Successfully rejected");
 			request.getRequestDispatcher("ViewHotelOwnerRequests.jsp").forward(request, response);
 		}else {
-			out.println("Error in approving");
+			out.println("Error in rejecting");
 			request.getRequestDispatcher("ViewHotelOwnerRequests.jsp").forward(request, response);
 		}
 	}

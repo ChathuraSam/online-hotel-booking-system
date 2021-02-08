@@ -127,4 +127,10 @@ public class HotelOwner {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	@Override
+	public String toString() {
+		return "HotelOwner [id=" + id + ", fistName=" + fistName + ", lastName=" + lastName + ", nic=" + nic
+				+ ", phoneNumber=" + phoneNumber + ", email=" + email + ", username=" + username + ", password="
+				+ password + ", status=" + status + "]";
+	}	
 }
