@@ -28,7 +28,7 @@ public class OwnerViewHotel extends HttpServlet {
 		System.out.println("owner name in add hotel page = " + hotelOwnerName);
 		HotelService hotelService = new HotelService();
 		List<Hotel> hotelList = hotelService.getHotelsByOwnerId(ownerId);
-		request.setAttribute("hotels", hotelList);
+		session.setAttribute("hotels", hotelList);
 		RoomService roomService = new RoomService();
 		List<Room> roomList = roomService.getRooomssByOwnerId(ownerId);
 		request.setAttribute("rooms", roomList);

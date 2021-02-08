@@ -276,7 +276,7 @@ public class HotelOwnerDAO {
         PreparedStatement pstmt = null;      
         try{
             con = DBConnection.getConnection();
-            String query = "UPDATE hote_owner SET status=1 WHERE id=?";
+            String query = "UPDATE hotel_owner SET status=1 WHERE id=?";
             pstmt = con.prepareStatement(query);
             pstmt.setInt(1,hotelOwner.getId());
             int n = pstmt.executeUpdate();
@@ -305,12 +305,12 @@ public class HotelOwnerDAO {
 		HotelOwner hotelOwner = null;
 		try{
 			con = DBConnection.getConnection();
-			String query = "SELECT * FROM hotel_owner WHERE username=? AND password=?";
+			String query = "SELECT id,first_name,last_name,nic,phone_number,email,status FROM hotel_owner WHERE id=?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, id);
 			rs = pstmt.executeQuery();
 			if(rs.next()){
-				hotelOwner = new HotelOwner(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
+				hotelOwner = new HotelOwner(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));			
 			}
 	    }catch(ClassNotFoundException e1){
 	            e1.printStackTrace();
@@ -327,7 +327,7 @@ public class HotelOwnerDAO {
 	         }catch(SQLException e3){
 	                e3.printStackTrace();
 	         }
-	     } 
+	     }
 	    return hotelOwner;
 	}
 }

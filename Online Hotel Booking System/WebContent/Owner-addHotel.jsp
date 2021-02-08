@@ -138,12 +138,12 @@
 							<div class="form-group">
 								<label>Hotel Type</label>
 								<select class="form-control" name="roomType" id="rooms" required>
-									<option value="luxurys">Luxury Suite</option>
-									<option value="deluxs">Delux Suite</option>
-									<option value="premiers">Premier Suite</option>
-									<option value="Luxuryr">Luxury Room</option>
-									<option value="deluxs">Delux Room</option>
-									<option value="premierr">Premier Room</option>
+									<option value="Luxury Suite">Luxury Suite</option>
+									<option value="Delux Suite">Delux Suite</option>
+									<option value="Premier Suite">Premier Suite</option>
+									<option value="Luxury Room">Luxury Room</option>
+									<option value="Delux Room">Delux Room</option>
+									<option value="Premier Room">Premier Room</option>
 								</select>
 							</div>
 							<div class="form-group">

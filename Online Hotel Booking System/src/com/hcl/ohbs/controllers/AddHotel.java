@@ -122,9 +122,9 @@ public class AddHotel extends HttpServlet {
 				}
 				
 				int max_capacity = Integer.parseInt(request.getParameter("hotelguestcapacity"));
-				String category = request.getParameter("hoteladdress");
-				String features = request.getParameter("hoteladdress");
-				double price = Double.parseDouble(request.getParameter("hotelslots"));
+				String category = request.getParameter("roomType");
+				String features = request.getParameter("hoteldesc");
+				double price = Double.parseDouble(request.getParameter("hotelsprice"));
 
 		out.println("<html><boby>");
 		HotelService hotelService = new HotelService();
@@ -140,7 +140,7 @@ public class AddHotel extends HttpServlet {
 		
 		//ownerId = 3;
 		if (hotelService.addHotelAndImages(hotelName, hotelCity, phone_number, address, status, max_capacity, 100, ownerId,
-				category, features, price, filePath)) {
+				category, features, price, "filePath")) {
 			out.println("<font>hotel added success!!<font>");	
 		} else {
 			out.println("<font color='red'>Error in adding the hotel<font>");
@@ -149,7 +149,7 @@ public class AddHotel extends HttpServlet {
 		for(Hotel h:hotelList) {
 			System.out.println("hotel name = " + h.getName());
 		}
-		request.setAttribute("hotels", hotelList);
+		session.setAttribute("hotels", hotelList);
 		request.getRequestDispatcher("Owner-homepage.jsp").include(request, response);
 		out.println("</boby><html>");
 	}
